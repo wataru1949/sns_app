@@ -3,32 +3,12 @@
   box-sizing: border-box;
 }
 
-.wrapper {
+.top-page-wrapper {
   background-image: 
   linear-gradient(to bottom, rgba(255, 145, 0, 0.1),rgba(216, 207, 189, 0.2)),
     url(picture/paper-1468883_1920.jpg);
   // background-attachment: fixed;
   width: 100%;
-  .header {
-    height: 40px;
-    width: 100%;
-    background-color: rgba(253,208,0,0.9);
-    box-shadow: rgba(112, 74, 24, 0.7) 0 3px 15px;
-    position: fixed;
-    &_menu {
-      width: 100%;
-      .header_list {
-        display: flex;
-        &_logo {
-          height: 40px;
-          align-items: center;
-          margin: 0 auto;
-          line-height: 40px;
-          font-size: 18px;
-        }
-      }
-    }
-  }
   .post-container {
     height: calc(100% - 40px);
     width: 100%;
@@ -101,8 +81,6 @@
             background-image: url(picture/maldives-666122_1280.jpg);
             background-size: cover;
             background-position: center;
-
-
           }
         }
       }
