@@ -1,0 +1,34 @@
+= render "share/header"
+.post-new-wrapper
+  .paper
+    = form_with model: @post, local: true do |f|
+      .form-wrapper
+        .form-area
+          .form-area_label
+            = f.label :title, "タイトル"
+          = f.text_field :title
+        .form-area
+          .form-area_label
+            = f.label :event, "種目"
+          = f.text_field :event
+        .form-area
+          詳細
+          = f.text_area :detail
+        .form-area
+          都道府県
+          = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt:"選択してください"}, {class: 'exhibit-form-field'}
+        .form-area
+          募集人数
+          = f.number_field :accept
+        .form-area
+          日にち
+          = f.date_field :date
+        .form-area
+          開始時間
+          = f.time_select :start_time
+        .form-area
+          終了時間
+          = f.time_select :start_tim
+        .form-area
+          = f.submit "登録"
+          = link_to "もどる", :back
