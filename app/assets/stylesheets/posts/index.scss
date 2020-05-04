@@ -1,0 +1,99 @@
+
+* {
+  box-sizing: border-box;
+}
+
+.top-page-wrapper {
+  background-image: 
+  linear-gradient(to bottom, rgba(255, 145, 0, 0.1),rgba(216, 207, 189, 0.2)),
+    url(picture/paper-1468883_1920.jpg);
+  // background-attachment: fixed;
+  width: 100%;
+  .post-container {
+    height: calc(100% - 40px);
+    width: 100%;
+    display: flex;
+    padding-top: 40px;
+    .side-bar {
+      box-shadow: rgba(112, 74, 24, 0.7) 0 3px 15px;
+
+      background-color: black;
+      max-width: 300px;
+      height: calc(100% - 40px);
+      opacity: 0.7;
+      position: fixed;
+      &_container {
+        height: 100%;
+        width: 100%;
+        padding: 25px;
+        .mypage-container {
+          height: 60px;
+          width: 100%;
+          background-color: gray;
+          margin-bottom: 20px;
+          display: flex;
+          &_left {
+            height: 100%;
+            width: 60px;
+            background-color: ivory;
+            margin: 0 5px;
+          }
+          &_right {
+            height: 100%;
+            width: 180px;
+            background-color: lightcyan;
+            padding: 5px;
+            &_name {
+              margin-left: 5px;
+            }
+            &_btn {
+              position: relative;
+              .new-post-btn {
+                position: absolute;
+                right: 0em;
+                border-radius: 10px;
+                font-size:20px;
+                text-decoration: none;
+                text-align: center;
+              }
+            }
+          }
+        }
+        .search-container {
+          height: calc(100% - 70px);
+          width: 100%;
+          padding: 15px;
+          background-color: gray;
+        }
+      }
+    }
+    .main-post {
+      width: calc(100% - 300px);
+      margin-left: 300px;
+      .main-container {
+        // height: 100%;
+        padding: 30px 100px 0px;
+        .top-content {
+          height: 900px;
+          width: 100%;
+          background-color: rgba(250,250,250,0.6);
+          padding: 30px 100px 0;
+          border-radius: 10px;
+          box-shadow: rgba(112, 74, 24, 0.7) 0 3px 15px;
+          // border: 1mm ridge rgba(241, 173, 26, 0.6);
+          
+          &_picture {
+            margin: 0 auto;
+            height: 450px;
+            // width: 750px;
+            border-radius: 6px;
+            box-shadow: rgba(112, 74, 24, 0.7) 0 3px 15px;
+            background-image: url(picture/maldives-666122_1280.jpg);
+            background-size: cover;
+            background-position: center;
+          }
+        }
+      }
+    }
+  }
+}
