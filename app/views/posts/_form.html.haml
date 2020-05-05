@@ -1,0 +1,63 @@
+.post-new-wrapper
+  .paper
+    = form_with model: @post, local: true do |f|
+      - if @post.errors.any?
+        .post-form_errors
+          %h2= "#{@post.errors.full_messages.count}件のエラーが発生しました。"
+          %ul
+            - @post.errors.full_messages.each do |message|
+              %li= message
+      .form-wrapper
+        .form-area
+          .form-area_label
+            = f.label :title, "タイトル"
+            .form-area_label_info
+              必須
+          = f.text_field :title
+
+        .form-area
+          .form-area_label
+            = f.label :event, "種目"
+            .form-area_label_info
+              必須
+          = f.text_field :event
+
+        .form-area
+          .form-area_label
+            = f.label :detail, "詳細"
+            .form-area_label_info
+              必須
+          = f.text_area :detail
+
+        .form-area
+          .form-area_label
+            = f.label :prefecture_id, "都道府県"
+            .form-area_label_info
+              必須
+          = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt:"選択してください"}, {class: 'exhibit-form-field'}
+
+        .form-area
+          .form-area_label
+            = f.label :accept, "募集人数"
+          = f.number_field :accept
+
+        .form-area
+          .form-area_label
+            = f.label :date, "日にち"
+            .form-area_label_info
+              必須
+          = f.date_field :date
+
+        .form-area
+          .form-area_label
+            = f.label :start_time, "開始時間"
+          = f.time_select :start_time
+
+        .form-area
+          .form-area_label
+            = f.label :end_time, "終了時間"
+          = f.time_select :end_time
+
+        .form-area
+          = f.submit "登録"
+          = link_to "もどる", :back
