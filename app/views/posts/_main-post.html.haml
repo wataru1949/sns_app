@@ -2,3 +2,29 @@
   .main-container
     .top-content
       .top-content_picture
+    .post-list
+      - @posts.each do |post|
+        = link_to post_path(post) do
+          .post-card
+
+
+
+-#     .side-bar__group-list
+-#     - current_user.groups.each do |group|
+-#       = link_to group_messages_path(group) do
+-#         .group
+-#           .group__name
+-#             = group.name
+-#           .group__message
+-#             = group.show_last_message
+
+
+-# .main__pic-up__content
+-#         - @items.each do |item|
+-#           .item
+-#             .item__image
+-#               -item.item_images.each_with_index do |image, index|
+-#                 - if index == 0
+-#                   = link_to item_path(item.id) do
+-#                     = image_tag image.image.url
+-#                 - else
