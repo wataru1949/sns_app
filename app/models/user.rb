@@ -5,15 +5,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
-  enum gender: { male: 1, female: 2, others: 3 }
-  enum age: { teens: 1, twenties: 2, thirties: 3, forties: 4, fifties: 5, over_sixties: 6 }
-
+  enum gender: { gender_private: 0, male: 1, female: 2, others: 3 }
+  enum age: { age_private: 0, teens: 1, twenties: 2, thirties: 3, forties: 4, fifties: 5, over_sixties: 6 }
   belongs_to_active_hash :prefecture
   has_many :posts
   has_many :comments
   # has_many :pictures, as: :imageable
   # has_and_belongs_to_many :clubs
-  # validates :nickname, :profile, :gender, :age, presence: true
+  validates :nickname, :profile, :gender, :age, presence: true
 end
 
 # == Schema Information
