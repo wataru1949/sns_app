@@ -4,3 +4,7 @@
       .header_list_logo
         = link_to 'Pocket', root_path
       .header_list_mypage
+        - if user_signed_in?
+          = link_to 'ログアウト', destroy_user_session_path, method: :delete
+        - else
+          = link_to 'ログイン', user_session_path
