@@ -3,10 +3,10 @@
 # Table name: users
 #
 #  id                     :bigint           not null, primary key
-#  age                    :integer          not null
+#  age                    :integer          default("age_private")
 #  email                  :string(255)      default(""), not null
 #  encrypted_password     :string(255)      default(""), not null
-#  gender                 :integer          not null
+#  gender                 :integer          default("gender_private")
 #  nickname               :string(255)      not null
 #  profile                :string(255)      not null
 #  remember_created_at    :datetime

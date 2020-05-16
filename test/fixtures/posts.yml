@@ -12,6 +12,15 @@
 #  updated_at    :datetime         not null
 #  accept_id     :integer
 #  prefecture_id :integer          not null
+#  user_id       :bigint
+#
+# Indexes
+#
+#  index_posts_on_user_id  (user_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (user_id => users.id)
 #
 
 # This model initially had no columns defined. If you add columns to the
