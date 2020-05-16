@@ -15,12 +15,6 @@
               必須
           = f.text_field :title
 
-        .form-area
-          .form-area_label
-            = f.label :event, "種目"
-            .form-area_label_info
-              必須
-          = f.text_field :event
 
         .form-area
           .form-area_label
@@ -38,8 +32,8 @@
 
         .form-area
           .form-area_label
-            = f.label :accept, "募集人数"
-          = f.number_field :accept
+            = f.label :accept_id, "募集人数"
+          = f.collection_select :accept_id, Accept.all, :id, :name, {prompt:"選択してください"}, {class: 'exhibit-form-field'}
 
         .form-area
           .form-area_label
