@@ -1,3 +1,43 @@
-= render "share/header"
-.post-show-wrapper
-  
+.top-page-wrapper
+  = render "share/header"
+  = render "share/side-bar"
+  .main-post
+    .main-container
+      .top-content
+        .p_tilte
+          = @post.title
+        .p_detail
+          = @post.detail
+        .p_prefecture
+          = @post.prefecture.name
+        .p_accept
+          = @post.accept.name
+        .p_date
+          = @post.date
+        .p_start_time
+          = @post.start_time
+        .p_end_time
+          = @post.end_time
+        -# .p_comments
+        -#   = @post.p.comment
+        - if current_user
+          = form_with(model: [@post, @comment], local: true) do |f|
+            = f.text_area :comment, placeholder: "コメントする"
+            = f.submit "送信"
+        - else
+          %strong
+            %p ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
+
+        .comments
+          %h4 ＜コメント一覧＞
+          - if @comments
+            - @comments.each do |comment|
+              %p
+                %strong
+                  = link_to comment.user.nickname, "/users/#{comment.user_id}"
+                  ：
+                = comment.comment
+
+
+
+
