@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:edit, :update, :show]
 
   def index
-    @posts = Post.order(created_at: :desc)
+    @posts = Post.includes(:user).order(created_at: :desc)
   end
 
   def new
@@ -19,6 +19,8 @@ class PostsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = @post.comments.includes(:user)
   end
 
   def edit
@@ -37,7 +39,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :event, :detail, :prefecture_id, :accept, :date, :start_time, :end_time).merge(user_id: current_user.id )
+    params.require(:post).permit(:title, :event, :detail, :prefecture_id, :accept_id, :date, :start_time, :end_time).merge(user_id: current_user.id )
   end
 
   def set_post
