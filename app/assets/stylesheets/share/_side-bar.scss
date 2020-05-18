@@ -1,0 +1,53 @@
+.side-bar {
+  box-shadow: rgba(112, 74, 24, 0.7) 0 3px 15px;
+  background-color: black;
+  max-width: 300px;
+  height: calc(100% - 40px);
+  opacity: 0.7;
+  position: fixed;
+  margin-top: 40px;
+  &_container {
+    height: 100%;
+    width: 100%;
+    padding: 25px;
+    .mypage-container {
+      height: 60px;
+      width: 100%;
+      background-color: gray;
+      margin-bottom: 20px;
+      display: flex;
+      &_left {
+        height: 100%;
+        width: 60px;
+        background-color: ivory;
+        margin: 0 5px;
+      }
+      &_right {
+        height: 100%;
+        width: 180px;
+        background-color: lightcyan;
+        padding: 5px;
+        &_name {
+          margin-left: 5px;
+        }
+        &_btn {
+          position: relative;
+          .new-post-btn {
+            position: absolute;
+            right: 0em;
+            border-radius: 10px;
+            font-size:20px;
+            text-decoration: none;
+            text-align: center;
+          }
+        }
+      }
+    }
+    .search-container {
+      height: calc(100% - 70px);
+      width: 100%;
+      padding: 15px;
+      background-color: gray;
+    }
+  }
+}

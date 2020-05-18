@@ -5,7 +5,7 @@
         = image_tag "picture/imgrc0068397747.jpg", width: "100%"
       .mypage-container_right
         .mypage-container_right_name
-          コルレオーネ
+          = current_user.nickname
         .mypage-container_right_btn
           = link_to new_post_path, class: "new-post-btn" do
             = icon('fas', 'edit')
