@@ -10,8 +10,9 @@ class User < ApplicationRecord
   belongs_to_active_hash :prefecture
   has_many :posts
   has_many :comments
-  # has_many :pictures, as: :imageable
-  # has_and_belongs_to_many :clubs
+  has_many :group_users
+  has_many :groups,through: :group_users
+  has_many :pictures, as: :imageable
   validates :nickname, :profile, :gender, :age, presence: true
 end
 

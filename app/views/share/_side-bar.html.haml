@@ -5,10 +5,13 @@
         = image_tag "picture/imgrc0068397747.jpg", width: "100%"
       .mypage-container_right
         .mypage-container_right_name
-          = current_user.nickname
+          - if user_signed_in?
+            = current_user.nickname
         .mypage-container_right_btn
           = link_to new_post_path, class: "new-post-btn" do
             = icon('fas', 'edit')
     .search-container
+      .group-page_link
+        = link_to 'グループ作成', new_group_path
       .search-menu
       .search-btn
