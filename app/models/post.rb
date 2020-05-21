@@ -4,8 +4,9 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :accept
-  has_many :comments
-  has_many :pictures, as: :imageable
+  has_many :comments, dependent: :destroy
+
+  mount_uploader :post_image, ImageUploader
 
   validates :title, :date, :prefecture, :detail, presence: true
 end
@@ -18,6 +19,7 @@ end
 #  date          :date             not null
 #  detail        :text(65535)      not null
 #  end_time      :time
+#  post_image    :string(255)
 #  start_time    :time
 #  title         :string(255)      not null
 #  created_at    :datetime         not null

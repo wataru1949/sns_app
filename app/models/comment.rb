@@ -1,20 +1,22 @@
 class Comment < ApplicationRecord
-
+  
   belongs_to :post
   belongs_to :user
-  has_many :pictures, as: :imageable
+  
+  mount_uploader :comment_image, ImageUploader
 end
 
 # == Schema Information
 #
 # Table name: comments
 #
-#  id         :bigint           not null, primary key
-#  comment    :text(65535)
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  post_id    :bigint
-#  user_id    :bigint
+#  id            :bigint           not null, primary key
+#  comment       :text(65535)
+#  comment_image :string(255)
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  post_id       :bigint
+#  user_id       :bigint
 #
 # Indexes
 #

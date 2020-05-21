@@ -10,9 +10,11 @@ class User < ApplicationRecord
   belongs_to_active_hash :prefecture
   has_many :posts
   has_many :comments
+  has_many :chats
   has_many :group_users
   has_many :groups,through: :group_users
-  has_many :pictures, as: :imageable
+
+  mount_uploader :user_image, ImageUploader
   validates :nickname, :profile, :gender, :age, presence: true
 end
 
@@ -30,6 +32,7 @@ end
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string(255)
+#  user_image             :string(255)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  prefecture_id          :integer
