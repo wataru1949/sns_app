@@ -15,6 +15,12 @@
               必須
           = f.text_field :title
 
+        .form-area
+          .form-area_label
+            = f.label :post_image, "画像"
+            .form-area_label_info
+              必須
+          = f.file_field :post_image
 
         .form-area
           .form-area_label

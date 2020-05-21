@@ -4,6 +4,8 @@
   .main-post
     .main-container
       .top-content
+        .p_image
+          = image_tag @post.post_image.url, class: 'post_image' if @post.post_image.present?
         .p_tilte
           = @post.title
         .p_detail
@@ -23,6 +25,7 @@
         - if current_user
           = form_with(model: [@post, @comment], local: true) do |f|
             = f.text_area :comment, placeholder: "コメントする"
+            = f.file_field :comment_image, class: 'img-man'
             = f.submit "送信"
         - else
           %strong
@@ -36,7 +39,12 @@
                 %strong
                   = link_to comment.user.nickname, "/users/#{comment.user_id}"
                   ：
-                = comment.comment
+                - if comment.comment.present?
+                  %p.lower-message__content
+                    = comment.comment
+                = image_tag comment.comment_image.url, class: 'post_image' if comment.comment_image.present?
+                -# = image_tag comment.comment_image.url, class: 'post_image' if comment.comment_image.present?
+                -# = comment.comment
 
 
 

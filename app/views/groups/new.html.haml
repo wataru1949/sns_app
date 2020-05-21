@@ -17,6 +17,11 @@
               必須
           = f.text_field :group_name
 
+        .form-area
+          .form-area_label
+            = f.label :group_pictures, "画像"
+            = f.fields_for :group_pictures do |i|
+              = i.file_field :group_image
 
         .form-area
           .form-area_label
