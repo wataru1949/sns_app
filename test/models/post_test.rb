@@ -6,6 +6,7 @@
 #  date          :date             not null
 #  detail        :text(65535)      not null
 #  end_time      :time
+#  post_image    :string(255)
 #  start_time    :time
 #  title         :string(255)      not null
 #  created_at    :datetime         not null
