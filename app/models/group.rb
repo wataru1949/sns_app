@@ -4,9 +4,10 @@ class Group < ApplicationRecord
   belongs_to_active_hash :prefecture
   has_many :group_users
   has_many :users, through: :group_users
-  # has_many  :pictures, as: :imageable
+  has_many :group_pictures
   # belongs_to :category
   # has_many :chats
+  accepts_nested_attributes_for :group_pictures, allow_destroy: true
 
   validates :group_name, presence: true, uniqueness: true
   validates :content, presence: true
