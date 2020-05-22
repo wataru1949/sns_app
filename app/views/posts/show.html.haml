@@ -1,50 +1,74 @@
-.top-page-wrapper
+.wrapper
   = render "share/header"
   = render "share/side-bar"
-  .main-post
-    .main-container
-      .top-content
-        .p_image
-          = image_tag @post.post_image.url, class: 'post_image' if @post.post_image.present?
-        .p_tilte
+  .main-container
+    .main-wrapper
+      .top-container
+        .post-board_title
           = @post.title
-        .p_detail
-          = @post.detail
-        .p_prefecture
-          = @post.prefecture.name
-        .p_accept
-          = @post.accept.name
-        .p_date
-          = @post.date
-        .p_start_time
-          = @post.start_time
-        .p_end_time
-          = @post.end_time
-        -# .p_comments
-        -#   = @post.p.comment
+        .post-board
+          .post-board_left
+            .post-board_left_prefecture
+              場所 :
+              = @post.prefecture.name
+            .post-board_left_date
+              日にち :
+              = @post.date.strftime("%Y/%m/%d")
+            - if @post.start_time.present?
+              .post-board_left_start_time
+                開始予定 :
+                = @post.start_time.strftime("%H：%M")
+            - if @post.end_time.present?
+              .post-board_left_end_time
+                終了予定 :
+                = @post.end_time.strftime("%H：%M")
+            - if @post.accept.present?
+              .post-board_left_accept
+                募集人数 :
+                = @post.accept.name
+            - if @post.user_id == current_user.id
+              .post-board_right_edit
+                = link_to "編集する", edit_post_path(@post)
+          .post-board_right
+            - if @post.post_image.present?
+              .post-board_right_image
+                = image_tag @post.post_image.url, alt: "投稿画像", class: "post_image" 
+        .post-board_border
+        .post-board_detail
+          = simple_format(@post.detail)
+      .comment-container  
         - if current_user
           = form_with(model: [@post, @comment], local: true) do |f|
-            = f.text_area :comment, placeholder: "コメントする"
-            = f.file_field :comment_image, class: 'img-man'
-            = f.submit "送信"
+            .comment-form
+              = f.text_area :comment, placeholder: "コメントする",class: "comment-form_left"
+              .comment-form_right
+                = f.label :comment_image, class: "btn-mask" do
+                  = icon("fas", "image", class: "icon")
+                  = f.file_field :comment_image, class: "hidden"
+                = f.submit "送信", class: "submit-btn"
         - else
           %strong
             %p ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
-
-        .comments
-          %h4 ＜コメント一覧＞
-          - if @comments
+        .comment-area
+          - if @comments.present?
+            .comment-area_info
+              コメント一覧
             - @comments.each do |comment|
-              %p
-                %strong
-                  = link_to comment.user.nickname, "/users/#{comment.user_id}"
+              .comment-list
+                .comment-list_upper
+                  = link_to comment.user.nickname, user_path(comment.user_id), class: "comment-list_upper_name"
                   ：
-                - if comment.comment.present?
-                  %p.lower-message__content
-                    = comment.comment
-                = image_tag comment.comment_image.url, class: 'post_image' if comment.comment_image.present?
-                -# = image_tag comment.comment_image.url, class: 'post_image' if comment.comment_image.present?
-                -# = comment.comment
+                  = comment.created_at.strftime("%Y/%m/%d %H:%M")
+                  - if comment.user_id == current_user.id
+                    = link_to "削除", post_comment_path(@post, comment.id), method: :delete
+                .comment-list_bottom
+                  - if comment.comment.present?
+                    .comment-list_bottom_content
+                      = simple_format(comment.comment)
+                  = image_tag comment.comment_image.url, alt: "コメント画像", class: "post_image" if comment.comment_image.present?
+          - else
+            .comment-area_info
+              投稿の内容が気になったらコメントしてみましょう！
 
 
 
