@@ -4,6 +4,7 @@ class Comment < ApplicationRecord
   belongs_to :user
   
   mount_uploader :comment_image, ImageUploader
+  validates :comment, presence: true, unless: :comment_image?
 end
 
 # == Schema Information
