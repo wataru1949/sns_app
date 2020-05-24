@@ -26,7 +26,7 @@
               .post-board_left_accept
                 募集人数 :
                 = @post.accept.name
-            - if @post.user_id == current_user.id
+            - if user_signed_in? && @post.user_id == current_user.id
               .post-board_right_edit
                 = link_to "編集する", edit_post_path(@post)
           .post-board_right
@@ -47,8 +47,8 @@
                   = f.file_field :comment_image, class: "hidden"
                 = f.submit "送信", class: "submit-btn"
         - else
-          %strong
-            %p ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
+          .comment-container_alert  
+            ※※※ コメントの投稿には新規登録/ログインが必要です ※※※
         .comment-area
           - if @comments.present?
             .comment-area_info
@@ -59,7 +59,7 @@
                   = link_to comment.user.nickname, user_path(comment.user_id), class: "comment-list_upper_name"
                   ：
                   = comment.created_at.strftime("%Y/%m/%d %H:%M")
-                  - if comment.user_id == current_user.id
+                  - if user_signed_in? && comment.user_id == current_user.id
                     = link_to "削除", post_comment_path(@post, comment.id), method: :delete
                 .comment-list_bottom
                   - if comment.comment.present?
