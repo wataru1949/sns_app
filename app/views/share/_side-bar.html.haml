@@ -2,7 +2,8 @@
   .side-bar_container
     .mypage-container
       .mypage-container_left
-        = image_tag "picture/imgrc0068397747.jpg", width: "100%"
+        - if user_signed_in?
+          = image_tag current_user.user_image.url, alt: "ユーザー画像", class: "user_image" 
       .mypage-container_right
         .mypage-container_right_name
           - if user_signed_in?
@@ -11,6 +12,9 @@
           = link_to new_post_path, class: "new-post-btn" do
             = icon('fas', 'edit')
     .search-container
+      - if user_signed_in?
+        .user-edit_link
+          = link_to 'ユーザー編集',edit_user_path(current_user.id)
       .group-page_link
         = link_to 'グループ作成', new_group_path
       .search-menu

@@ -1,13 +1,13 @@
 .wrapper
   = render "share/header"
-  .session-left
-    .session-menu
-      .session-menu_title
-        新規登録
-      .session-menu_list 
-  .session-right
-    = form_with model: @user, url: user_registration_path, class: 'new_user', local: true do |f|
-      = render "devise/shared/error_messages", resource: resource
+  .form-container
+    = form_with model: @user, url: user_path(@user), class: 'new_user', local: true do |f|
+      .field
+        .image-label
+          = f.label :user_image do
+            = image_tag @user.user_image.url, alt: "ユーザー画像", class: "user_image" 
+        = f.file_field :user_image, class: "field_image"
+
       .field
         .field_label
           = f.label :nickname
@@ -16,14 +16,6 @@
         .field_label
           = f.label :email
         = f.email_field :email, autofocus: true, class: "field_form", autocomplete: "email"
-      .field
-        .field_label
-          = f.label :password
-        = f.password_field :password, class: "field_form", placeholder: "英数字6文字以上", autocomplete: "new-password"
-      -# .field
-      -#   .field_label
-      -#     = f.label :password_confirmation
-      -#   = f.password_field :password_confirmation, autocomplete: "new-password"
       .field
         .field_label
           = f.label :profile
@@ -41,5 +33,4 @@
           = f.label :prefecture
         = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt:"選択してください"}, {class: "field_form"}
       .actions
-        = f.submit "新規登録", class: "actions_btn"
-        = render "devise/shared/links"
+        = f.submit "編集する", class: "actions_btn"

@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit]
   before_action :set_post, only: [:edit, :update, :show]
 
   def index
@@ -24,14 +25,14 @@ class PostsController < ApplicationController
   end
 
   def edit
-    # if @post.user_id != current_user.id
-    #   redirect_to root_path
-    # end
+    if @post.user_id != current_user.id
+      redirect_to root_path
+    end
   end
 
   def update
     if @post.update(post_params)
-      redirect_to root_path
+      redirect_to @post
     else
       render :edit
     end

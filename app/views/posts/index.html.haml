@@ -1,4 +1,44 @@
-.top-page-wrapper
+.wrapper
   = render "share/header"
   = render "share/side-bar"
-  = render "main-post"
+  .main-container
+    .main-wrapper
+      .top-container
+        .top-container_picture
+      .post-list
+        - @posts.each do |post|
+          = link_to post_path(post) do
+            .post-card
+              .post-card_left
+                - if post.post_image.present?
+                  = image_tag post.post_image.url, alt: "投稿画像", class: "post-card_left_image" 
+
+                  -# 代変画像を用意する
+                - else
+                  .post-card_left_image
+              .post-card_right
+                .post-card_right_title
+                  = post.title
+                .post-card_right_info
+                
+                  .post-card_right_info-name
+                    = post.user.nickname
+                  .post-card_right_info-created
+                    = post.created_at.strftime("%Y/%m/%d %H:%M")
+                    = post.prefecture.name
+                    - if post.accept.present?
+                      = post.accept.name
+                    = post.date.strftime("%Y/%m/%d")
+                    - if post.start_time.present?
+                      = post.start_time.strftime("%H：%M")
+                    - if post.end_time.present?
+                      = post.end_time.strftime("%H：%M")
+
+
+                .p_id
+                  =post.id
+                
+
+
+
+
