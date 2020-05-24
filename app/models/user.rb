@@ -15,7 +15,7 @@ class User < ApplicationRecord
   has_many :groups,through: :group_users
 
   mount_uploader :user_image, ImageUploader
-  validates :nickname, :profile, :gender, :age, presence: true
+  validates :nickname, :profile, presence: true
 end
 
 # == Schema Information
