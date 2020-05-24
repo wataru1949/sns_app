@@ -21,6 +21,10 @@
         width: 60px;
         background-color: ivory;
         margin: 0 5px;
+        .user_image {
+          height: 100%;
+          width: 100%;
+        }
       }
       &_right {
         height: 100%;
