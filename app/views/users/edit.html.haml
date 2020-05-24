@@ -1,0 +1,36 @@
+.wrapper
+  = render "share/header"
+  .form-container
+    = form_with model: @user, url: user_path(@user), class: 'new_user', local: true do |f|
+      .field
+        .image-label
+          = f.label :user_image do
+            = image_tag @user.user_image.url, alt: "ユーザー画像", class: "user_image" 
+        = f.file_field :user_image, class: "field_image"
+
+      .field
+        .field_label
+          = f.label :nickname
+        = f.text_field :nickname, class: "field_form", autocomplete: "nickname"
+      .field
+        .field_label
+          = f.label :email
+        = f.email_field :email, autofocus: true, class: "field_form", autocomplete: "email"
+      .field
+        .field_label
+          = f.label :profile
+        = f.text_area :profile, class: "field_form field_profile", autocomplete: "profile"
+      .field
+        .field_label
+          = f.label :gender
+        = f.select :gender, options_for_select_from_enum(User, :gender), {}, {class: "field_form"}
+      .field
+        .field_label
+          = f.label :age
+        = f.select :age, options_for_select_from_enum(User, :age), {}, {class: "field_form"}
+      .field
+        .field_label
+          = f.label :prefecture
+        = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt:"選択してください"}, {class: "field_form"}
+      .actions
+        = f.submit "編集する", class: "actions_btn"
