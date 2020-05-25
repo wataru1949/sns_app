@@ -88,11 +88,11 @@
 
     .comment-list {
       &_upper {
-        background-color: rgba(128, 128, 128, 0.2);
+        background-color: $header-grey;
         height: 30px;
         line-height: 30px;
         padding-left: 30px;
-        border-bottom: solid 1px rgba(128, 128, 128, 0.3);
+        border-bottom: solid 1px $header-border;
         &_name {
           font-size: 20px;
           text-decoration: none;
