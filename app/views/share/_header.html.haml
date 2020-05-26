@@ -1,10 +1,10 @@
-.header
-  .header_menu
-    .header_list
-      .header_list_logo
-        = link_to 'Gather', root_path
-      .header_list_mypage
-        - if user_signed_in?
-          = link_to 'ログアウト', destroy_user_session_path, method: :delete
-        - else
-          = link_to 'ログイン', user_session_path
+.header 
+  .header_logo
+    = link_to 'Gather', root_path
+  .header_mypage
+    - if user_signed_in?
+      = link_to 'ログアウト', destroy_user_session_path, method: :delete
+    - else
+      = link_to '新規登録', 
+        new_user_registration_path
+      = link_to 'ログイン', user_session_path
