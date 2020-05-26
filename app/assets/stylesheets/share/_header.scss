@@ -1,21 +1,34 @@
 .header {
-  height: 40px;
-  width: 100%;
   background-color: rgba(253,208,0,0.9);
   box-shadow: $shadow;
+  height: 40px;
+  width: 100%;
   position: fixed;
+  display: flex;
   z-index: 1;
-  &_menu {
-    width: 100%;
-    .header_list {
-      display: flex;
-      &_logo {
-        height: 40px;
-        align-items: center;
-        margin: 0 auto;
-        line-height: 40px;
-        font-size: 18px;
-      }
+  &_logo {
+    height: 40px;
+    width: 80px;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 40px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  &_mypage {
+    height: 40px;
+    align-items: center;
+    display: flex;
+    position: absolute;
+    right: 5px;
+    a {
+      background-color: chocolate;
+      border-radius: 3px;
+      line-height: 30px;
+      font-size: 0.8em;
+      padding: 0 15px;
+      margin-right: 5px;
+      color: white;
     }
   }
 }
