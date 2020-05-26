@@ -1,57 +1,55 @@
 .side-bar {
-  box-shadow: rgba(112, 74, 24, 0.7) 0 3px 15px;
+  color: white;
+  a {
+    color: white;
+  }
   background-color: $menu-black;
-  max-width: 300px;
+  box-shadow: $shadow;
   height: calc(100% - 40px);
-  // opacity: 0.7;
-  position: fixed;
+  width: 300px;
   margin-top: 40px;
-  &_container {
-    height: 100%;
+  position: fixed;
+  .mypage-bar {
+    height: 80px;
+    padding: 10px 15px;
+    border-bottom: solid 1px cyan;
+    display: flex;
+    &_left {
+      width: 60px;
+      .user_image {
+        border: solid 1px grey;
+        height: 100%;
+        width: 100%;
+      }
+    }
+    &_right {
+      width: 200px;
+      &_name {
+        margin-left: 15px;
+        font-size: 20px;
+        height: 30px;
+        line-height: 30px;
+
+        
+      }
+      &_btn {
+        position: relative;
+        height: 30px;
+        width: 100%;
+        .new-post-btn {
+          position: absolute;
+          right: 0em;
+          border-radius: 10px;
+          font-size:20px;
+          text-decoration: none;
+          text-align: center;
+        }
+      }
+    }
+  }
+  .search-container {
+    height: calc(100% - 70px);
     width: 100%;
-    padding: 25px;
-    .mypage-container {
-      height: 60px;
-      width: 100%;
-      background-color: gray;
-      margin-bottom: 20px;
-      display: flex;
-      &_left {
-        height: 100%;
-        width: 60px;
-        background-color: ivory;
-        margin: 0 5px;
-        .user_image {
-          height: 100%;
-          width: 100%;
-        }
-      }
-      &_right {
-        height: 100%;
-        width: 180px;
-        background-color: lightcyan;
-        padding: 5px;
-        &_name {
-          margin-left: 5px;
-        }
-        &_btn {
-          position: relative;
-          .new-post-btn {
-            position: absolute;
-            right: 0em;
-            border-radius: 10px;
-            font-size:20px;
-            text-decoration: none;
-            text-align: center;
-          }
-        }
-      }
-    }
-    .search-container {
-      height: calc(100% - 70px);
-      width: 100%;
-      padding: 15px;
-      background-color: gray;
-    }
+    padding: 15px;
   }
 }
