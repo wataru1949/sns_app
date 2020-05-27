@@ -33,13 +33,23 @@
   margin-bottom: 12px;
   text-align: center;
   .image-label {
-    background-color: whitesmoke;
+    background-color: white;
     height: 90px;
     width: 90px;
     margin: 0 auto;
+    label {
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
     .user_image {
       height: 100%;
       width: 100%;
+      .icon {
+        font-size: 25px;
+        line-height: 90px;
+        color: darkcyan;
+      }
     }
   }
   &_image {
