@@ -8,7 +8,7 @@ class Post < ApplicationRecord
 
   mount_uploader :post_image, ImageUploader
 
-  validates :title, :date, :prefecture, :detail, presence: true
+  validates :title, :prefecture, :detail, presence: true
 end
 
 # == Schema Information
@@ -16,7 +16,7 @@ end
 # Table name: posts
 #
 #  id            :bigint           not null, primary key
-#  date          :date             not null
+#  date          :date
 #  detail        :text(65535)      not null
 #  end_time      :time
 #  post_image    :string(255)
