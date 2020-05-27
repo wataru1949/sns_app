@@ -5,38 +5,56 @@
     .main-wrapper
       .top-container
         .top-container_picture
+      .main-wrapper_border
       .post-list
         - @posts.each do |post|
           = link_to post_path(post) do
             .post-card
-              .post-card_left
-                - if post.post_image.present?
-                  = image_tag post.post_image.url, alt: "投稿画像", class: "post-card_left_image" 
 
-                  -# 代変画像を用意する
-                - else
-                  .post-card_left_image
+              .post-card_left
+                .post-card_left_image
+                  - if post.post_image.present?
+                    = image_tag post.post_image.url, alt: "投稿画像", class: "post-card_left_image" 
+                    -# 代変画像を用意する
+                  -# - else
+
               .post-card_right
                 .post-card_right_title
                   = post.title
-                .post-card_right_info
-                
-                  .post-card_right_info-name
+                .post-card_right_first
+                  .post-card_right_first-name
                     = post.user.nickname
-                  .post-card_right_info-created
+                  .post-card_right_first-created
+                    投稿日時:
                     = post.created_at.strftime("%Y/%m/%d %H:%M")
+
+                .post-card_right_second
+                  .post-card_right_second-prace
+                    場所:
                     = post.prefecture.name
-                    - if post.accept.present?
+                  - if post.accept.present?
+                    .post-card_right_second-accept
+                      募集人数:
                       = post.accept.name
+
+                .post-card_right_third
+                  - if post.date.present?
+                    日時:
                     = post.date.strftime("%Y/%m/%d")
-                    - if post.start_time.present?
-                      = post.start_time.strftime("%H：%M")
-                    - if post.end_time.present?
-                      = post.end_time.strftime("%H：%M")
+                  
 
-
-                .p_id
-                  =post.id
+                .post-card_right_bottom
+                  - if post.start_time.present? || post.end_time.present?
+                    時間:
+                  - if post.start_time.present?
+                    = post.start_time.strftime("%H:%M")
+                  - if post.start_time.present? || post.end_time.present?
+                    〜
+                  - if post.end_time.present?
+                    = post.end_time.strftime("%H:%M")
+                  .post-card_right_bottom-info
+                    = icon("far", "comment")
+                    = post.comments.length
                 
 
 
