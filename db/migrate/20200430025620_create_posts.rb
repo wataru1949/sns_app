@@ -5,11 +5,10 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.text        :detail,                       null: false
       t.integer     :prefecture_id,                null: false
       t.integer     :accept_id
-      t.date        :date,                         null: false
-      t.time        :start_time
-      t.time        :end_time
+      t.date        :date,                         default: ""
+      t.time        :start_time,                   default: ""
+      t.time        :end_time,                     default: ""
       t.string      :post_image
-      # t.references  :user,                        foreign_key: true
 
       t.timestamps
     end

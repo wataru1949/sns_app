@@ -14,9 +14,9 @@ ActiveRecord::Schema.define(version: 2020_05_21_043133) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "comment"
+    t.string "comment_image"
     t.bigint "user_id"
     t.bigint "post_id"
-    t.string "comment_image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2020_05_21_043133) do
     t.text "detail", null: false
     t.integer "prefecture_id", null: false
     t.integer "accept_id"
-    t.date "date", null: false
+    t.date "date"
     t.time "start_time"
     t.time "end_time"
     t.string "post_image"
