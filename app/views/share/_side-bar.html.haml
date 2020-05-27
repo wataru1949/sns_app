@@ -1,7 +1,7 @@
 .side-bar
   .mypage-bar
     .mypage-bar_left
-      - if user_signed_in?
+      - if user_signed_in? && current_user.user_image.present?
         = image_tag current_user.user_image.url, alt: "ユーザー画像", class: "user_image" 
     .mypage-bar_right
       .mypage-bar_right_name
