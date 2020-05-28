@@ -1,34 +1,29 @@
-
-.post-new-wrapper {
-  width: 100%;
-  background-image: 
-  linear-gradient(to bottom, rgba(255, 145, 0, 0.1),rgba(216, 207, 189, 0.2)),
-    url(picture/paper-1468883_1920.jpg);
-  background-attachment: fixed;
-  padding: 100px 0;
-  .paper {
-    width: 900px;
-    background-color: cornsilk;
-    margin: 0 auto;
-    box-shadow: $shadow;
-    .form-wrapper {
-      padding: 80px 100px;
-      .form-area {
-        height: 100px;
-        &_label {
-          display: flex;
-          align-items: center;
-          &_info {
-            margin-left: 5px;
-            background-color: red;
-            color: white;
-            border-radius: 3px;
-            height: 18px;
-            line-height: 18px;
-            font-size: 0.9em;
-            padding: 0 2px;
-          }
-        }
+.form-wrapper {
+  padding: 80px 0;
+  width: 80%;
+  margin: 0 auto;
+  .form-area {
+    height: 100px;
+    &_label {
+      display: flex;
+      align-items: center;
+      &_info {
+        margin-left: 5px;
+        background-color: red;
+        color: white;
+        border-radius: 3px;
+        height: 18px;
+        line-height: 18px;
+        font-size: 0.9em;
+        padding: 0 2px;
+      }
+    }
+    &_input {
+      height: 25px;
+      max-width: 250px;
+      input {
+        height: 100%;
+        width: 100%;
       }
     }
   }
