@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many :comments
   has_many :chats
   has_many :group_users
-  has_many :groups,through: :group_users
+  has_many :groups, through: :group_users
 
   mount_uploader :user_image, ImageUploader
   validates :nickname, :profile, presence: true
