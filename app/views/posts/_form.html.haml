@@ -17,12 +17,12 @@
                 = f.label :title, "タイトル"
                 .form-area_label_info
                   必須
-              .form-area_input
-                = f.text_field :title
+              = f.text_field :title, class: "form-area_input f_field"
 
-            .form-area
-              .form-area_label
-                = f.label :post_image, "画像"
+            .image-area
+              .image-area_label
+                = f.label :post_image do
+                  = icon('fa', 'image', class: 'icon')
               = f.file_field :post_image
 
             .form-area
@@ -30,39 +30,37 @@
                 = f.label :detail, "詳細"
                 .form-area_label_info
                   必須
-              = f.text_area :detail
+              = f.text_area :detail, class: "form-area_input f_area"
 
             .form-area
               .form-area_label
                 = f.label :prefecture_id, "都道府県"
                 .form-area_label_info
                   必須
-              = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt:"選択してください"}, {class: 'exhibit-form-field'}
+              = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt:"--"}, {class: "form-area_input f_select"}
 
             .form-area
               .form-area_label
                 = f.label :accept_id, "募集人数"
-              .form-area_input
-                = f.collection_select :accept_id, Accept.all, :id, :name, {prompt:"選択してください"}, {class: 'exhibit-form-field'}
+              = f.collection_select :accept_id, Accept.all, :id, :name, {prompt:"--"}, {class: "form-area_input f_select"}
 
             .form-area
               .form-area_label
                 = f.label :date, "日にち"
-              .form-area_input
-                = f.date_field :date
+              = f.date_field :date,class: "form-area_input"
 
             .form-area
-              .form-area_label
-                = f.label :start_time, "開始時間"
-                = f.time_select :start_time, {include_blank: true, ignore_date: true, minute_step: 5}
+              .form-area_time
+                .form-area_time_half
+                  .form-area_label
+                    開始予定
+                  = f.time_select :start_time, {include_blank: true, ignore_date: true, minute_step: 5}, {class: "form-area_time_half_input"}
+                .form-area_time_half
+                  .form-area_label
+                    終了予定
+                  = f.time_select :end_time, {include_blank: true, ignore_date: true, minute_step: 5}, {class: "form-area_time_half_input"}
                 
 
             .form-area
-              .form-area_label
-                = f.label :end_time, "終了時間"
-                = f.time_select :end_time, {include_blank: true, ignore_date: true, minute_step: 5}
-                
-
-            .form-area
-              = f.submit "登録"
+              = f.submit "登録", class: "actions_btn"
               = link_to "もどる", :back
