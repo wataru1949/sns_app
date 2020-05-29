@@ -1,0 +1,62 @@
+.form-wrapper {
+  max-width: 450px;
+  letter-spacing: 0.06em;
+  margin: 0 auto;
+  padding: 80px 0;
+  .form-area {
+    &_label {
+      line-height: 26px;
+      font-size: 0.9em;
+      margin: 0 0 3px 3px;
+      display: flex;
+      align-items: center;
+      &_info {
+        background-color: red;
+        color: white;
+        height: 18px;
+        line-height: 18px;
+        font-size: 0.9em;
+        padding: 0 2px;
+        margin-left: 5px;
+        border-radius: 3px;
+      }
+    }
+    &_input {
+      width: 100%;
+      margin-bottom: 50px;
+    }
+    .f_field,.f_select {
+      height: 30px;
+    }
+    .f_area {
+      height: 150px;
+    }
+    .f_select {
+      width: 30%;
+    }
+    &_time {
+      width: 100%;
+      display: flex;
+      &_half {
+        width: 50%;
+        &_input {
+          height: 26px;
+          width: 25%;
+          margin-bottom: 80px;
+        }
+      }
+    }
+  }
+  .image-area {
+    height: 25px;
+    &_label {
+      color: darkcyan;
+      font-size: 30px;
+      float: right;
+      margin: 0 10px;
+    }
+    input {
+      display: none;
+    }
+  }
+}
