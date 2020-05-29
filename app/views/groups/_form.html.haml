@@ -1,0 +1,47 @@
+.wrapper
+  = render "share/header"
+  = render "share/side-bar"
+  .main-container
+    .main-wrapper
+      .top-container
+        = form_with model: @group, local: true do |f|
+          - if @group.errors.any?
+            .group-form_errors
+              %h2= "#{@group.errors.full_messages.count}件のエラーが発生しました。"
+              %ul
+                - @group.errors.full_messages.each do |message|
+                  %li= message
+          .form-wrapper
+            .form-area
+              .form-area_label
+                = f.label :group_name, "グループ名"
+                .form-area_label_info
+                  必須
+              = f.text_field :group_name, class: "form-area_input f_field"
+
+            .image-area
+              .image-area_label
+                = f.label :post_image do
+                  = icon('fa', 'image', class: 'icon')
+              = f.file_field :post_image
+
+            .form-area
+              .form-area_label
+                = f.label :content, "グループ紹介"
+                .form-area_label_info
+                  必須
+              = f.text_area :content, class: "form-area_input f_area"
+
+            .form-area
+              .form-area_label
+                = f.label :prefecture_id, "都道府県"
+                .form-area_label_info
+                  必須
+              = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt:"--"}, {class: "form-area_input f_select"}
+            .member-area
+
+            = f.collection_check_boxes :user_ids, User.all, :id, :nickname
+
+            .form-area
+              = f.submit "登録", class: "actions_btn"
+              = link_to "もどる", :back
