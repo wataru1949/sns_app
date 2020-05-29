@@ -9,7 +9,7 @@
               = image_tag @user.user_image.url, alt: "ユーザー画像", class: "user_image" 
             - else
               .user_image
-                = icon('fas', 'camera', class: 'icon')
+                = icon('fa', 'id-badge', class: 'icon')
         = f.file_field :user_image, class: "field_image"
 
       .field
