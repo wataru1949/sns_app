@@ -8,22 +8,22 @@
           = @post.title
         .post-board
           .post-board_left
-            .post-board_left_prefecture
+            .post-board_left_data
               場所 :
               = @post.prefecture.name
-            .post-board_left_date
+            .post-board_left_data
               日にち :
               - if @post.date.present?
                 = @post.date.strftime("%Y/%m/%d")
-            .post-board_left_start_time
+            .post-board_left_data
               開始予定 :
               - if @post.start_time.present?
-                = @post.start_time.strftime("%H：%M")
-            .post-board_left_end_time
+                = @post.start_time.strftime("%H:%M")
+            .post-board_left_data
               終了予定 :
               - if @post.end_time.present?
-                = @post.end_time.strftime("%H：%M")
-            .post-board_left_accept
+                = @post.end_time.strftime("%H:%M")
+            .post-board_left_data
               募集人数 :
               - if @post.accept.present?
                 = @post.accept.name

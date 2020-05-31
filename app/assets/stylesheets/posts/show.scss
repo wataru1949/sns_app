@@ -3,21 +3,29 @@
 }
 
 .post-board_title {
-  font-size: 50px;
-  line-height: 50px;
-  margin-bottom: 30px;
-  text-align: center;
+  font-size: 1.2em;
+  line-height: 40px;
+  margin: 20px 20px 30px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.8);
+  // text-align: center;
 }
 .post-board {
   font-size: 1.1em;
   display: flex;
   justify-content: space-between;
-  // max-width: 800px;
-  padding: 20px 45px;
+  max-width: 700px;
+  padding: 20px 30px;
+  margin: 0 auto;
 
   &_left {
     padding-top: 15px;
     width: 350px;
+    font-size: 0.9em;
+    margin-right: 20px;
+    &_data {
+      height: 35px;
+    }
   }
 
   &_right {

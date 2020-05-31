@@ -14,7 +14,11 @@
     - if user_signed_in?
       .user-edit_link
         = link_to 'ユーザー編集',edit_user_path(current_user.id)
-    .group-page_link
-      = link_to 'グループ作成', new_group_path
+      .group-page_link
+        .group-page_link-new
+          = link_to 'グループ作成', new_group_path
+        .group-page_link-member
+          - current_user.groups.each do |group|
+            = link_to group.group_name, group_path(group.id)
     .search-menu
     .search-btn

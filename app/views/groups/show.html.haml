@@ -1,0 +1,13 @@
+.wrapper
+  = render "share/header"
+  = render "share/side-bar"
+  .main-container
+    .main-wrapper
+      .top-container
+        = @group.group_name
+        = @group.content
+        = @group.prefecture.name
+        - @group.users.each do |user|
+          = user.nickname
+        .group_link
+          = link_to "編集", edit_group_path(@group)
