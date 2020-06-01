@@ -28,8 +28,10 @@
               - if @post.accept.present?
                 = @post.accept.name
             - if user_signed_in? && @post.user_id == current_user.id
-              .post-board_right_edit
+              .post-board_left_data
                 = link_to "編集する", edit_post_path(@post)
+              .post-board_left_data
+                = link_to "削除する", post_path(@post), method: :delete
           .post-board_right
             - if @post.post_image.present?
               = image_tag @post.post_image.url, alt: "投稿画像", class: "post_image" 
