@@ -7,18 +7,16 @@
       .mypage-bar_right_name
         - if user_signed_in?
           = current_user.nickname
-      .mypage-bar_right_btn
-        = link_to new_post_path, class: "new-post-btn" do
-          = icon('fas', 'edit')
-  .search-container
+          .mypage-bar_right_btn
+            = link_to edit_user_path(current_user.id), class: "edit-btn" do
+              = icon('fas', 'user-cog')
+  .side-bar_main
     - if user_signed_in?
-      .user-edit_link
-        = link_to 'ユーザー編集',edit_user_path(current_user.id)
-      .group-page_link
-        .group-page_link-new
+      .action_links
+        .action_links-post
+          = link_to '新規投稿', new_post_path, class: "new-post-btn"
+        .action_links-group
           = link_to 'グループ作成', new_group_path
-        .group-page_link-member
-          - current_user.groups.each do |group|
-            = link_to group.group_name, group_path(group.id)
-    .search-menu
-    .search-btn
+      .group_lists
+        - current_user.groups.each do |group|
+          = link_to group.group_name, group_path(group.id), class: "group_lists_list"

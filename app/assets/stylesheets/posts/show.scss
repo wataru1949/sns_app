@@ -54,6 +54,7 @@
   background-color: white;
   margin: 0 auto 50px;
   max-width: 850px;
+  border: solid 2px $header-border;
   box-shadow: $shadow;
   &_alert {
     padding-top: 20px;
