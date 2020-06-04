@@ -1,3 +1,8 @@
+.user_img {
+  width: 60px;
+  border: solid 1px grey;
+  height: 60px;
+}
 .side-bar {
   color: white;
   a {
@@ -15,14 +20,7 @@
     padding: 10px 15px;
     border-bottom: solid 1px cyan;
     display: flex;
-    &_left {
-      width: 60px;
-      .user_image {
-        border: solid 1px grey;
-        height: 100%;
-        width: 100%;
-      }
-    }
+    
     &_right {
       width: 200px;
       &_name {
