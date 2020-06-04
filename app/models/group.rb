@@ -5,8 +5,8 @@ class Group < ApplicationRecord
   has_many :group_users
   has_many :users, through: :group_users
   has_many :group_pictures
+  has_many :chats
   # belongs_to :category
-  # has_many :chats
   accepts_nested_attributes_for :group_pictures, allow_destroy: true
 
   validates :group_name, presence: true, uniqueness: true
