@@ -1,14 +1,38 @@
 .actions_btn {
-  display: block;
-  font-size: 18px;
+  background-color: rgb(210, 105, 30);
+  box-shadow :rgb(179, 90, 26) 0 2px 2px;
+  color: white;
   height: 30px;
   width: 150px;
+  margin: 0 auto 20px;
+  font-size: 18px;
   line-height: 30px;
   letter-spacing: 1px;
-  background-color: rgb(210, 105, 30);
-  color: white;
   border: none;
   border-radius: 3px;
-  margin: 0 auto 20px;
-  box-shadow :rgb(179, 90, 26) 0 2px 2px;;
+  display: block;
+  cursor: pointer;
+}
+
+.back_btn {
+  background-color: darkolivegreen;
+  color: white;
+  padding: 2px 15px;
+  border-radius: 3px;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.submit-btn {
+  background-color: rgb(210, 105, 30);
+  font-size: 0.8em;
+  color: white;
+  border-radius: 3px;
+}
+
+.img-btn {
+  color: darkolivegreen;
+  font-size: 30px;
+  display: block;
+  // margin-bottom: 10px;
 }

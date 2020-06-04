@@ -13,9 +13,9 @@
       &_info {
         background-color: red;
         color: white;
-        height: 18px;
-        line-height: 18px;
-        font-size: 0.9em;
+        height: 16px;
+        line-height: 16px;
+        font-size: 0.8em;
         padding: 0 2px;
         margin-left: 5px;
         border-radius: 3px;
@@ -24,12 +24,14 @@
     &_input {
       width: 100%;
       margin-bottom: 50px;
+      padding: 0 5px;
     }
     .f_field,.f_select {
       height: 30px;
     }
     .f_area {
       height: 150px;
+      padding: 4px 5px;
     }
     .f_select {
       width: 30%;
@@ -47,6 +49,10 @@
       }
     }
   }
+.btn-area {
+  text-align: center;
+}
+
   .image-area {
     height: 25px;
     &_label {
