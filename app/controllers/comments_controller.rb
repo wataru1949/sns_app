@@ -1,13 +1,10 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user!, only: :create
+  before_action :authenticate_user!
 
   def create
     comment = Comment.new(comment_params)
     comment.save
     redirect_to post_path(comment.post.id)
-  end
-
-  def edit
   end
 
   def destroy

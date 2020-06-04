@@ -18,6 +18,8 @@ class GroupsController < ApplicationController
   end
 
   def show
+    @chat = Chat.new
+    @chats = @group.chats.includes(:user)
   end
 
 
@@ -25,7 +27,7 @@ class GroupsController < ApplicationController
   end
 
   def update
-    if @group.save
+    if @group.update(group_params)
       #リダイレクト先変更
       redirect_to root_path
     else
