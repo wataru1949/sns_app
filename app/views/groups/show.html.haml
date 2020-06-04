@@ -4,10 +4,50 @@
   .main-container
     .main-wrapper
       .top-container
-        = @group.group_name
-        = @group.content
-        = @group.prefecture.name
-        - @group.users.each do |user|
-          = user.nickname
-        .group_link
-          = link_to "編集", edit_group_path(@group)
+        .group-main
+          %h1.group-main_name
+            = @group.group_name
+          - if @group.group_pictures.present?
+            = image_tag @group.group_pictures.first.group_image.url, alt: "グループ画像"
+          .group-main_member
+            メンバー<br>
+            - @group.users.each do |user|
+              = user.nickname
+          .group-main_menu
+            = link_to edit_group_path(@group), class: "cog-btn" do
+              = icon('fas', 'cog')
+
+
+      .chat-container
+        - unless @group.chats.present?
+          .chat-container_info
+            メンバーと会話してみましょう！
+        - @chats.each do |chat|
+          .chat
+            .chat_user
+              .chat_user_img
+                - if chat.user.user_image.present?
+                  = image_tag chat.user.user_image.url, alt: "ユーザー画像", class: "user_img"
+              .chat_user_name
+                = chat.user.nickname
+
+            .chat_body
+              - if chat.body.present?
+                = simple_format(chat.body, class: "chat_body_bubble") 
+              - if chat.chat_image.present?
+                .chat_body_img
+                  = image_tag chat.chat_image.url, alt: "コメント画像", class: "chat_body_img"
+              .chat_body_bottom
+                = chat.created_at.strftime("%Y/%m/%d %H:%M")
+                - if user_signed_in? && chat.user_id == current_user.id
+                  = link_to "削除", group_chat_path(@group, chat.id), method: :delete              
+      
+      
+      = form_with(model: [@group, @chat], class: "chat-form", local: true) do |f|
+        = f.text_area :body, class: "chat-form_input"
+        .chat-form_right
+          = f.label :chat_image, class: "img-btn" do
+            = icon("fas", "image", class: "icon")
+            = f.file_field :chat_image, class: "hidden"
+          = f.submit "送信", class: "submit-btn"
+
