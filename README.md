@@ -25,7 +25,6 @@ Things you may want to cover:
 
 
 # Gather
-<br><br>
 ## アプリ紹介
 主に社会人の利用者を想定した、スポーツ活動を活性化させる目的のSNSアプリです。<br>
 コンセプトは、『個人でもメンバー募集、イベント参加が気軽にできること』、『自身が所属するサークル等でのコミュニケーションが充実すること』を主要な機能としてアイデアを練りました。
@@ -62,6 +61,8 @@ Things you may want to cover:
 - ユーザー間のメッセージ機能は思案中。
 <br><br>
 ## DB設計
+![image](https://user-images.githubusercontent.com/61773347/83620584-7698f780-a5c8-11ea-9e1a-c6b929a5e9f7.png)
+
 
 
 
