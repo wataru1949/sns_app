@@ -47,7 +47,7 @@
             .form-area
               .form-area_label
                 = f.label :date, "日にち"
-              = f.date_field :date,class: "form-area_input"
+              = f.date_field :date,class: "form-area_input f_select"
 
             .form-area
               .form-area_time
@@ -61,6 +61,6 @@
                   = f.time_select :end_time, {include_blank: true, ignore_date: true, minute_step: 5}, {class: "form-area_time_half_input"}
                 
 
-            .form-area
+            .btn-area
               = f.submit "登録", class: "actions_btn"
-              = link_to "もどる", :back
+              = link_to "戻る", :back, class: "back_btn"

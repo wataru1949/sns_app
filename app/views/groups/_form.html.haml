@@ -21,9 +21,10 @@
 
             .image-area
               .image-area_label
-                = f.label :post_image do
-                  = icon('fa', 'image', class: 'icon')
-              = f.file_field :post_image
+                = f.fields_for :group_pictures do |i|
+                  = i.label :group_image do
+                    = icon('fa', 'image', class: 'icon')
+                  = i.file_field :group_image
 
             .form-area
               .form-area_label
@@ -42,6 +43,6 @@
 
             = f.collection_check_boxes :user_ids, User.all, :id, :nickname
 
-            .form-area
+            .btn-area
               = f.submit "登録", class: "actions_btn"
-              = link_to "もどる", :back
+              = link_to "もどる", :back, class: "back_btn"

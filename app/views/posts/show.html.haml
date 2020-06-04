@@ -44,7 +44,7 @@
             .comment-form
               = f.text_area :comment, placeholder: "コメントする",class: "comment-form_left"
               .comment-form_right
-                = f.label :comment_image, class: "btn-mask" do
+                = f.label :comment_image, class: "img-btn" do
                   = icon("fas", "image", class: "icon")
                   = f.file_field :comment_image, class: "hidden"
                 = f.submit "送信", class: "submit-btn"
@@ -67,7 +67,7 @@
                   - if comment.comment.present?
                     .comment-list_bottom_content
                       = simple_format(comment.comment)
-                  = image_tag comment.comment_image.url, alt: "コメント画像", class: "post_image" if comment.comment_image.present?
+                  = image_tag comment.comment_image.url, alt: "コメント画像", class: "comment_img" if comment.comment_image.present?
           - else
             .comment-area_info
               投稿の内容が気になったらコメントしてみましょう！
