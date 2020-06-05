@@ -8,10 +8,10 @@ class User < ApplicationRecord
   enum gender: { gender_private: 0, male: 1, female: 2, others: 3 }
   enum age: { age_private: 0, teens: 1, twenties: 2, thirties: 3, forties: 4, fifties: 5, over_sixties: 6 }
   belongs_to_active_hash :prefecture
-  has_many :posts
-  has_many :comments
-  has_many :chats
-  has_many :group_users
+  has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :chats, dependent: :destroy
+  has_many :group_users, dependent: :destroy
   has_many :groups, through: :group_users
 
   mount_uploader :user_image, ImageUploader

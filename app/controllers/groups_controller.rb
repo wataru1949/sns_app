@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
-  before_action :set_group, only:[:edit, :update, :show]
+  before_action :set_group, only:[:edit, :update, :show, :destroy]
 
   def new
     @group = Group.new
@@ -33,7 +33,11 @@ class GroupsController < ApplicationController
     else
       render :edit
     end
+  end
 
+  def destroy
+    @group.destroy
+    redirect_to root_path
   end
 
   private
