@@ -40,7 +40,14 @@ Things you may want to cover:
 - グループのページでは、メンバー間で画像を含んだチャット機能を使うことが出来ます。
 - 未ログイン時は、投稿の閲覧のみできるようにしています。
 <br><br><br>
+## 本番環境
+- IPアドレス:54.238.40.30
+- BASIC認証
+  - ID：first
+  - Pass：2062
+<br><br><br>
 ## テスト用アカウント
+- http://54.238.40.30/
 - メールアドレス:vito@gmail.com
 - パスワード：vitoco
 <br><br><br>
@@ -54,7 +61,7 @@ Things you may want to cover:
 - VScode
 - MySQL
 <br><br><br>
-## 本番環境
+## 使用技術
 - Amazon EC2
 - Amazon S3
 - Nginx
