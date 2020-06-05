@@ -1,10 +1,10 @@
 .actions_btn {
-  background-color: rgb(210, 105, 30);
+  background-color: cadetblue;
   box-shadow :rgb(179, 90, 26) 0 2px 2px;
   color: white;
   height: 30px;
   width: 150px;
-  margin: 0 auto 20px;
+  margin: 0 auto 30px;
   font-size: 18px;
   line-height: 30px;
   letter-spacing: 1px;
@@ -34,5 +34,32 @@
   color: darkolivegreen;
   font-size: 30px;
   display: block;
-  // margin-bottom: 10px;
+}
+
+.login-btn {
+  font-size: 18px;
+  margin: 0 auto;
+  text-decoration: none;
+  display: block;
+  height: 30px;
+  width: 150px;
+  letter-spacing: 1px;
+  background-color: chocolate;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  line-height: 30px;
+}
+
+.app-btn {
+  background-color: cadetblue;
+  color: white;
+  padding: 3px 7px;
+  margin-right: 15px;
+  border-radius: 3px;
+
+}
+
+.delete-btn {
+  background-color: cadetblue;
 }
