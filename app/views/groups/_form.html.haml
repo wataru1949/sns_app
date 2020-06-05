@@ -45,4 +45,5 @@
 
             .btn-area
               = f.submit "登録", class: "actions_btn"
+              = link_to "削除する", group_path(@group), method: :delete, class: "actions_btn delete-btn"
               = link_to "もどる", :back, class: "back_btn"
