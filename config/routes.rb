@@ -6,7 +6,10 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
   end
   resources :users, only: [:show, :edit, :update]
-  resources :groups, only: [:new, :create, :show, :edit, :update] do
+  namespace :groups do
+    resources :searches, only: :index
+  end
+  resources :groups, exept: :index do
     resources :chats, only: [:create, :destroy]
   end
 
