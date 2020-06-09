@@ -8,39 +8,59 @@
     text-align: center;
     margin-bottom: 50px;
   }
-
-  img {
+  .goup_img {
     width: 100%;
     border: solid 2px $header-border;
     margin-bottom: 50px;
   }
-
-  &_member {
-    margin-bottom: 70px;
-  }
-
   &_menu {
     background-color: silver;
-    height: 30px;
-    width: 100px;
+    width: 120px;
     margin-top: 10px;
-    padding: 0 5px;
+    padding: 5px 8px;
     border: solid 1px $header-border;
     border-radius: 3px;
-    .cog-btn {
+    display: flex;
+    align-items: center;
+    li {
       background-color: olivedrab;
-      color: whitesmoke;
-      font-size: 1em;
-      line-height: 30px;
-      padding: 2px;
-      border: solid 1px $header-border;
+      height: 24px;
+      width: 24px;
+      text-align: center;
+      text-shadow: black 1px 1px;
+      margin-right: 10px;
       border-radius: 3px;
-      text-shadow: black 1px 1px 1px;
-
+      cursor: pointer;
+      i {
+        color: whitesmoke;
+        line-height: 24px;
+      }
     }
   }
-}
+  .group_modal {
+    background-color: $menu-black;
+    height: 500px;
+    width: 300px;
+    // display: none;
+    &_top {
+      border-bottom: $menu-border;
+      padding: 4px 5px;
+      .close-btn {
+        color: whitesmoke;
+        width: 28px;
+        line-height: 28px;
+        font-size: 1.3em;
+        text-align: center;
+        margin-left: 5px;
+      }
+    }
+    &_form {
+      
+      border-bottom: $menu-border;
+    }
+  }
 
+}
 .chat-container {
   background-color: white;
   max-width: 850px;

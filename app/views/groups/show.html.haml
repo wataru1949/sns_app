@@ -8,14 +8,36 @@
           %h1.group-main_name
             = @group.group_name
           - if @group.group_pictures.present?
-            = image_tag @group.group_pictures.first.group_image.url, alt: "グループ画像"
-          .group-main_member
-            メンバー<br>
+            = image_tag @group.group_pictures.first.group_image.url, alt: "グループ画像", class: "group_img"
+
+          %ul.group-main_menu
+            %li.cog-btn
+              = link_to edit_group_path(@group) do
+                = icon('fas', 'cog')
+            %li.member-btn#list_show
+              = icon('fas', 'users')
+            %li.add-btn
+              = icon('fas','plus')
+
+
+          .group_modal#member_modal
+            .group_modal_top
+              .close-btn#list_close
+                = icon('far','times-circle')
             - @group.users.each do |user|
-              = user.nickname
-          .group-main_menu
-            = link_to edit_group_path(@group), class: "cog-btn" do
-              = icon('fas', 'cog')
+              .user-data
+                .user_img
+                  - if user.user_image.present?
+                    = image_tag user.user_image.url, alt: "ユーザー画像", class: "user_img" 
+                .user-data_right
+                  .user-data_right_name
+                    = user.nickname
+          
+          .group_modal#search_modal
+            .group_modal_top
+              .close-btn#list_close
+                = icon('far','times-circle')
+            .group_modal_form
 
 
       .chat-container
