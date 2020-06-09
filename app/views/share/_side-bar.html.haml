@@ -1,13 +1,13 @@
 .side-bar
-  .mypage-bar
+  .user-data
     .user_img
       - if user_signed_in? && current_user.user_image.present?
         = image_tag current_user.user_image.url, alt: "ユーザー画像", class: "user_img" 
-    .mypage-bar_right
-      .mypage-bar_right_name
+    .user-data_right
+      .user-data_right_name
         - if user_signed_in?
           = current_user.nickname
-          .mypage-bar_right_btn
+          .user-data_right_btn
             = link_to edit_user_path(current_user.id), class: "edit-btn" do
               = icon("fas", "user-cog")
   .side-bar_main
