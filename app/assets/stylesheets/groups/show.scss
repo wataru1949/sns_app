@@ -37,11 +37,11 @@
       }
     }
   }
-  .group_modal {
+  .member_modal {
     background-color: $menu-black;
     height: 500px;
     width: 300px;
-    // display: none;
+    display: none;
     &_top {
       border-bottom: $menu-border;
       padding: 4px 5px;
@@ -55,16 +55,18 @@
       }
     }
     &_form {
-      
       border-bottom: $menu-border;
     }
+  }
+  .show {
+    display: block;
   }
 
 }
 .chat-container {
   background-color: white;
   max-width: 850px;
-  margin: 0 auto 205px;
+  margin: 0 auto 120px;
   padding: 50px 30px;
   border: solid 2px $header-border;
   box-shadow: $shadow;
@@ -117,7 +119,6 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  position: fixed;
   &_input {
     width: 80%;
     padding: 5px;
