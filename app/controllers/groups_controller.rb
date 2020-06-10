@@ -28,8 +28,7 @@ class GroupsController < ApplicationController
 
   def update
     if @group.update(group_params)
-      #リダイレクト先変更
-      redirect_to root_path
+      redirect_to group_path(@group)
     else
       render :edit
     end
