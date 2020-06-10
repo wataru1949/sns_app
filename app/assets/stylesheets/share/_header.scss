@@ -1,12 +1,10 @@
 .header {
   background-color: rgb(253,208,0);
   border-bottom: ridge 1px rgba(102, 83, 0, 0.8);
-  // box-shadow: $shadow;
   height: 40px;
   width: 100%;
   position: fixed;
   display: flex;
-  // z-index: 1;
   &_logo {
     height: 40px;
     width: 80px;
