@@ -5,17 +5,10 @@ $(function(){
     $(this).addClass("active");
     const index = openBtns.index(this);
     $(".member_modal").removeClass("show").eq(index).addClass("show");
-    $(".close-btn").click(function(){
-      $(".member_modal").removeClass("show")();
-    });
   }
   openBtns.click(modalSwitch);
+  function modalClose(){
+    $(".member_modal").removeClass("show");
+  }
+  $(".close-btn").click(modalClose);
 });
-
-
-
-
-  $(".member-btn").click(function(){
-    $(".member_modal").fadeIn();
-  });
-  
