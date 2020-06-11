@@ -2,9 +2,16 @@ class ChatsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    chat = Chat.new(chat_params)
-    chat.save
-    redirect_to group_path(chat.group.id)
+    @chat = Chat.new(chat_params)
+    if @chat.save
+      respond_to do |format|
+        format.json
+      end
+    else
+      @chats = @group.chats.includes(:user)
+      flash.now[:alert] = 'メッセージを入力してください。'
+      render "groups/show"
+    end
   end
 
   def destroy
