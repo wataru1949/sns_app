@@ -14,15 +14,15 @@
             %li.cog-btn
               = link_to edit_group_path(@group) do
                 = icon('fas', 'cog')
-            %li.member-btn#list_show
+            %li.member-btn
               = icon('fas', 'users')
-            %li.add-btn
+            %li.member-btn
               = icon('fas','plus')
 
 
-          .group_modal#member_modal
-            .group_modal_top
-              .close-btn#list_close
+          .member_modal
+            .member_modal_top
+              .close-btn
                 = icon('far','times-circle')
             - @group.users.each do |user|
               .user-data
@@ -32,12 +32,22 @@
                 .user-data_right
                   .user-data_right_name
                     = user.nickname
+
           
-          .group_modal#search_modal
-            .group_modal_top
-              .close-btn#list_close
+          .member_modal
+            .member_modal_top
+              .close-btn
                 = icon('far','times-circle')
-            .group_modal_form
+            .member_modal_form
+              .member_modal_form_input
+              .member_modal_form_btn
+              
+
+
+
+
+
+          = link_to "削除する", group_path(@group), method: :delete, class: "actions_btn delete-btn"
 
 
       .chat-container
@@ -62,10 +72,10 @@
               .chat_body_bottom
                 = chat.created_at.strftime("%Y/%m/%d %H:%M")
                 - if user_signed_in? && chat.user_id == current_user.id
-                  = link_to "削除", group_chat_path(@group, chat.id), method: :delete              
+                  = link_to "削除", group_chat_path(@group, chat.id), method: :delete
       
       
-      = form_with(model: [@group, @chat], class: "chat-form", local: true) do |f|
+      = form_with(model: [@group, @chat], class: "chat-form", id: "new_chat", local: true) do |f|
         = f.text_area :body, class: "chat-form_input"
         .chat-form_right
           = f.label :chat_image, class: "img-btn" do
