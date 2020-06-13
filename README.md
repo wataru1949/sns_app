@@ -44,7 +44,7 @@ Things you may want to cover:
 - 未ログイン時は、投稿の閲覧のみできるようにしています。
 <br><br><br>
 ## 本番環境
-- IPアドレス:54.238.40.30 または http://mt-watar.com/
+- アドレス:https://gather.mt-watar.com/
 - BASIC認証
   - ID：first
   - Pass：2062
