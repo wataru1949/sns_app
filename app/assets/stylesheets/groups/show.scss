@@ -39,27 +39,39 @@
   }
   .member_modal {
     background-color: $menu-black;
-    height: 500px;
+    min-height: 300px;
+    max-height: 500px;
     width: 300px;
     display: none;
+    overflow: scroll;
     &_top {
       border-bottom: $menu-border;
       padding: 4px 5px;
+      display: flex;
+      color: whitesmoke;
       .close-btn {
-        color: whitesmoke;
-        width: 28px;
+        // width: 28px;
         line-height: 28px;
         font-size: 1.3em;
-        text-align: center;
         margin-left: 5px;
+        flex-grow: 1.5;
+      }
+      p {
+        letter-spacing: 0.06em;
+        font-size: 0.9em;
+        align-self: flex-end;
+        flex-grow: 2;
       }
     }
     &_form {
       border-bottom: $menu-border;
+      height: 50px;
       display: flex;
       &_input {
-        
       }
+    }
+    &_bottom{
+      margin: 15px 0;
     }
   }
   .show {
