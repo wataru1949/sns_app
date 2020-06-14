@@ -1,8 +1,10 @@
 .side-bar
   .user-data
-    .user_img
+    .user_img_box
       - if user_signed_in? && current_user.user_image.present?
         = image_tag current_user.user_image.url, alt: "ユーザー画像", class: "user_img" 
+      - else  
+        = image_tag "picture/user-2517433_640.png", alt: "ユーザー画像", class: "user_img"
     .user-data_right
       .user-data_right_name
         - if user_signed_in?

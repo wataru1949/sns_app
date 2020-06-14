@@ -24,11 +24,13 @@
             .member_modal_top
               .close-btn
                 = icon('far','times-circle')
+              %p メンバー 一覧
             - @group.users.each do |user|
               .user-data
-                .user_img
-                  - if user.user_image.present?
-                    = image_tag user.user_image.url, alt: "ユーザー画像", class: "user_img" 
+                - if user.user_image.present?
+                  = image_tag user.user_image.url, alt: "ユーザー画像", class: "user_img" 
+                - else
+                  = image_tag "picture/user-2517433_640.png", alt: "ユーザー画像", class: "user_img"
                 .user-data_right
                   .user-data_right_name
                     = user.nickname
@@ -38,13 +40,24 @@
             .member_modal_top
               .close-btn
                 = icon('far','times-circle')
+              %p メンバー 追加
             .member_modal_form
               .member_modal_form_input
               .member_modal_form_btn
-              
-
-
-
+            = form_with model: @group, local: true do |f|
+              = f.collection_check_boxes :user_ids, User.all, :id, :nickname do |user|
+                .user-data
+                  - if user.object.user_image.present?
+                    = image_tag user.object.user_image.url, alt: "ユーザー画像", class: "user_img" 
+                  - else
+                    = image_tag "picture/user-2517433_640.png", alt: "ユーザー画像", class: "user_img"
+                  .user-data_right
+                    .user-data_right_name
+                      = user.object.nickname
+                    .user-data_right_check
+                      = user.check_box
+              .member_modal_bottom
+                = f.submit "追加", class: "login-btn"
 
 
           = link_to "削除する", group_path(@group), method: :delete, class: "actions_btn delete-btn"
@@ -57,9 +70,10 @@
         - @chats.each do |chat|
           .chat
             .chat_user
-              .chat_user_img
-                - if chat.user.user_image.present?
-                  = image_tag chat.user.user_image.url, alt: "ユーザー画像", class: "user_img"
+              - if chat.user.user_image.present?
+                = image_tag chat.user.user_image.url, alt: "ユーザー画像", class: "user_img"
+              - else
+                = image_tag "picture/user-2517433_640.png", alt: "ユーザー画像", class: "user_img"
               .chat_user_name
                 = chat.user.nickname
 
@@ -82,4 +96,3 @@
             = icon("fas", "image", class: "icon")
             = f.file_field :chat_image, class: "hidden"
           = f.submit "送信", class: "submit-btn"
-

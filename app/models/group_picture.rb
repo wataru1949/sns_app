@@ -1,7 +1,6 @@
 class GroupPicture < ApplicationRecord
 
   belongs_to :group
-
   mount_uploader :group_image, ImageUploader
 end
 
