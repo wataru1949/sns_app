@@ -1,14 +1,12 @@
 $(function(){
+  $(".member_modal").hide();
   var openBtns = $(".member-btn");
   function modalSwitch(){
-    $(".active").removeClass("active");
-    $(this).addClass("active");
     const index = openBtns.index(this);
-    $(".member_modal").removeClass("show").eq(index).addClass("show");
+    $(".member_modal").hide().eq(index).show();
   }
   openBtns.click(modalSwitch);
-  function modalClose(){
-    $(".member_modal").removeClass("show");
-  }
-  $(".close-btn").click(modalClose);
+  $(".close-btn").on("click", function() {
+    $(".member_modal").hide();
+  });
 });
