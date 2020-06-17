@@ -10,7 +10,6 @@
             - else
               = image_tag "picture/user-2517433_640.png", alt: "ユーザー画像", class: "user_image"
         = f.file_field :user_image, class: "field_image"
-
       .field
         .field_label
           = f.label :nickname
@@ -22,7 +21,7 @@
       .field
         .field_label
           = f.label :profile
-        = f.text_area :profile, class: "field_form field_profile", autocomplete: "profile"
+        = f.text_area :profile, class: "field_form field_profile"
       .field
         .field_label
           = f.label :gender

@@ -42,7 +42,7 @@
     min-height: 300px;
     max-height: 500px;
     width: 300px;
-    display: none;
+    // display: none;
     overflow: scroll;
     &_top {
       border-bottom: $menu-border;
@@ -50,7 +50,6 @@
       display: flex;
       color: whitesmoke;
       .close-btn {
-        // width: 28px;
         line-height: 28px;
         font-size: 1.3em;
         margin-left: 5px;
@@ -74,9 +73,9 @@
       margin: 15px 0;
     }
   }
-  .show {
-    display: block;
-  }
+  // .show {
+  //   display: block;
+  // }
 
 }
 .chat-container {
