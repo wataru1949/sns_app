@@ -1,11 +1,9 @@
 FactoryBot.define do
 
   factory :group do
-    group_name     {"ギャザーズ"}
-    content        {"野球チーム"}
-    prefecture_id  {1}
-    # user
-    # group_user
+    group_name     {Faker::Team.name}
+    content        {Faker::Lorem.sentence}
+    prefecture_id  {Faker::Number.within(range: 1..48)}
   end
 
 end
