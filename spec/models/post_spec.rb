@@ -1,7 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe Post do
-  describe '#create' do
+  describe "#create" do
 
   it "投稿が登録できること" do
     post = build(:post)
@@ -25,6 +25,14 @@ describe Post do
       post.valid?
       expect(post.errors[:detail]).to include("を入力してください")
     end
+
+    it "ユーザーIDがなければ登録できないこと" do
+      post = build(:post, user_id: nil)
+      post.valid?
+      expect(post.errors[:user]).to include("を入力してください")
+    end
+
+
 
     it "タイトルが41文字以上であれば登録できないこと" do
       post = build(:post, title: "a" * 41)

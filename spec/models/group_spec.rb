@@ -1,7 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe Group do
-  describe '#create' do
+  describe "#create" do
 
   it "グループが登録できること" do
     group = build(:group)
