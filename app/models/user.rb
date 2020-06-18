@@ -15,7 +15,9 @@ class User < ApplicationRecord
   has_many :groups, through: :group_users
 
   mount_uploader :user_image, ImageUploader
+  
   validates :nickname, :profile, presence: true
+  validates :nickname, length: { maximum: 10 }
 end
 
 # == Schema Information

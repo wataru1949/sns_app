@@ -9,6 +9,8 @@ class Post < ApplicationRecord
   mount_uploader :post_image, ImageUploader
 
   validates :title, :prefecture, :detail, presence: true
+  validates :title, length: { maximum: 40 }
+  validates :detail, length: { maximum: 1000 }
 end
 
 # == Schema Information
