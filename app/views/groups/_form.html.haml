@@ -19,12 +19,31 @@
                   必須
               = f.text_field :group_name, class: "form-area_input f_field"
 
-            .image-area
+
+            .image-area#image-box
               .image-area_label
+                #previews
+                  - if @group.persisted?
+                    - @group.group_pictures.each_with_index do |image, i|
+                      = image_tag image.group_image.url, data: { index: i }, width: "100", height: '100'
+
                 = f.fields_for :group_pictures do |i|
                   = i.label :group_image do
                     = icon('fa', 'image', class: 'icon')
-                  = i.file_field :group_image
+                  .js-file_group{"data-index" => "#{i.index}"}
+                    = i.file_field :group_image, class: "js-file"
+                    %span.js-remove 削除
+
+                  - if @group.persisted?
+                    = i.check_box :_destroy, data:{ index: i.index }, class: 'hidden-destroy'
+
+                - if @group.persisted?
+                  .js-file_group{"data-index" => "#{@group.group_pictures.count}"}
+                    = file_field_tag :group_image, name: "group[group_pictures_attributes][#{@group.group_pictures.count}][group_image]", class: 'js-file'
+                    .js-remove 削除
+
+
+
 
             .form-area
               .form-area_label
@@ -41,7 +60,7 @@
               = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt:"--"}, {class: "form-area_input f_select"}
             .member-area
 
-            = f.collection_check_boxes :user_ids, User.all, :id, :nickname
+            -# = f.collection_check_boxes :user_ids, User.all, :id, :nickname
 
             .btn-area
               = f.submit "登録", class: "actions_btn"
