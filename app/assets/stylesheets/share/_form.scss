@@ -49,20 +49,19 @@
       }
     }
   }
-.btn-area {
-  text-align: center;
-}
-
+  .btn-area {
+    text-align: center;
+  }
   .image-area {
-    // height: 25px;
-    &_label {
-      color: darkcyan;
-      font-size: 30px;
-      // float: right;
-      margin: 0 10px;
-    }
-    input {
-      display: none;
-    }
+    // label {
+    //   color: darkcyan;
+    //   font-size: 30px;
+    //   // float: right;
+    //   margin: 0 10px;
+    //   width: 20%;
+    // }
+    // input {
+    //   display: none;
+    // }
   }
 }
