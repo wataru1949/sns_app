@@ -1,5 +1,4 @@
 .wrapper
-  = render "share/header"
   .session-left
     .session-menu
       .session-menu_title
@@ -20,10 +19,10 @@
         .field_label
           = f.label :password
         = f.password_field :password, class: "field_form", placeholder: "英数字6文字以上", autocomplete: "new-password"
-      -# .field
-      -#   .field_label
-      -#     = f.label :password_confirmation
-      -#   = f.password_field :password_confirmation, autocomplete: "new-password"
+      .field
+        .field_label
+          = f.label :password_confirmation
+        = f.password_field :password_confirmation, autocomplete: "new-password"
       .field
         .field_label
           = f.label :profile

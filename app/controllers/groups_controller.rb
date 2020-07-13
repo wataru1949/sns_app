@@ -1,15 +1,14 @@
 class GroupsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
   before_action :set_group, only:[:edit, :update, :show, :destroy]
 
   def new
     @group = Group.new
-    @group.users << current_user
     @group.group_pictures.new
   end
 
   def create
     @group = Group.new(group_params)
+    @group.users << current_user
     if @group.save
       redirect_to root_path
     else

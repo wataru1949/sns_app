@@ -1,7 +1,12 @@
 .wrapper
-  = render "share/header"
   .form-container
-    = form_with model: @user, url: user_path(@user), class: 'new_user', local: true do |f|
+    = form_with model: @user, class: 'new_user', local: true do |f|
+      - if @user.errors.any?
+        .user-form_errors
+          %h2= "#{@user.errors.full_messages.count}件のエラーが発生しました。"
+          %ul
+            - @user.errors.full_messages.each do |message|
+              %li= message
       .field
         .image-label
           = f.label :user_image do

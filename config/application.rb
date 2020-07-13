@@ -10,8 +10,13 @@ module SnsApp
   class Application < Rails::Application
     config.time_zone = 'Tokyo'
     config.generators do |g|
+      g.skip_routes true
       g.javascripts false
       g.helper false
+      g.assets false
+      g.test_framework :rspec
+      g.controler_specs false
+      g.view_specs false
     end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
