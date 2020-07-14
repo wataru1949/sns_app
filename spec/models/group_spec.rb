@@ -3,12 +3,12 @@ require "rails_helper"
 describe Group do
   describe "#create" do
 
-  example "グループが登録できること" do
-    group = build(:group)
-    expect(group).to be_valid
-  end  
-  
-  example "グループ名がない場合は登録できないこと" do
+    example "グループが登録できること" do
+      group = build(:group)
+      expect(group).to be_valid
+    end  
+    
+    example "グループ名がない場合は登録できないこと" do
       group = build(:group, group_name: nil)
       group.valid?
       expect(group.errors[:group_name]).to include("を入力してください")
@@ -47,6 +47,5 @@ describe Group do
       group = build(:group, content: "a" * 500)
       expect(group).to be_valid
     end
-
   end
 end
