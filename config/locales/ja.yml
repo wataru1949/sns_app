@@ -1,6 +1,16 @@
 ---
 ja:
   activerecord:
+    attributes:
+      post:
+        title: "タイトル"
+        detail: "詳細"
+        prefecture_id: "都道府県"
+        event_date: "日にち"
+      group:
+        group_name: "グループ名"
+        content: "グループ紹介"
+        prefecture_id: "都道府県"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
