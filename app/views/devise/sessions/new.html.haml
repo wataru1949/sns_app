@@ -5,15 +5,15 @@
         ログイン
       .session-menu_list 
   .session-right
-    = form_with model: @user, url: user_session_path, class: 'login_user', local: true do |f|
+    = form_with model: @user, url: user_session_path, local: true do |f|
       .field
         .field_label
           = f.label :email
-        = f.email_field :email, autofocus: true, class: "field_form", autocomplete: "email"
+        = f.email_field :email, autofocus: true, class: "field_form"
       .field
         .field_label
           = f.label :password
-        = f.password_field :password, class: "field_form", autocomplete: "current-password"
+        = f.password_field :password, class: "field_form"
 
       -# ログインを記憶する
       -# - if devise_mapping.rememberable?
