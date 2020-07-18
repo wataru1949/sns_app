@@ -87,3 +87,5 @@ gem 'enum_help'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
+gem "date_validator"
+gem "valid_email2"
