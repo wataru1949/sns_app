@@ -8,7 +8,7 @@
 #  encrypted_password     :string(255)      default(""), not null
 #  gender                 :integer          default("gender_private")
 #  nickname               :string(255)      not null
-#  profile                :string(255)      not null
+#  profile                :string(255)
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string(255)
