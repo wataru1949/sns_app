@@ -3,9 +3,9 @@
 # Table name: posts
 #
 #  id            :bigint           not null, primary key
-#  date          :date
 #  detail        :text(65535)      not null
 #  end_time      :time
+#  event_date    :date
 #  post_image    :string(255)
 #  start_time    :time
 #  title         :string(255)      not null
