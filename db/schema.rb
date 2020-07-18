@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 2020_06_02_102008) do
     t.text "detail", null: false
     t.integer "prefecture_id", null: false
     t.integer "accept_id"
-    t.date "date"
+    t.date "event_date"
     t.time "start_time"
     t.time "end_time"
     t.string "post_image"
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 2020_06_02_102008) do
     t.string "nickname", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "profile", null: false
+    t.string "profile"
     t.integer "gender", default: 0
     t.integer "age", default: 0
     t.integer "prefecture_id"
