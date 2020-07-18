@@ -12,8 +12,8 @@
               = @post.prefecture.name
             .post-board_left_data
               日にち :
-              - if @post.date.present?
-                = @post.date.strftime("%Y/%m/%d")
+              - if @post.event_date.present?
+                = @post.event_date.strftime("%Y/%m/%d")
             .post-board_left_data
               開始予定 :
               - if @post.start_time.present?
@@ -30,7 +30,8 @@
               .post-board_left_data
                 = link_to "編集する", edit_post_path(@post)
               .post-board_left_data
-                = link_to "削除する", post_path(@post), method: :delete
+                = link_to "削除する", post_path(@post), method: :delete,
+                  data: { confirm: "本当に削除しますか？" }
           .post-board_right
             - if @post.post_image.present?
               = image_tag @post.post_image.url, alt: "投稿画像", class: "post_image" 
@@ -61,7 +62,8 @@
                   ：
                   = comment.created_at.strftime("%Y/%m/%d %H:%M")
                   - if user_signed_in? && comment.user_id == current_user.id
-                    = link_to "削除", post_comment_path(@post, comment.id), method: :delete
+                    = link_to "削除", post_comment_path(@post, comment.id), method: :delete,
+                    data: { confirm: "本当に削除しますか？" }
                 .comment-list_bottom
                   - if comment.comment.present?
                     .comment-list_bottom_content

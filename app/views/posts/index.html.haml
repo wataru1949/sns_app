@@ -33,9 +33,9 @@
                       募集人数:
                       = post.accept.name
                 .list_right_third
-                  - if post.date.present?
+                  - if post.event_date.present?
                     日時:
-                    = post.date.strftime("%Y/%m/%d")
+                    = post.event_date.strftime("%Y/%m/%d")
                   
                 .list_right_bottom
                   - if post.start_time.present? || post.end_time.present?
