@@ -3,20 +3,16 @@
   .main-container
     .main-wrapper
       .top-container
-        = form_with model: @post, local: true do |f|
-          - if @post.errors.any?
-            .post-form_errors
-              %h2= "#{@post.errors.full_messages.count}件のエラーが発生しました。"
-              %ul
-                - @post.errors.full_messages.each do |message|
-                  %li= message
-          .form-wrapper
+        .form-wrapper
+          = form_with model: @post, local: true do |f|
             .form-area
               .form-area_label
                 = f.label :title, "タイトル"
                 .form-area_label_info
                   必須
               = f.text_field :title, class: "form-area_input f_field"
+              - if @post.errors.include?(:title)
+                %p.error-message= @post.errors.full_messages_for(:title).first
 
             .image-area
               .image-area_label
@@ -30,6 +26,8 @@
                 .form-area_label_info
                   必須
               = f.text_area :detail, class: "form-area_input f_area"
+              - if @post.errors.include?(:detail)
+                %p.error-message= @post.errors.full_messages_for(:detail).first
 
             .form-area
               .form-area_label
@@ -37,6 +35,8 @@
                 .form-area_label_info
                   必須
               = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt:"--"}, {class: "form-area_input f_select"}
+              - if @post.errors.include?(:prefecture_id)
+                %p.error-message= @post.errors.full_messages_for(:prefecture_id).first
 
             .form-area
               .form-area_label
@@ -45,8 +45,10 @@
 
             .form-area
               .form-area_label
-                = f.label :date, "日にち"
-              = f.date_field :date,class: "form-area_input f_select"
+                = f.label :event_date, "日にち"
+              = f.date_field :event_date,class: "form-area_input f_select"
+              - if @post.errors.include?(:event_date)
+                %p.error-message= @post.errors.full_messages_for(:event_date).first
 
             .form-area
               .form-area_time

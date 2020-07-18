@@ -4,12 +4,6 @@
     .main-wrapper
       .top-container
         = form_with model: @group, local: true do |f|
-          - if @group.errors.any?
-            .group-form_errors
-              %h2= "#{@group.errors.full_messages.count}件のエラーが発生しました。"
-              %ul
-                - @group.errors.full_messages.each do |message|
-                  %li= message
           .form-wrapper
             .form-area
               .form-area_label
@@ -17,11 +11,13 @@
                 .form-area_label_info
                   必須
               = f.text_field :group_name, class: "form-area_input f_field"
+              - if @group.errors.include?(:group_name)
+                %p.error-message= @group.errors.full_messages_for(:group_name).first
 
             .image-area#image-box
             
               #previews
-                - if @group.persisted?
+                - if @group.persisted? && @group_picture.present?
                   - @group.group_pictures.each_with_index do |image, i|
                     = image_tag image.group_image.url, data: { index: i }, width: "200", height: '200'
               = f.fields_for :group_pictures do |image|
@@ -45,12 +41,16 @@
                 .form-area_label_info
                   必須
               = f.text_area :content, class: "form-area_input f_area"
+              - if @group.errors.include?(:content)
+                %p.error-message= @group.errors.full_messages_for(:content).first
             .form-area
               .form-area_label
                 = f.label :prefecture_id, "都道府県"
                 .form-area_label_info
                   必須
               = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt:"--"}, {class: "form-area_input f_select"}
+              - if @group.errors.include?(:prefecture_id)
+                %p.error-message= @group.errors.full_messages_for(:prefecture_id).first
             .member-area
             .btn-area
               = f.submit "登録", class: "actions_btn"

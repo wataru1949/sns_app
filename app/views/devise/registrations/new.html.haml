@@ -5,40 +5,30 @@
         新規登録
       .session-menu_list 
   .session-right
-    = form_with model: @user, url: user_registration_path, class: 'new_user', local: true do |f|
-      = render "devise/shared/error_messages", resource: resource
+    = form_with model: @user, url: user_registration_path, local: true do |f|
       .field
         .field_label
           = f.label :nickname
-        = f.text_field :nickname, class: "field_form", autocomplete: "nickname"
+        = f.text_field :nickname, autofocus: true, class: "field_form"
+        - if @user.errors.include?(:nickname)
+          %p.error-message= @user.errors.full_messages_for(:nickname).first
       .field
         .field_label
           = f.label :email
-        = f.email_field :email, autofocus: true, class: "field_form", autocomplete: "email"
+        = f.email_field :email, class: "field_form"
+        - if @user.errors.include?(:email)
+          %p.error-message= @user.errors.full_messages_for(:email).first
       .field
         .field_label
           = f.label :password
-        = f.password_field :password, class: "field_form", placeholder: "英数字6文字以上", autocomplete: "new-password"
+        = f.password_field :password, class: "field_form", placeholder: "英数字6文字以上"
+        - if @user.errors.include?(:password)
+          %p.error-message= @user.errors.full_messages_for(:password).first
       .field
         .field_label
           = f.label :password_confirmation
-        = f.password_field :password_confirmation, autocomplete: "new-password"
-      .field
-        .field_label
-          = f.label :profile
-        = f.text_area :profile, class: "field_form field_profile", autocomplete: "profile"
-      .field
-        .field_label
-          = f.label :gender
-        = f.select :gender, options_for_select_from_enum(User, :gender), {}, {class: "field_form"}
-      .field
-        .field_label
-          = f.label :age
-        = f.select :age, options_for_select_from_enum(User, :age), {}, {class: "field_form"}
-      .field
-        .field_label
-          = f.label :prefecture
-        = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt:"選択してください"}, {class: "field_form"}
+        = f.password_field :password_confirmation, class: "field_form"
+        - if @user.errors.include?(:password_confirmation)
+          %p.error-message= @user.errors.full_messages_for(:password_confirmation).first
       .actions
         = f.submit "新規登録", class: "actions_btn"
-        = render "devise/shared/links"
