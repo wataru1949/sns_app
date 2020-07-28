@@ -5,6 +5,7 @@ class Chat < ApplicationRecord
   
   mount_uploader :chat_image, ImageUploader
   validates :body, presence: true, unless: :chat_image?
+  validates :body, length: { maximum: 1000 }
 end
 # == Schema Information
 #

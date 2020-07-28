@@ -5,6 +5,7 @@ class Comment < ApplicationRecord
   
   mount_uploader :comment_image, ImageUploader
   validates :comment, presence: true, unless: :comment_image?
+  validates :comment, length: { maximum: 1000 }
 end
 
 # == Schema Information

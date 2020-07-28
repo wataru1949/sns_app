@@ -15,9 +15,12 @@ class User < ApplicationRecord
   has_many :groups, through: :group_users
 
   mount_uploader :user_image, ImageUploader
-  
-  validates :nickname, :profile, presence: true
+
+  validates :nickname, :email, presence: true
   validates :nickname, length: { maximum: 10 }
+  validates :profile, length: { maximum: 200 }
+  validates :email,"valid_email_2/email": true,
+    uniqueness: { case_sensitive: false }
 end
 
 # == Schema Information
@@ -30,7 +33,7 @@ end
 #  encrypted_password     :string(255)      default(""), not null
 #  gender                 :integer          default("gender_private")
 #  nickname               :string(255)      not null
-#  profile                :string(255)      not null
+#  profile                :string(255)
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string(255)

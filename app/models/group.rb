@@ -9,9 +9,8 @@ class Group < ApplicationRecord
   # belongs_to :category
   accepts_nested_attributes_for :group_pictures, allow_destroy: true
 
-  validates :group_name, presence: true, uniqueness: true
-  validates :content, :prefecture, presence: true
-  validates :group_name, length: { maximum: 20 }
+  validates :content, :prefecture_id, :group_name, presence: true
+  validates :group_name, uniqueness: true, length: { maximum: 20 }
   validates :content, length: { maximum: 500 }
 
   def self.search(search)
