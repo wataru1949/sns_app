@@ -4,6 +4,18 @@
   margin: 0 auto;
   padding: 80px 0;
   .form-area {
+    margin-bottom: 50px;
+    div.field_with_errors {
+      display: inline;
+      padding: 0;
+
+      input, textarea, select, .f_select { border: solid $red 1px; }
+    }
+    .error-message {
+      font-size: 0.8em;
+      color: $red;
+      margin-top: 2px;
+    }
     &_label {
       line-height: 26px;
       font-size: 0.9em;
@@ -23,7 +35,6 @@
     }
     &_input {
       width: 100%;
-      margin-bottom: 50px;
       padding: 0 5px;
     }
     .f_field,.f_select {
@@ -34,7 +45,7 @@
       padding: 4px 5px;
     }
     .f_select {
-      width: 30%;
+      width: 40%;
     }
     &_time {
       width: 100%;
@@ -44,7 +55,6 @@
         &_input {
           height: 26px;
           width: 25%;
-          margin-bottom: 80px;
         }
       }
     }
@@ -53,15 +63,24 @@
     text-align: center;
   }
   .image-area {
-    // label {
-    //   color: darkcyan;
-    //   font-size: 30px;
-    //   // float: right;
-    //   margin: 0 10px;
-    //   width: 20%;
-    // }
-    // input {
-    //   display: none;
-    // }
+    margin-bottom: 30px;
+    img {
+      border: solid 1px $light_gray;
+      border-radius: 2px;  
+      width: 100%;
+      background-color: white;
+    }
+    .rm-btn {
+      i {
+        float: right;
+        margin-top: 3px;
+        color: $red;
+        // background-color: white;
+        font-size: 15px;
+      }
+    }
+    .img-btn {
+      width: 30px;
+    }
   }
 }
