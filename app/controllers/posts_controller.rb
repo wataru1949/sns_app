@@ -33,7 +33,11 @@ class PostsController < ApplicationController
   end
 
   def update
+    
     if @post.update(post_params)
+      if @post.remove == "1"
+        @post.update_attribute(:post_image, "")
+      end
       redirect_to @post
     else
       render :edit
@@ -47,7 +51,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :event, :detail, :prefecture_id, :accept_id, :event_date, :start_time, :end_time, :post_image).merge(user_id: current_user.id )
+    params.require(:post).permit(:title, :event, :detail, :prefecture_id, :accept_id, :event_date, :start_time, :end_time, :post_image, :remove).merge(user_id: current_user.id )
   end
 
   def set_post
