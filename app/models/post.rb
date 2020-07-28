@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
+  attr_accessor :remove
 
   belongs_to :user
   belongs_to_active_hash :prefecture
