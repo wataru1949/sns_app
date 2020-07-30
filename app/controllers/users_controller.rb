@@ -9,6 +9,9 @@ class UsersController < ApplicationController
 
   def update
     if current_user.update(user_params)
+      if current_user.remove == "1"
+        current_user.update_attribute(:user_image, "")
+      end
       redirect_to root_path
     else
       render :edit
@@ -19,7 +22,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:nickname, :email, :profile, :gender, :age, :prefecture_id, :user_image)
+    params.require(:user).permit(:nickname, :email, :profile, :gender, :age, :prefecture_id, :user_image, :remove)
   end
   
 end
