@@ -64,11 +64,35 @@
   }
   .image-area {
     margin-bottom: 30px;
+    #previews {
+      width: 70%;
+      float: right;
+      display: flex;
+      flex-direction: column;
+      
+      .file_column {
+        height: 240px;
+        margin: 0 auto;
+      }
+    }
+    .js-file_group {
+      width: 20%;
+      height: 50px;
+      // height: 240px;
+    }
+    .js-file_group:not(:last-child) {
+      height: 240px;
+    }
     img {
       border: solid 1px $light_gray;
       border-radius: 2px;  
       width: 100%;
       background-color: white;
+    }
+    .group_img {
+      height: 220px;
+      width: auto;
+      max-width: 100%;
     }
     .rm-btn {
       i {
