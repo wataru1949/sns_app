@@ -18,11 +18,12 @@
             - if @post.post_image.present?
               %span.pip
                 = image_tag @post.post_image.url, alt: "投稿画像", class: "post_img" 
-              = f.label :remove, class: "rm-btn" do
+              = f.label :remove, id: "post_rm", class: "rm-btn" do
                 = icon('fa', 'window-close')
               = f.check_box :remove, class: "hidden"
             = f.label :post_image, class: "img-btn" do
               = icon('fa', 'image')
+              
           .form-area
             .form-area_label
               = f.label :detail, "詳細"
