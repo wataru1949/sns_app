@@ -17,56 +17,75 @@
   padding: 38px 50px;
   background-color: $menu-black;
   width: 40%;
-  .login_user {
+  form {
     padding-top: 50px;
+    .field {
+      height: 70px;
+    }
   }
 }
 .form-container {
-  height: calc(100vh - 40px);
+  height: calc(100% - 40px);
   color: white;
   margin: 40px auto 0;
   padding: 30px 50px;
   background-color: $menu-black;
   width: 700px;
+  overflow: scroll;
+  .field {
+    &_form {
+      width: 300px;
+    }
+  }
 }
 .field {
-  margin-bottom: 12px;
+  margin-bottom: 18px;
   text-align: center;
-  .image-label {
-    background-color: white;
+  .user_img {
     height: 90px;
     width: 90px;
     margin: 0 auto;
-    label {
-      display: block;
-      height: 100%;
-      width: 100%;
-    }
-    .user_image {
-      height: 100%;
-      width: 100%;
+  }
+  .user_img-btn {
+    font-size: 25px;
+  }
+  .rm-btn {
+    width: 15px;
+    display: block;
+    margin: 0 auto;
+    i {
+      width: 15px;
+      color: $red;
+      font-size: 15px;
     }
   }
-  &_image {
-    display: none;
-  } 
   &_label {
     margin-bottom: 3px;
-    font-size: 15px;
+    font-size: 0.9em;
   }
   &_form {
     height: 25px;
     width: 230px;
+    padding: 0 5px;
   }
   &_profile {
     height: 60px;
+  }
+  div.field_with_errors {
+    display: inline;
+    padding: 0;
+    input, textarea { background-color: $pink; }
+  }
+  .error-message {
+    font-size: 0.8em;
+    color: $red;
+    margin-top: 2px;
   }
 }
 .actions {
   margin-top: 45px;
   text-align: center;
 }
-
 .test_login {
   margin-top: 50px;
   text-align: center;
