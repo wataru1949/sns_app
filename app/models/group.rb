@@ -7,7 +7,7 @@ class Group < ApplicationRecord
   has_many :group_pictures, dependent: :destroy
   has_many :chats, dependent: :destroy
   # belongs_to :category
-  accepts_nested_attributes_for :group_pictures, allow_destroy: true
+  accepts_nested_attributes_for :group_pictures, reject_if: proc { |attributes| attributes["group_image"].blank? },allow_destroy: true
 
   validates :content, :prefecture_id, :group_name, presence: true
   validates :group_name, uniqueness: true, length: { maximum: 20 }
