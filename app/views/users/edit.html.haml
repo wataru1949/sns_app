@@ -1,32 +1,34 @@
 .wrapper
   .form-container
-    = form_with model: @user, class: 'new_user', local: true do |f|
-      - if @user.errors.any?
-        .user-form_errors
-          %h2= "#{@user.errors.full_messages.count}件のエラーが発生しました。"
-          %ul
-            - @user.errors.full_messages.each do |message|
-              %li= message
+    = form_with model: current_user, local: true do |f|
       .field
-        .image-label
-          = f.label :user_image do
-            - if current_user.user_image.present?
-              = image_tag @user.user_image.url, alt: "ユーザー画像", class: "user_image" 
-            - else
-              = image_tag "picture/user-2517433_640.png", alt: "ユーザー画像", class: "user_image"
-        = f.file_field :user_image, class: "field_image"
+        = f.file_field :user_image, class: "hidden"
+        - if current_user.user_image.present?
+          %span.pip
+            = image_tag current_user.user_image.url, alt: "投稿画像", class: "user_img" 
+          = f.label :remove, class: "rm-btn" do
+            = icon('fa', 'window-close')
+          = f.check_box :remove, class: "hidden"
+        = f.label :user_image, class: "user_img-btn" do
+          = icon('fa', 'image')
       .field
         .field_label
           = f.label :nickname
         = f.text_field :nickname, class: "field_form", autocomplete: "nickname"
+        - if current_user.errors.include?(:nickname)
+          %p.error-message= current_user.errors.full_messages_for(:nickname).first
       .field
         .field_label
           = f.label :email
         = f.email_field :email, autofocus: true, class: "field_form", autocomplete: "email"
+        - if current_user.errors.include?(:email)
+          %p.error-message= current_user.errors.full_messages_for(:email).first
       .field
         .field_label
           = f.label :profile
         = f.text_area :profile, class: "field_form field_profile"
+        - if current_user.errors.include?(:profile)
+          %p.error-message= current_user.errors.full_messages_for(:profile).first
       .field
         .field_label
           = f.label :gender
