@@ -17,22 +17,22 @@
             .image-area#image-box
             
               #previews
-                - if @group.persisted? && @group_picture.present?
+                - if @group.persisted?
                   - @group.group_pictures.each_with_index do |image, i|
-                    = image_tag image.group_image.url, data: { index: i }, width: "200", height: '200'
+                    - if image[:id].present?
+                      .file_column{ data: {index: i} }
+                        = image_tag image.group_image.url, data: { index: i }, class: "group_img"
               = f.fields_for :group_pictures do |image|
-
-                = image.label :group_image do
-                  = icon('fa', 'image', class: 'icon')
-
+                -# = image.label :group_image do
+                -#   = icon('fa', 'image', class: 'icon')
                 .js-file_group{"data-index" => "#{image.index}"}
                   = image.file_field :group_image, class: "js-file"
-                  .js-remove 削除
+                  %span.js-remove 削除
                 - if @group.persisted?
                   = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
-              - if @group.persisted?
+              - if @group.persisted? && @group.group_pictures.length < 3
                 .js-file_group{"data-index" => "#{@group.group_pictures.count}"}
-                  = file_field_tag :group_image, name: "group[group_pictures_attributes][#{@group.group_pictures.count}][group_image]", class: 'js-file'
+                  = f.file_field :group_image, name: "group[group_pictures_attributes][#{@group.group_pictures.count}][group_image]", class: 'js-file'
                   .js-remove 削除
 
             .form-area
