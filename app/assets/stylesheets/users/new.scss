@@ -15,7 +15,7 @@
   color: white;
   margin-top: 40px;
   padding: 38px 50px;
-  background-color: $menu-black;
+  background-color: $translucent-black;
   width: 40%;
   form {
     padding-top: 50px;
@@ -29,7 +29,7 @@
   color: white;
   margin: 40px auto 0;
   padding: 30px 50px;
-  background-color: $menu-black;
+  background-color: $translucent-black;
   width: 700px;
   overflow: scroll;
   .field {
@@ -45,9 +45,6 @@
     height: 90px;
     width: 90px;
     margin: 0 auto;
-  }
-  .user_img-btn {
-    font-size: 25px;
   }
   .rm-btn {
     width: 15px;
