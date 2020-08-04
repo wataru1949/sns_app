@@ -22,18 +22,26 @@
                     - if image[:id].present?
                       .file_column{ data: {index: i} }
                         = image_tag image.group_image.url, data: { index: i }, class: "group_img"
+
               = f.fields_for :group_pictures do |image|
-                -# = image.label :group_image do
-                -#   = icon('fa', 'image', class: 'icon')
                 .js-file_group{"data-index" => "#{image.index}"}
-                  = image.file_field :group_image, class: "js-file"
-                  %span.js-remove 削除
+                  = image.label :group_image, class: "img-btn" do
+                    = icon('fa', 'image', class: 'icon')
+                  = image.file_field :group_image, class: "js-file hidden"
+                  -# = f.label :remove, class: "group_rm rm-btn" do
+                  -#   = icon('fa', 'window-close')
+                  %span.js-remove
+                    = icon('fa', 'window-close')
                 - if @group.persisted?
                   = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+
               - if @group.persisted? && @group.group_pictures.length < 3
                 .js-file_group{"data-index" => "#{@group.group_pictures.count}"}
-                  = f.file_field :group_image, name: "group[group_pictures_attributes][#{@group.group_pictures.count}][group_image]", class: 'js-file'
-                  .js-remove 削除
+                  = f.label :group_image, class: "img-btn" do
+                    = icon('fa', 'image', class: 'icon')
+                  = f.file_field :group_image, name: "group[group_pictures_attributes][#{@group.group_pictures.count}][group_image]", class: 'js-file hidden'
+                  %span.js-remove
+                    = icon('fa', 'window-close')
 
             .form-area
               .form-area_label
