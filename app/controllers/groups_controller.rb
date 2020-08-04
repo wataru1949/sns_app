@@ -12,23 +12,26 @@ class GroupsController < ApplicationController
     if @group.save
       redirect_to root_path
     else
+      @group.group_pictures.clear
+      @group.group_pictures.new
       render :new
     end
   end
-
+  
   def show
     @chat = Chat.new
     @chats = @group.chats.includes(:user)
   end
-
-
+  
+  
   def edit
   end
-
+  
   def update
     if @group.update(group_params)
       redirect_to group_path(@group)
     else
+      @group.group_pictures = Group.find(params[:id]).group_pictures
       render :edit
     end
   end
