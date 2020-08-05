@@ -1,7 +1,9 @@
-$menu-black: rgba(0,0,0,0.8);
-$light_gray: rgba(128, 128, 128, 0.3);
-$shadow: rgba(112, 74, 24, 0.7) 0 3px 10px;
+$shadow: rgba(112, 74, 24, 0.7) 0 2px 2px;
 $menu-border: solid 1px cyan;
+
+/* 白黒系 */
+$translucent-black: rgba(0,0,0,0.9);
+$light_gray: rgba(128, 128, 128, 0.3);
 
 /* 赤系 */
 $red: #cc0000;
