@@ -2,10 +2,16 @@ $(function() {
 // 画像用のinputを生成する関数
   const buildFileField = (index)=> {
     const html = `<div data-index="${index}" class="js-file_group">
-                    <input class="js-file" type="file"
+                    <label class="img-btn" 
+                    for="group_group_pictures_attributes_${index}_group_image">
+                    <i class="fa fa-image icon"></i>
+                    </label>
+                    <input class="js-file hidden" type="file"
                     name="group[group_pictures_attributes][${index}][group_image]"
-                    id="group_group_pictures_attributes_${index}_group_image"><br>
-                    <div class="js-remove">削除</div>
+                    id="group_group_pictures_attributes_${index}_group_image">
+                    <span class="js-remove">
+                    <i class="fa fa-window-close"></i>
+                    </span>
                   </div>`;
     return html;
   }
@@ -41,14 +47,16 @@ $(function() {
         fileIndex.shift();
         // 末尾の数に1足した数を追加する
         fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
-      }
-      $(".js-file_group").height(240);
-      $(".js-file_group:last").height(50);
-      lst = $("img.group_img").length;
+        $(".js-file_group").height(240);
+        $(".js-file_group:last").height(50);
+      } else {
+        $(".js-file_group").height(240);
+      } 
+      // lst = $("img.group_img").length;
       // console.log(lst);
     }
   });
-  let lst = $("img.group_img").length;
+  // let lst = $("img.group_img").length;
   // console.log(lst);
   // :not(:last)
   
@@ -80,7 +88,7 @@ $(function() {
     }
     $(".js-file_group").height(240);
     $(".js-file_group:last").height(50);
-    lst = $("img.group_img").length;
+    // lst = $("img.group_img").length;
     // console.log(lst);
   });
 });
