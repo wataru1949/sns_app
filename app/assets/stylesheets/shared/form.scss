@@ -76,8 +76,10 @@
       }
     }
     .js-file_group {
-      width: 20%;
+      // width: 20%;
       height: 50px;
+      margin-left: 20px;
+      padding-top: 5px;
       // height: 240px;
     }
     .js-file_group:not(:last-child) {
@@ -88,6 +90,7 @@
       border-radius: 2px;  
       width: 100%;
       background-color: white;
+      
     }
     .group_img {
       height: 220px;
