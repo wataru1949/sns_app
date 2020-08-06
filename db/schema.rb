@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_02_102008) do
+ActiveRecord::Schema.define(version: 2020_08_06_060521) do
+
+  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "addressable_type"
+    t.bigint "addressable_id"
+    t.integer "prefecture_id", null: false
+    t.string "city", null: false
+    t.string "place", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
+  end
 
   create_table "chats", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "body"
@@ -54,7 +65,6 @@ ActiveRecord::Schema.define(version: 2020_06_02_102008) do
   create_table "groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "group_name", null: false
     t.text "content", null: false
-    t.integer "prefecture_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["group_name"], name: "index_groups_on_group_name", unique: true
@@ -63,7 +73,6 @@ ActiveRecord::Schema.define(version: 2020_06_02_102008) do
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
     t.text "detail", null: false
-    t.integer "prefecture_id", null: false
     t.integer "accept_id"
     t.date "event_date"
     t.time "start_time"
@@ -82,7 +91,6 @@ ActiveRecord::Schema.define(version: 2020_06_02_102008) do
     t.string "profile"
     t.integer "gender", default: 0
     t.integer "age", default: 0
-    t.integer "prefecture_id"
     t.string "user_image"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
