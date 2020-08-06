@@ -3,7 +3,6 @@ class CreateGroups < ActiveRecord::Migration[5.2]
     create_table :groups do |t|
       t.string :group_name,       null: false
       t.text :content,            null: false
-      t.integer :prefecture_id,   null: false
 
       t.index :group_name, unique: true
 
