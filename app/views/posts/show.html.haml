@@ -8,12 +8,14 @@
             = @post.title
           - if @post.post_image.present?
             = image_tag @post.post_image.url, alt: "投稿画像"
-          %table.post_info_block
+          %table.post_info_table
             %tr
               %th
                 場所
               %td
-                = @post.prefecture.name
+                = @post.post_address.prefecture.name
+                = @post.post_address.city
+                = @post.post_address.place
             %tr
               %th
                 日にち
