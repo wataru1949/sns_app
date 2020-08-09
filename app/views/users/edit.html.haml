@@ -1,11 +1,11 @@
 .wrapper
   .form-container
-    = form_with model: current_user, local: true do |f|
+    = form_with model: @user, local: true do |f|
       .field
         = f.file_field :user_image, class: "hidden"
-        - if current_user.user_image.present?
+        - if @user.user_image.present?
           %span.pip
-            = image_tag current_user.user_image.url, alt: "投稿画像", class: "user_img" 
+            = image_tag @user.user_image.url, alt: "投稿画像", class: "user_img" 
           = f.label :remove, class: "rm-btn" do
             = icon('fa', 'window-close')
           = f.check_box :remove, class: "hidden"
@@ -14,21 +14,21 @@
       .field
         .field_label
           = f.label :nickname
-        = f.text_field :nickname, class: "field_form", autocomplete: "nickname"
-        - if current_user.errors.include?(:nickname)
-          %p.error-message= current_user.errors.full_messages_for(:nickname).first
+        = f.text_field :nickname, class: "field_form"
+        - if @user.errors.include?(:nickname)
+          %p.error-message= @user.errors.full_messages_for(:nickname).first
       .field
         .field_label
           = f.label :email
-        = f.email_field :email, autofocus: true, class: "field_form", autocomplete: "email"
-        - if current_user.errors.include?(:email)
-          %p.error-message= current_user.errors.full_messages_for(:email).first
+        = f.email_field :email, autofocus: true, class: "field_form"
+        - if @user.errors.include?(:email)
+          %p.error-message= @user.errors.full_messages_for(:email).first
       .field
         .field_label
           = f.label :profile
         = f.text_area :profile, class: "field_form field_profile"
-        - if current_user.errors.include?(:profile)
-          %p.error-message= current_user.errors.full_messages_for(:profile).first
+        - if @user.errors.include?(:profile)
+          %p.error-message= @user.errors.full_messages_for(:profile).first
       .field
         .field_label
           = f.label :gender
@@ -37,9 +37,16 @@
         .field_label
           = f.label :age
         = f.select :age, options_for_select_from_enum(User, :age), {}, {class: "field_form"}
-      .field
-        .field_label
-          = f.label :prefecture
-        = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt:"選択してください"}, {class: "field_form"}
+
+        
+      = f.fields_for :user_address do |ff|
+        .field
+          .field_label
+            = ff.label :prefecture_id, "都道府県"
+          = ff.collection_select :prefecture_id, Prefecture.all, :id, :name, {include_blank:"--"}, {class: "field_form"}
+        .field
+          .field_label
+            = ff.label :city, "市区町村"
+          = ff.text_field :city, class: "field_form"
       .actions
         = f.submit "編集する", class: "actions_btn"
