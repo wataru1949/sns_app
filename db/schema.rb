@@ -15,9 +15,9 @@ ActiveRecord::Schema.define(version: 2020_08_06_060521) do
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "addressable_type"
     t.bigint "addressable_id"
-    t.integer "prefecture_id", null: false
-    t.string "city", null: false
-    t.string "place", null: false
+    t.integer "prefecture_id"
+    t.string "city"
+    t.string "place"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
