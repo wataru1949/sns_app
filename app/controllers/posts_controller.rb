@@ -8,6 +8,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @post.post_address = PostAddress.new
   end
 
   def create
@@ -51,7 +52,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :event, :detail, :prefecture_id, :accept_id, :event_date, :start_time, :end_time, :post_image, :remove).merge(user_id: current_user.id )
+    params.require(:post).permit(:title, :event, :detail, :accept_id, :event_date, :start_time, :end_time, :post_image, :remove, post_address_attributes:[:prefecture_id, :city, :place]).merge(user_id: current_user.id )
   end
 
   def set_post

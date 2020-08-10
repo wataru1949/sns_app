@@ -4,6 +4,7 @@ class GroupsController < ApplicationController
   def new
     @group = Group.new
     @group.group_pictures.new
+    @group.group_address = GroupAddress.new
   end
 
   def create
@@ -43,7 +44,7 @@ class GroupsController < ApplicationController
 
   private
   def group_params
-    params.require(:group).permit(:group_name, :content, :prefecture_id, user_ids: [], group_pictures_attributes:[:group_image, :_destroy, :id])
+    params.require(:group).permit(:group_name, :content, user_ids: [], group_pictures_attributes:[:group_image, :_destroy, :id], group_address_attributes:[:prefecture_id, :city, :place,])
   end
 
   def set_group
