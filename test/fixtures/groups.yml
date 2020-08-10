@@ -2,12 +2,11 @@
 #
 # Table name: groups
 #
-#  id            :bigint           not null, primary key
-#  content       :text(65535)      not null
-#  group_name    :string(255)      not null
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
-#  prefecture_id :integer          not null
+#  id         :bigint           not null, primary key
+#  content    :text(65535)      not null
+#  group_name :string(255)      not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 # Indexes
 #
