@@ -47,6 +47,9 @@
     .f_select {
       width: 40%;
     }
+    .f_middle {
+      width: 70%;
+    }
     &_time {
       width: 100%;
       display: flex;
@@ -69,18 +72,15 @@
       float: right;
       display: flex;
       flex-direction: column;
-      
       .file_column {
         height: 240px;
         margin: 0 auto;
       }
     }
     .js-file_group {
-      // width: 20%;
       height: 50px;
       margin-left: 20px;
       padding-top: 5px;
-      // height: 240px;
     }
     .js-file_group:not(:last-child) {
       height: 240px;
@@ -90,7 +90,6 @@
       border-radius: 2px;  
       width: 100%;
       background-color: white;
-      
     }
     .group_img {
       height: 220px;
@@ -102,7 +101,6 @@
         float: right;
         margin-top: 3px;
         color: $red;
-        // background-color: white;
         font-size: 15px;
       }
     }

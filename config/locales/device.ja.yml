@@ -29,8 +29,6 @@ ja:
         profile: プロフィール
         gender: 性別
         age: 年齢
-        prefecture: 都道府県
-
     models:
       user: ユーザ
   devise:

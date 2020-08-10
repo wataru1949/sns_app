@@ -2,8 +2,8 @@
   = render "share/side-bar"
   .main-container
     .main-wrapper
-      .top-container
-        .top-container_picture
+      -# .top-container
+      -#   .top-container_picture
       .main-wrapper_border
       .list-area
         - @posts.each do |post|
@@ -12,9 +12,7 @@
               .list_left
                 .list_left_image
                   - if post.post_image.present?
-                    = image_tag post.post_image.url, alt: "投稿画像", class: "list_left_image" 
-                    -# 代変画像を用意する
-                  -# - else
+                    = image_tag post.post_image.url, alt: "投稿画像"
               .list_right
                 .list_right_top
                   = post.title
@@ -27,7 +25,9 @@
                 .list_right_second
                   .list_right_second-prace
                     場所:
-                    = post.prefecture.name
+                    = post.post_address.prefecture.name
+                    = post.post_address.city
+                    = post.post_address.place
                   - if post.accept.present?
                     .list_right_second-accept
                       募集人数:

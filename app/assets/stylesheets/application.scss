@@ -8,3 +8,20 @@
 @import "shared/*";
 @import "posts/*";
 @import "groups/*";
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  font-size: 0.9em;
+  letter-spacing: 0.1em;
+  // font-style: italic;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  font-size: 0.9em;
+  letter-spacing: 0.1em;
+  // font-style: italic;
+
+}
+::placeholder{ /* Others */
+  font-size: 0.9em;
+  letter-spacing: 0.1em;
+  // font-style: italic;
+}

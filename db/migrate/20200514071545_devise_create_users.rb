@@ -10,7 +10,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :profile
       t.integer :gender,             default: 0
       t.integer :age,                default: 0
-      t.integer :prefecture_id
       t.string  :user_image
 
 

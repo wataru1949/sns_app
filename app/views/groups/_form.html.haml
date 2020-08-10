@@ -42,7 +42,6 @@
                   = f.file_field :group_image, name: "group[group_pictures_attributes][#{@group.group_pictures.count}][group_image]", class: 'js-file hidden'
                   %span.js-remove
                     = icon('fa', 'window-close')
-
             .form-area
               .form-area_label
                 = f.label :content, "グループ紹介"
@@ -51,15 +50,26 @@
               = f.text_area :content, class: "form-area_input f_area"
               - if @group.errors.include?(:content)
                 %p.error-message= @group.errors.full_messages_for(:content).first
-            .form-area
-              .form-area_label
-                = f.label :prefecture_id, "都道府県"
-                .form-area_label_info
-                  必須
-              = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt:"--"}, {class: "form-area_input f_select"}
-              - if @group.errors.include?(:prefecture_id)
-                %p.error-message= @group.errors.full_messages_for(:prefecture_id).first
-            .member-area
+
+            = f.fields_for :group_address do |ff|  
+              .form-area
+                .form-area_label
+                  = ff.label :prefecture_id, "都道府県"
+                  .form-area_label_info
+                    必須
+                = ff.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt:"--"}, {class: "form-area_input f_select"}
+                - if @group.errors.include?(:"group_address.prefecture_id")
+                  %p.error-message= @group.errors.full_messages_for(:"group_address.prefecture_id").first
+
+              .form-area
+                .form-area_label
+                  = ff.label :city, "市区町村"
+                = ff.text_field :city, class: "form-area_input f_field f_select"
+              .form-area
+                .form-area_label
+                  = ff.label :place, "その他場所"
+                = ff.text_field :place, class: "form-area_input f_field f_middle", placeholder: "主な活動場所などがあれば書きましょう"
+
             .btn-area
               = f.submit "登録", class: "actions_btn"
               = link_to "もどる", :back, class: "back_btn"
