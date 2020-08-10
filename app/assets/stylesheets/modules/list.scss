@@ -11,9 +11,14 @@
     &_left {
       padding: 5px 10px;
       &_image {
+        background-color: gainsboro;
         height: 150px;
         width: 150px;
-        border-radius: 2px;
+        border: solid 2px $light_gray;
+        img {
+          height: 100%;
+          width: 100%;
+        }
       }
     }
     &_right {
