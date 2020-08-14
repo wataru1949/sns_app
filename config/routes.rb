@@ -12,5 +12,5 @@ Rails.application.routes.draw do
   resources :groups, exept: :index do
     resources :chats, only: [:create, :destroy]
   end
-
+  resources :categories, only: [:index]
 end
