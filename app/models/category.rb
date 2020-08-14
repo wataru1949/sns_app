@@ -1,8 +1,13 @@
 class Category < ApplicationRecord
-  has_many :groups
-  has_many :posts
+  include CategoryHolder
 
-  validates :value, presence: true
+  has_many :posts
+  has_many :groups
+
+  def self.search(input)
+    return nil if input == ""
+    Category.where( ['value LIKE ?', "%#{input}%"] ).limit(10)
+  end
 end
 
 # == Schema Information

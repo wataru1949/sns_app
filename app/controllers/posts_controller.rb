@@ -9,10 +9,12 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     @post.post_address = PostAddress.new
+    @post.category = Category.new
   end
 
   def create
     @post = Post.new(post_params)
+    @post.category = Category.find_or_initialize_by(category_params[:category_attributes])
     if @post.save
       redirect_to root_path
     else
@@ -34,7 +36,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    
+    @post.category = Category.find_or_initialize_by(category_params[:category_attributes])
     if @post.update(post_params)
       if @post.remove == "1"
         @post.update_attribute(:post_image, "")
@@ -53,6 +55,10 @@ class PostsController < ApplicationController
   private
   def post_params
     params.require(:post).permit(:title, :event, :detail, :accept_id, :event_date, :start_time, :end_time, :post_image, :remove, post_address_attributes:[:prefecture_id, :city, :place]).merge(user_id: current_user.id )
+  end
+
+  def category_params
+    params.require(:post).permit(category_attributes:[:value])
   end
 
   def set_post
