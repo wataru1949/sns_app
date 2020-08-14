@@ -40,6 +40,19 @@
                   = f.file_field :group_image, name: "group[group_pictures_attributes][#{@group.group_pictures.count}][group_image]", class: 'js-file hidden'
                   %span.js-remove
                     = icon('fa', 'window-close')
+
+            .form-area
+              = f.fields_for :category do |ff|
+                .form-area_label
+                  = ff.label :value, "カテゴリー"
+                  .form-area_label_info
+                    必須
+                = ff.text_field :value, class: "form-area_input f_field", id:"category-search"
+                - if @group.errors.include?(:"category.value")
+                  %p.error-message= @group.errors.full_messages_for(:"category.value").first
+              #category-search-result
+
+
             .form-area
               .form-area_label
                 = f.label :content, "グループ紹介"
