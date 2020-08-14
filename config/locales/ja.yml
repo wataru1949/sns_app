@@ -17,6 +17,8 @@ ja:
         prefecture_id: "都道府県"
         city: "市区町村"
         place: "その他場所"
+      category:
+        value: "カテゴリー"
     errors:
       messages:
         record_invalid: "バリデーションに失敗しました: %{errors}"
