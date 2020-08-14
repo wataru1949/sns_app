@@ -5,11 +5,13 @@ class GroupsController < ApplicationController
     @group = Group.new
     @group.group_pictures.new
     @group.group_address = GroupAddress.new
+    @group.category = Category.new
   end
 
   def create
     @group = Group.new(group_params)
     @group.users << current_user
+    @group.category = Category.find_or_initialize_by(category_params[:category_attributes])
     if @group.save
       redirect_to root_path
     else
@@ -29,6 +31,7 @@ class GroupsController < ApplicationController
   end
   
   def update
+    @group.category = Category.find_or_initialize_by(category_params[:category_attributes])
     if @group.update(group_params)
       redirect_to group_path(@group)
     else
@@ -45,6 +48,10 @@ class GroupsController < ApplicationController
   private
   def group_params
     params.require(:group).permit(:group_name, :content, user_ids: [], group_pictures_attributes:[:group_image, :_destroy, :id], group_address_attributes:[:prefecture_id, :city, :place,])
+  end
+
+  def category_params
+    params.require(:group).permit(category_attributes:[:value])
   end
 
   def set_group
