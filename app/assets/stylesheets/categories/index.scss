@@ -1,0 +1,16 @@
+#category-search-result {
+  width: 100%;
+  .category-tag {
+    background-color: whitesmoke;
+    max-width: 50%;
+    padding: 2px 5px;
+    margin: 5px ;
+    border: solid 1px $light_gray;
+    border-radius: 3px;
+    font-size: 0.9em;
+  }
+  .category-tag:hover { 
+    background-color: $light_gray;
+    cursor: pointer;
+  }
+}
