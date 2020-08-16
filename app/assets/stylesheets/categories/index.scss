@@ -1,13 +1,19 @@
+.category-tag {
+  display: inline-block;
+  background-color: whitesmoke;
+  padding: 2px 9px;
+  border-radius: 3px;
+  font-size: 0.9em;
+  margin-bottom: 5px;
+}
+
 #category-search-result {
-  width: 100%;
   .category-tag {
-    background-color: whitesmoke;
-    max-width: 50%;
-    padding: 2px 5px;
+    display: block;
+    border-bottom: solid 1px $light_gray;
+    max-width: 230px;
     margin: 5px ;
-    border: solid 1px $light_gray;
-    border-radius: 3px;
-    font-size: 0.9em;
+    padding: 2px 9px;
   }
   .category-tag:hover { 
     background-color: $light_gray;
