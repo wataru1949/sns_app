@@ -17,36 +17,42 @@ place2 = %w(公園 小学校 運動場)
 
 comments = %w(行きたい！ 楽しそう！ 興味あります！ 参加したいです 途中まででも平気ですか？ 未経験ですがやってみたいです 友達誘って行きます！ 車で行けますか？ 次回もあれば参加します)
 
-30.times do |n|
-  a = (1..4).to_a.sample
-  u = users.sample
-  c = categories.sample
-  d = (40 - n)
-  s_time = Time.parse("09:00:00")
-  e_time = Time.parse("12:00:00")
-  ads = addresses.sample.split(":")
-
-  p = Post.create!(
-    title: (message1.sample + c.value + message2.sample),
-    detail: (message1.sample + c.value + message2.sample),
-    accept_id: "#{a}",
-    event_date: Date.today.advance(days: d),
-    start_time: s_time.advance(hours: a),
-    end_time: e_time.advance(hours: a),
-    post_image: open("#{Rails.root}/db/fixtures/post_images/post_img#{c.id}.jpg"),
-    user_id: "#{u.id}",
-    category_id: "#{c.id}"
-  )
-  p.create_post_address!(
-    prefecture_id: ads[0],
-    city: ads[1],
-    place: (place1.sample + place2.sample)
-  )
-  5.times do |m|
+15.times do |n|
+  2.times do |nn|
+    a = (1..4).to_a.sample
     u = users.sample
-    p.comments.create!(
-      comment: comments.sample,
-      user_id: "#{u.id}"
+    c = categories.sample
+    d = (40 - n)
+    t = a.days.ago
+    s_time = Time.parse("09:00:00")
+    e_time = Time.parse("12:00:00")
+    ads = addresses.sample.split(":")
+
+    p = Post.create!(
+      title: (message1.sample + c.value + message2.sample),
+      detail: (message1.sample + c.value + message2.sample),
+      accept_id: "#{a}",
+      event_date: Date.today.advance(days: d),
+      start_time: s_time.advance(hours: a),
+      end_time: e_time.advance(hours: a),
+      post_image: nn == 0 ?
+        open("#{Rails.root}/db/fixtures/post_images/post_img#{c.id}.jpg"):nil,
+      user_id: "#{u.id}",
+      category_id: "#{c.id}",
+      created_at: t.advance(hours: a * n, minutes: a * n)
     )
+    p.create_post_address!(
+      prefecture_id: ads[0],
+      city: ads[1],
+      place: (place1.sample + place2.sample)
+    )
+    a.times do |m|
+      u = users.sample
+      p.comments.create!(
+        comment: comments.sample,
+        user_id: "#{u.id}",
+        created_at: p.created_at.advance(hours: a * m, minutes: a * m)
+      )
+    end
   end
 end
