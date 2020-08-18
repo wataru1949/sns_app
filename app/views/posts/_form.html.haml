@@ -70,7 +70,7 @@
           .form-area
             .form-area_label
               = f.label :event_date, "日にち"
-            = f.date_field :event_date,class: "form-area_input f_select"
+            = f.date_field :event_date, class: "form-area_input f_select"
             - if @post.errors.include?(:event_date)
               %p.error-message= @post.errors.full_messages_for(:event_date).first
 
