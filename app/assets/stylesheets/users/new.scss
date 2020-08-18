@@ -9,6 +9,12 @@
     margin-top: 170px; 
     font-size: 35px;
     text-align: center;  
+    &_title {
+      display: inline-block;
+      margin-top: 50px;
+      font-weight: bold;
+      letter-spacing: 0.2em;
+    }
   }
 }
 .session-right {
@@ -25,15 +31,19 @@
   }
 }
 .form-container {
-  height: calc(100% - 40px);
   color: white;
   margin: 40px auto 0;
   padding: 30px 50px;
   background-color: $translucent-black;
   width: 700px;
+  overflow: scroll;
   .field {
     &_form {
       width: 300px;
+    }
+    .img-btn {
+      margin: 0 auto;
+      width: 30px;
     }
   }
 }
