@@ -7,20 +7,21 @@
     width: 200px;
     &_name {
       margin-left: 15px;
-      font-size: 20px;
+      letter-spacing: 0.1em;
       font-weight: bold;
       height: 30px;
       line-height: 30px;
     }
-    &_btn {
-      position: relative;
+    &_bottom {
+      display: flex;
+      flex-direction: row-reverse;
       height: 30px;
       width: 100%;
       line-height: 30px;
-      .edit-btn {
-        position: absolute;
-        right: 0em;
-        font-size:0.8em;
+      &_btm {
+        .edit-btn {
+          font-size:0.8em;
+        }
       }
     }
     &_check {

@@ -2,11 +2,11 @@
   margin: 0 auto;
   max-width: 850px;
   .list {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: $very_light_gray;
     box-shadow: $shadow;
     color: black;
     border: solid 2px $light_gray;
-    margin: 5px auto 20px;
+    margin: 2px auto 20px;
     display: flex;
     &_left {
       padding: 5px 10px;
@@ -14,10 +14,12 @@
         background-color: gainsboro;
         height: 150px;
         width: 150px;
-        border: solid 2px $light_gray;
+        line-height: 150px;
         img {
-          height: 100%;
-          width: 100%;
+          vertical-align: middle;
+          max-height: 100%;
+          max-width: 100%;
+          border: solid 2px $light_gray;
         }
       }
     }

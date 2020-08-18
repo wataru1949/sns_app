@@ -1,0 +1,49 @@
+= link_to post_path(post) do
+  .category-tag
+    = post.category.value
+  .list
+    .list_left
+      .list_left_image
+        - if post.post_image.present?
+          = image_tag post.post_image.url, alt: "投稿画像"
+    .list_right
+      .list_right_top
+        = post.title
+      .list_right_first
+        .list_right_first-name
+          = post.user.nickname
+        .list_right_first-created
+          投稿日時:
+          = post.created_at.strftime("%Y/%m/%d %H:%M")
+      .list_right_second
+        .list_right_second-prace
+          場所:
+          = post.post_address.prefecture.name
+          = post.post_address.city
+          = post.post_address.place
+        - if post.accept.present?
+          .list_right_second-accept
+            募集人数:
+            = post.accept.name
+      .list_right_third
+        - if post.event_date.present?
+          日時:
+          = post.event_date.strftime("%Y/%m/%d")
+        
+      .list_right_bottom
+        - if post.start_time.present? || post.end_time.present?
+          時間:
+        - if post.start_time.present?
+          = post.start_time.strftime("%H:%M")
+        - if post.start_time.present? || post.end_time.present?
+          〜
+        - if post.end_time.present?
+          = post.end_time.strftime("%H:%M")
+        .list_right_bottom-info
+          = icon("far", "comment")
+          = post.comments.length
+      
+
+
+
+

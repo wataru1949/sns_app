@@ -1,0 +1,38 @@
+- if user_signed_in? && chat.user_id == current_user.id
+  .chat.my-chat
+    .chat_user
+      - if chat.user.user_image.present?
+        = image_tag chat.user.user_image.url, alt: "ユーザー画像", class: "user_img"
+      - else
+        = image_tag "picture/user-2517433_640.png", alt: "ユーザー画像", class: "user_img"
+      .chat_user_name
+        = chat.user.nickname
+    .chat_body
+      - if chat.body.present?
+        = simple_format(chat.body, class: "chat_body_bubble") 
+      - if chat.chat_image.present?
+        .chat_body_img
+          = image_tag chat.chat_image.url, alt: "コメント画像", class: "chat_body_img"
+      .chat_body_bottom
+        = chat.created_at.strftime("%Y/%m/%d %H:%M")
+        - if user_signed_in? && chat.user_id == current_user.id
+          = link_to "削除", group_chat_path(@group, chat.id), method: :delete,
+            data: { confirm: "本当に削除しますか？" }
+- else
+  .chat
+    .chat_user
+      - if chat.user.user_image.present?
+        = image_tag chat.user.user_image.url, alt: "ユーザー画像", class: "user_img"
+      - else
+        = image_tag "picture/user-2517433_640.png", alt: "ユーザー画像", class: "user_img"
+      .chat_user_name
+        = chat.user.nickname
+    .chat_body
+      - if chat.body.present?
+        = simple_format(chat.body, class: "chat_body_bubble") 
+      - if chat.chat_image.present?
+        .chat_body_img
+          = image_tag chat.chat_image.url, alt: "コメント画像", class: "chat_body_img"
+      .chat_body_bottom
+        = chat.created_at.strftime("%Y/%m/%d %H:%M")
+

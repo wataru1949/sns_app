@@ -10,26 +10,11 @@
   }
   .group_img {
     width: 100%;
-    border: solid 2px $light_gray;
+    margin: 5px 0 20px;
+    border: solid 2px $dark_gray;
+    box-shadow: $shadow;
   }
-  &_table {
-    margin-top: 20px;
-    background-color: white;
-    width: 100%;
-    border: solid 2px $light_gray;
-    tr {
-      font-size: 0.9em;
-      text-align: center;
-      th {
-        padding: 2px;
-        width: 120px;
-        text-align: center;
-      }
-      th, td {
-        border: solid 1px $light_gray;
-      }
-    }
-  }  &_border {
+  &_border {
     height: 30px;
     border-top: ridge 1px rgba(102, 83, 0, 0.5);
     margin: 30px 20px 0;
@@ -102,7 +87,7 @@
   }
 }
 .chat-container {
-  background-color: white;
+  background-color: $very_light_gray;
   max-width: 850px;
   margin: 0 auto 120px;
   padding: 50px 30px;
@@ -123,6 +108,7 @@
       max-width: 550px;
       padding-top: 5px;
       &_bubble {
+        background-color: white;
         min-height: 50px;
         line-height: 1.5em;
         padding: 8px 20px;
@@ -130,17 +116,26 @@
         border: solid 1px $light_gray;
         box-shadow: rgba(112, 74, 24, 0.7) 2px 1px 2px;
       }
-      &_img {
-        max-width: 450px;
-        img {
-          width: 100%;
-          border: solid 1px $light_gray;
-          box-shadow: rgba(112, 74, 24, 0.7) 2px 1px 2px;;
-        }
-      }
       &_bottom {
         font-size: 0.9em;
         padding: 5px 10px;
+      }
+    }
+  }
+  .my-chat {
+    display: flex;
+    flex-direction: row-reverse;
+    .chat_user {
+      .user_img {
+        float: right;
+      }
+      &_name {
+        clear: both;
+      }
+    }
+    .chat_body {
+      &_bubble {
+        background-color: #fff8dc;
       }
     }
   }

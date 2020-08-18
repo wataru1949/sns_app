@@ -23,7 +23,7 @@ class GroupsController < ApplicationController
   
   def show
     @chat = Chat.new
-    @chats = @group.chats.includes(:user)
+    @chats = @group.chats.order(created_at: :asc).includes(:user)
   end
   
   

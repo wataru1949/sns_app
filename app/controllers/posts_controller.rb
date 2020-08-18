@@ -25,8 +25,8 @@ class PostsController < ApplicationController
   def show
     if current_user
       @comment = Comment.new
-      @comments = @post.comments.includes(:user)
     end
+    @comments = @post.comments.includes(:user)
   end
 
   def edit
