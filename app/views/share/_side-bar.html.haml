@@ -6,12 +6,13 @@
       - else  
         = image_tag "picture/user-2517433_640.png", alt: "ユーザー画像", class: "user_img"
     .user-data_right
-      .user-data_right_name
-        - if user_signed_in?
+      - if user_signed_in?
+        .user-data_right_name
           = current_user.nickname
-          .user-data_right_btn
-            = link_to edit_user_path(current_user.id), class: "edit-btn" do
-              = icon("fas", "user-cog")
+        .user-data_right_bottom
+          .user-data_right_bottom_btn
+          = link_to edit_user_path(current_user.id), class: "edit-btn" do
+            = icon("fas", "user-cog")
   .side-bar_main
     - if user_signed_in?
       .action_links
