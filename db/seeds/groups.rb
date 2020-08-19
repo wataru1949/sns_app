@@ -22,7 +22,7 @@ group_names = %w(クラブ 倶楽部 愛好会 同好会 部 フレンズ)
   c = categories[n]
   g = Group.create!(
     group_name: (c.value + gn),
-    content: (message1.sample + c.value + message2.sample + "<br>" + "メンバー募集してます！"),
+    content: (message1.sample + c.value + message2.sample + "\n" + "メンバー募集してます！"),
     category_id: "#{c.id}"
   )
   g.create_group_address!(
