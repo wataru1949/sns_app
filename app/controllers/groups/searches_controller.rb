@@ -1,6 +1,6 @@
 class Groups::SearchesController < ApplicationController
 
   def index
-    @groups = Group.search(params[:keyword])
+    @groups = Group.group_listing.search(params[:keyword]).page(params[:page])
   end
 end

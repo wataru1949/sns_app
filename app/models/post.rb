@@ -17,6 +17,10 @@ class Post < ApplicationRecord
   validates :title, length: { maximum: 40 }
   validates :detail, length: { maximum: 1000 }
   validates :event_date, date: { after_or_equal_to: Proc.new { Date.today } }, allow_blank: true, on: [ :create, :update ] 
+
+  scope :post_listing, -> {
+    order(created_at: :desc).includes(:user, :category, :comments, :post_address)
+  }
 end
 
 # == Schema Information

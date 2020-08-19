@@ -14,6 +14,10 @@ class Group < ApplicationRecord
   validates :group_name, uniqueness: true, length: { maximum: 20 }
   validates :content, length: { maximum: 500 }
 
+  scope :group_listing, -> {
+    order(created_at: :desc).includes(:group_address, :category, :group_pictures, :users)
+  }
+
   def self.search(search)
     return Group.all unless search
     Group.where('group_name LIKE(?)', "%#{search}%")

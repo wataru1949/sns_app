@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:edit, :update, :show, :destroy]
 
   def index
-    @posts = Post.includes(:user).order(created_at: :desc)
+    @posts = Post.post_listing.page(params[:page])
   end
 
   def new
@@ -26,7 +26,7 @@ class PostsController < ApplicationController
     if current_user
       @comment = Comment.new
     end
-    @comments = @post.comments.includes(:user)
+    @comments = @post.comments.includes(:user).page(params[:page])
   end
 
   def edit
