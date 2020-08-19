@@ -2,9 +2,8 @@
   = render "share/side-bar"
   .main-container
     .main-wrapper
-      -# .top-container
-      -#   .top-container_picture
       .main-wrapper_border
       .list-area
         - @posts.each do |post|
           = render "post", post: post
+      = paginate @posts

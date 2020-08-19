@@ -4,13 +4,13 @@
     .main-wrapper
       .list-area
         - @groups.each do |group|
+          .category-tag
+            = group.category.value
           .list
             .list_left
               .list_left_image
                 - if group.group_pictures.present?
                   = image_tag group.group_pictures.first.group_image.url, alt: "グループ画像", class: "list_left_image" 
-                  -# 代変画像を用意する
-                -# - else
             .list_right
               .list_right_top
                 .list_right_top_name
@@ -24,6 +24,7 @@
                 .list_right_bottom-info
                   = link_to "参加申請", "/", class: "app-btn"
                   = icon("fas", "user-friends")
-                  = group.users.length
+                  = group.group_users.length
+      = paginate @groups
                 
                 
