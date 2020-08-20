@@ -3,13 +3,16 @@ class CommentsController < ApplicationController
 
   def create
     comment = Comment.new(comment_params)
-    comment.save
+    if comment.save
+      flash.notice = "コメントを投稿しました。"
+    end
     redirect_to post_path(comment.post.id)
   end
 
   def destroy
     comment = Comment.find(params[:id])
     comment.destroy
+    flash.notice = "コメントを削除しました。"
     redirect_to post_path(comment.post.id)
   end
 

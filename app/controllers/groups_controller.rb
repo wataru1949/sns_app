@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_group, only:[:edit, :update, :show, :destroy]
 
   def new
@@ -13,10 +14,12 @@ class GroupsController < ApplicationController
     @group.users << current_user
     @group.category = Category.find_or_initialize_by(category_params[:category_attributes])
     if @group.save
+      flash.notice = "グループを作成しました。"
       redirect_to root_path
     else
       @group.group_pictures.clear
       @group.group_pictures.new
+      flash.now.alert = "入力に誤りがあります。"
       render :new
     end
   end
@@ -33,15 +36,18 @@ class GroupsController < ApplicationController
   def update
     @group.category = Category.find_or_initialize_by(category_params[:category_attributes])
     if @group.update(group_params)
+      flash.notice = "グループを編集しました。"
       redirect_to group_path(@group)
     else
       @group.group_pictures = Group.find(params[:id]).group_pictures
+      flash.now.alert = "入力に誤りがあります。"
       render :edit
     end
   end
 
   def destroy
     @group.destroy
+    flash.notice = "グループを削除しました。"
     redirect_to root_path
   end
 

@@ -9,7 +9,7 @@ class ChatsController < ApplicationController
       end
     else
       @chats = @group.chats.includes(:user)
-      flash.now[:alert] = 'メッセージを入力してください。'
+      flash.now.alert = "メッセージを入力してください。"
       render "groups/show"
     end
   end

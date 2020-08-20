@@ -16,17 +16,19 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.category = Category.find_or_initialize_by(category_params[:category_attributes])
     if @post.save
+      flash.notice = "投稿が完了しました。"
       redirect_to root_path
     else
+      flash.now.alert = "入力に誤りがあります。"
       render :new
     end
   end
 
-  def show
+  def show  
     if current_user
       @comment = Comment.new
     end
-    @comments = @post.comments.includes(:user).page(params[:page])
+    @comments = @post.comments.includes(:user).page(params[:page]).order(created_at: :desc)
   end
 
   def edit
@@ -41,14 +43,17 @@ class PostsController < ApplicationController
       if @post.remove == "1"
         @post.update_attribute(:post_image, "")
       end
+      flash.notice = "投稿を編集しました。"
       redirect_to @post
     else
+      flash.now.alert = "入力に誤りがあります。"
       render :edit
     end
   end
 
   def destroy
     @post.destroy
+    flash.notice = "投稿を削除しました。"
     redirect_to root_path
   end
 

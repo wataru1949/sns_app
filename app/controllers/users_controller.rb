@@ -15,8 +15,10 @@ class UsersController < ApplicationController
       if @user.remove == "1"
         @user.update_attribute(:user_image, "")
       end
+      flash.notice = "アカウント情報を編集しました。"
       redirect_to root_path
     else
+      flash.now.alert = "入力に誤りがあります。"
       render :edit
     end
   end 
