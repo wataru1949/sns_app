@@ -1,0 +1,20 @@
+nav.pagination {
+  margin: 60px 100px;
+  padding: 25px;
+  text-align: center;
+  border-bottom: solid 1px $light_gray;
+  span.page, span.first, span.prev, span.next, span.last {
+    display: inline-block;
+    margin: 6px;
+    a {
+      background-color: $very_light_gray;
+      padding: 8px;
+      border: solid 1px $light_gray;
+
+    }
+  }
+  span.current {
+    padding: 9px;
+    background-color: $light_gray;
+  }
+}
