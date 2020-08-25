@@ -1,8 +1,6 @@
 .header
   = content_tag(:span, flash.notice, class: "notice") if flash.notice
   = content_tag(:span, flash.alert, class: "alert") if flash.alert
-  .header_logo
-    = link_to image_tag("picture/logos/gather_logo(27).png", class:"logo-img"), root_path
   .header_mypage
     - if user_signed_in?
       = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "login-link"

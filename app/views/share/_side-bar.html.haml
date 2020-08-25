@@ -1,4 +1,7 @@
 .side-bar
+  .main-logo
+    = link_to image_tag("picture/logos/gather_logo(27).png", class:"logo-img"), root_path
+
   .user-data
     .user_img_box
       - if user_signed_in? && current_user.user_image.present?
