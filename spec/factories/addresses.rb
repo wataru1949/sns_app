@@ -14,6 +14,8 @@
 # Indexes
 #
 #  index_addresses_on_addressable_type_and_addressable_id  (addressable_type,addressable_id)
+#  index_addresses_on_city                                 (city)
+#  index_addresses_on_prefecture_id_and_city               (prefecture_id,city)
 #
 FactoryBot.define do
   factory :address do

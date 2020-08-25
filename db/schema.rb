@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2020_08_13_061508) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
+    t.index ["city"], name: "index_addresses_on_city"
+    t.index ["prefecture_id", "city"], name: "index_addresses_on_prefecture_id_and_city"
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -92,6 +94,7 @@ ActiveRecord::Schema.define(version: 2020_08_13_061508) do
     t.bigint "user_id"
     t.bigint "category_id"
     t.index ["category_id"], name: "index_posts_on_category_id"
+    t.index ["event_date"], name: "index_posts_on_event_date"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
