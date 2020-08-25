@@ -17,7 +17,7 @@
           = post.created_at.strftime("%Y/%m/%d %H:%M")
       .list_right_second
         .list_right_second-prace
-          場所:
+          場所  :
           = post.post_address.prefecture.name
           = post.post_address.city
           = post.post_address.place
@@ -27,12 +27,12 @@
             = post.accept.name
       .list_right_third
         - if post.event_date.present?
-          日時:
+          日にち:
           = post.event_date.strftime("%Y/%m/%d")
         
       .list_right_bottom
         - if post.start_time.present? || post.end_time.present?
-          時間:
+          時間  :
         - if post.start_time.present?
           = post.start_time.strftime("%H:%M")
         - if post.start_time.present? || post.end_time.present?
