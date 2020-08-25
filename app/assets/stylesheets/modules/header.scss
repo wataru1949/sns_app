@@ -1,11 +1,13 @@
 .header {
-  background-color: goldenrod;
-  box-shadow: $natural_shadow;
-  border-bottom: solid 1px peru;
-  height: 40px;
+  // background-color: moccasin;
+  background-color: oldlace;
+  // box-shadow: $natural_shadow;
+  border-bottom: ridge 3px tan;
   width: 100%;
-  position: fixed;
+  height: 36px;
   display: flex;
+  position: fixed;
+  // position: relative;
   span.notice, span.alert {
     display: inline-block;
     padding: 1px 6px;
@@ -13,8 +15,8 @@
     font-size: 0.8em;
     color: $very_light_gray;
     border-radius: 2px;
-    position: absolute;
-    left: 5px;
+    // position: absolute;
+    // left: 5px;
   }
   span.notice {
     background-color: forestgreen;
@@ -22,20 +24,12 @@
   span.alert {
     background-color: crimson;
   }
-  &_logo {
-    margin: 0 auto;
-    text-align: center;
-    padding: 2px;
-    .logo-img {
-      height: 95%;
-    }
-  }
   &_mypage {
     height: 40px;
     align-items: center;
     display: flex;
     position: absolute;
-    right: 5px;
+    right: 315px;
     .login-link {
       display: inline-block;
       font-size: 0.8em;
