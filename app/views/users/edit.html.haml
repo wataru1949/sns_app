@@ -1,52 +1,51 @@
-.wrapper
-  .form-container
-    = form_with model: @user, local: true do |f|
-      .field
-        = f.file_field :user_image, class: "hidden"
-        - if @user.user_image.present?
-          %span.pip
-            = image_tag @user.user_image.url, alt: "投稿画像", class: "user_img" 
-          = f.label :remove, class: "rm-btn" do
-            = icon('fa', 'window-close')
-          = f.check_box :remove, class: "hidden"
-        = f.label :user_image, class: "img-btn" do
-          = icon('fa', 'image')
-      .field
-        .field_label
-          = f.label :nickname
-        = f.text_field :nickname, class: "field_form"
-        - if @user.errors.include?(:nickname)
-          %p.error-message= @user.errors.full_messages_for(:nickname).first
-      .field
-        .field_label
-          = f.label :email
-        = f.email_field :email, autofocus: true, class: "field_form"
-        - if @user.errors.include?(:email)
-          %p.error-message= @user.errors.full_messages_for(:email).first
-      .field
-        .field_label
-          = f.label :profile
-        = f.text_area :profile, class: "field_form field_profile"
-        - if @user.errors.include?(:profile)
-          %p.error-message= @user.errors.full_messages_for(:profile).first
-      .field
-        .field_label
-          = f.label :gender
-        = f.select :gender, options_for_select_from_enum(User, :gender), {}, {class: "field_form"}
-      .field
-        .field_label
-          = f.label :age
-        = f.select :age, options_for_select_from_enum(User, :age), {}, {class: "field_form"}
+.form-container
+  = form_with model: @user, local: true do |f|
+    .field
+      = f.file_field :user_image, class: "hidden"
+      - if @user.user_image.present?
+        %span.pip
+          = image_tag @user.user_image.url, alt: "投稿画像", class: "user_img" 
+        = f.label :remove, class: "rm-btn" do
+          = icon('fa', 'window-close')
+        = f.check_box :remove, class: "hidden"
+      = f.label :user_image, class: "img-btn" do
+        = icon('fa', 'image')
+    .field
+      .field_label
+        = f.label :nickname
+      = f.text_field :nickname, class: "field_form"
+      - if @user.errors.include?(:nickname)
+        %p.error-message= @user.errors.full_messages_for(:nickname).first
+    .field
+      .field_label
+        = f.label :email
+      = f.email_field :email, autofocus: true, class: "field_form"
+      - if @user.errors.include?(:email)
+        %p.error-message= @user.errors.full_messages_for(:email).first
+    .field
+      .field_label
+        = f.label :profile
+      = f.text_area :profile, class: "field_form field_profile"
+      - if @user.errors.include?(:profile)
+        %p.error-message= @user.errors.full_messages_for(:profile).first
+    .field
+      .field_label
+        = f.label :gender
+      = f.select :gender, options_for_select_from_enum(User, :gender), {}, {class: "field_form"}
+    .field
+      .field_label
+        = f.label :age
+      = f.select :age, options_for_select_from_enum(User, :age), {}, {class: "field_form"}
 
-        
-      = f.fields_for :user_address do |ff|
-        .field
-          .field_label
-            = ff.label :prefecture_id, "都道府県"
-          = ff.collection_select :prefecture_id, Prefecture.all, :id, :name, {include_blank:"--"}, {class: "field_form"}
-        .field
-          .field_label
-            = ff.label :city, "市区町村"
-          = ff.text_field :city, class: "field_form"
-      .actions
-        = f.submit "編集する", class: "actions_btn"
+      
+    = f.fields_for :user_address do |ff|
+      .field
+        .field_label
+          = ff.label :prefecture_id, "都道府県"
+        = ff.collection_select :prefecture_id, Prefecture.all, :id, :name, {include_blank:"--"}, {class: "field_form"}
+      .field
+        .field_label
+          = ff.label :city, "市区町村"
+        = ff.text_field :city, class: "field_form"
+    .actions
+      = f.submit "編集する", class: "actions_btn"

@@ -1,94 +1,90 @@
-.wrapper
-  = render "share/side-bar"
-  .main-container
-    .main-wrapper
-      .top-container
-        .post_info
-          .post_info_title
-            = @post.title
-          %p.category-tag
-            = @post.category.value
-          - if @post.post_image.present?
-            .post_img_box
-              = image_tag @post.post_image.url, alt: "投稿画像"
-          %table
-            %tr
-              %th
-                場所
-              %td
-                = @post.post_address.prefecture.name
-                = @post.post_address.city
-                = @post.post_address.place
-            %tr
-              %th
-                日にち
-              %td
-                - if @post.event_date.present?
-                  = @post.event_date.strftime("%Y/%m/%d")
-            %tr
-              %th
-                開始予定
-              %td
-                - if @post.start_time.present?
-                  = @post.start_time.strftime("%H:%M")
-            %tr
-              %th
-                終了予定
-              %td
-                - if @post.end_time.present?
-                  = @post.end_time.strftime("%H:%M")
-            %tr
-              %th
-                募集人数
-              %td
-                - if @post.accept.present?
-                  = @post.accept.name
-          .post_info_actions
-            - if user_signed_in? && @post.user_id == current_user.id
-              %li
-                = link_to "編集する", edit_post_path(@post), class: "normal-btn"
-              %li
-                = link_to "削除する", post_path(@post), method: :delete, class: "normal-btn",
-                data: { confirm: "本当に削除しますか？" }
-          .post_info_border
-          .post_info_detail
-            = simple_format(@post.detail)
-            
-      .comment-container  
-        - if current_user
-          = form_with(model: [@post, @comment], local: true) do |f|
-            .comment-form
-              = f.text_area :comment, placeholder: "コメントする", rows: 2, class: "comment-form_left"
-              .comment-form_right
-                %li
-                  = f.label :comment_image, class: "img-btn" do
-                    = icon("fas", "image")
-                    = f.file_field :comment_image, class: "hidden"
-                %li
-                  = f.submit "送信", class: "submit-btn"
-        - else
-          .comment-container_alert  
-            ※※※ コメントの投稿にはログインが必要です ※※※
-        .comment-area
-          - if @comments.present?
-            - @comments.each do |comment|
-              .comment-list
-                .comment-list_upper
-                  = link_to comment.user.nickname, user_path(comment.user_id), class: "comment-list_upper_name"
-                  ：
-                  = comment.created_at.strftime("%Y/%m/%d %H:%M")
-                  - if user_signed_in? && comment.user_id == current_user.id
-                    = link_to "削除", post_comment_path(@post, comment.id), method: :delete,
-                    data: { confirm: "本当に削除しますか？" }
-                .comment-list_bottom
-                  - if comment.comment.present?
-                    .comment-list_bottom_content
-                      = simple_format(comment.comment)
-                  = image_tag comment.comment_image.url, alt: "コメント画像", class: "comment_img" if comment.comment_image.present?
-          - else
-            .comment-area_info
-              投稿の内容が気になったらコメントしてみましょう！
-        = paginate @comments
+.top-container
+  .post_info
+    .post_info_title
+      = @post.title
+    %p.category-tag
+      = @post.category.value
+    - if @post.post_image.present?
+      .post_img_box
+        = image_tag @post.post_image.url, alt: "投稿画像"
+    %table
+      %tr
+        %th
+          場所
+        %td
+          = @post.post_address.prefecture.name
+          = @post.post_address.city
+          = @post.post_address.place
+      %tr
+        %th
+          日にち
+        %td
+          - if @post.event_date.present?
+            = @post.event_date.strftime("%Y/%m/%d")
+      %tr
+        %th
+          開始予定
+        %td
+          - if @post.start_time.present?
+            = @post.start_time.strftime("%H:%M")
+      %tr
+        %th
+          終了予定
+        %td
+          - if @post.end_time.present?
+            = @post.end_time.strftime("%H:%M")
+      %tr
+        %th
+          募集人数
+        %td
+          - if @post.accept.present?
+            = @post.accept.name
+    .post_info_actions
+      - if user_signed_in? && @post.user_id == current_user.id
+        %li
+          = link_to "編集する", edit_post_path(@post), class: "normal-btn"
+        %li
+          = link_to "削除する", post_path(@post), method: :delete, class: "normal-btn",
+          data: { confirm: "本当に削除しますか？" }
+    .post_info_border
+    .post_info_detail
+      = simple_format(@post.detail)
+      
+.comment-container  
+  - if current_user
+    = form_with(model: [@post, @comment], local: true) do |f|
+      .comment-form
+        = f.text_area :comment, placeholder: "コメントする", rows: 2, class: "comment-form_left"
+        .comment-form_right
+          %li
+            = f.label :comment_image, class: "img-btn" do
+              = icon("fas", "image")
+              = f.file_field :comment_image, class: "hidden"
+          %li
+            = f.submit "送信", class: "submit-btn"
+  - else
+    .comment-container_alert  
+      ※※※ コメントの投稿にはログインが必要です ※※※
+  .comment-area
+    - if @comments.present?
+      - @comments.each do |comment|
+        .comment-list
+          .comment-list_upper
+            = link_to comment.user.nickname, user_path(comment.user_id), class: "comment-list_upper_name"
+            ：
+            = comment.created_at.strftime("%Y/%m/%d %H:%M")
+            - if user_signed_in? && comment.user_id == current_user.id
+              = link_to "削除", post_comment_path(@post, comment.id), method: :delete,
+              data: { confirm: "本当に削除しますか？" }
+          .comment-list_bottom
+            - if comment.comment.present?
+              .comment-list_bottom_content
+                = simple_format(comment.comment)
+            = image_tag comment.comment_image.url, alt: "コメント画像", class: "comment_img" if comment.comment_image.present?
+    - else
+      .comment-area_info
+        投稿の内容が気になったらコメントしてみましょう！
+  = paginate @comments
 
 
 

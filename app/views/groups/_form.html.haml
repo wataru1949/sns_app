@@ -1,86 +1,82 @@
-.wrapper
-  = render "share/side-bar"
-  .main-container
-    .main-wrapper
-      .top-container
-        = form_with model: @group, local: true do |f|
-          .form-wrapper
-            .form-area
-              .form-area_label
-                = f.label :group_name, "グループ名"
-                .form-area_label_info
-                  必須
-              = f.text_field :group_name, class: "form-area_input f_field"
-              - if @group.errors.include?(:group_name)
-                %p.error-message= @group.errors.full_messages_for(:group_name).first
+.top-container
+  = form_with model: @group, local: true do |f|
+    .form-wrapper
+      .form-area
+        .form-area_label
+          = f.label :group_name, "グループ名"
+          .form-area_label_info
+            必須
+        = f.text_field :group_name, class: "form-area_input f_field"
+        - if @group.errors.include?(:group_name)
+          %p.error-message= @group.errors.full_messages_for(:group_name).first
 
-            .image-area#image-box
-            
-              #previews
-                - if @group.persisted?
-                  - @group.group_pictures.each_with_index do |image, i|
-                    - if image[:id].present?
-                      .file_column{ data: {index: i} }
-                        = image_tag image.group_image.url, data: { index: i }, class: "group_img"
+      .image-area#image-box
+      
+        #previews
+          - if @group.persisted?
+            - @group.group_pictures.each_with_index do |image, i|
+              - if image[:id].present?
+                .file_column{ data: {index: i} }
+                  = image_tag image.group_image.url, data: { index: i }, class: "group_img"
 
-              = f.fields_for :group_pictures do |image|
-                .js-file_group{"data-index" => "#{image.index}"}
-                  = image.label :group_image, class: "img-btn" do
-                    = icon('fa', 'image', class: 'icon')
-                  = image.file_field :group_image, class: "js-file hidden"
-                  %span.js-remove
-                    = icon('fa', 'window-close')
-                - if @group.persisted?
-                  = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+        = f.fields_for :group_pictures do |image|
+          .js-file_group{"data-index" => "#{image.index}"}
+            = image.label :group_image, class: "img-btn" do
+              = icon('fa', 'image', class: 'icon')
+            = image.file_field :group_image, class: "js-file hidden"
+            %span.js-remove
+              = icon('fa', 'window-close')
+          - if @group.persisted?
+            = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
 
-              - if @group.persisted? && @group.group_pictures.length < 3
-                .js-file_group{"data-index" => "#{@group.group_pictures.count}"}
-                  = f.label :group_image, class: "img-btn" do
-                    = icon('fa', 'image', class: 'icon')
-                  = f.file_field :group_image, name: "group[group_pictures_attributes][#{@group.group_pictures.count}][group_image]", class: 'js-file hidden'
-                  %span.js-remove
-                    = icon('fa', 'window-close')
+        - if @group.persisted? && @group.group_pictures.length < 3
+          .js-file_group{"data-index" => "#{@group.group_pictures.count}"}
+            = f.label :group_image, class: "img-btn" do
+              = icon('fa', 'image', class: 'icon')
+            = f.file_field :group_image, name: "group[group_pictures_attributes][#{@group.group_pictures.count}][group_image]", class: 'js-file hidden'
+            %span.js-remove
+              = icon('fa', 'window-close')
 
-            .form-area
-              = f.fields_for :category do |ff|
-                .form-area_label
-                  = ff.label :value, "カテゴリー"
-                  .form-area_label_info
-                    必須
-                = ff.text_field :value, class: "form-area_input f_field", id:"category-search"
-                - if @group.errors.include?(:"category.value")
-                  %p.error-message= @group.errors.full_messages_for(:"category.value").first
-              #category-search-result
+      .form-area
+        = f.fields_for :category do |ff|
+          .form-area_label
+            = ff.label :value, "カテゴリー"
+            .form-area_label_info
+              必須
+          = ff.text_field :value, class: "form-area_input f_field", id:"category-search"
+          - if @group.errors.include?(:"category.value")
+            %p.error-message= @group.errors.full_messages_for(:"category.value").first
+        #category-search-result
 
 
-            .form-area
-              .form-area_label
-                = f.label :content, "グループ紹介"
-                .form-area_label_info
-                  必須
-              = f.text_area :content, class: "form-area_input f_area"
-              - if @group.errors.include?(:content)
-                %p.error-message= @group.errors.full_messages_for(:content).first
+      .form-area
+        .form-area_label
+          = f.label :content, "グループ紹介"
+          .form-area_label_info
+            必須
+        = f.text_area :content, class: "form-area_input f_area"
+        - if @group.errors.include?(:content)
+          %p.error-message= @group.errors.full_messages_for(:content).first
 
-            = f.fields_for :group_address do |ff|  
-              .form-area
-                .form-area_label
-                  = ff.label :prefecture_id, "都道府県"
-                  .form-area_label_info
-                    必須
-                = ff.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt:"--"}, {class: "form-area_input f_select"}
-                - if @group.errors.include?(:"group_address.prefecture_id")
-                  %p.error-message= @group.errors.full_messages_for(:"group_address.prefecture_id").first
+      = f.fields_for :group_address do |ff|  
+        .form-area
+          .form-area_label
+            = ff.label :prefecture_id, "都道府県"
+            .form-area_label_info
+              必須
+          = ff.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt:"--"}, {class: "form-area_input f_select"}
+          - if @group.errors.include?(:"group_address.prefecture_id")
+            %p.error-message= @group.errors.full_messages_for(:"group_address.prefecture_id").first
 
-              .form-area
-                .form-area_label
-                  = ff.label :city, "市区町村"
-                = ff.text_field :city, class: "form-area_input f_field f_select"
-              .form-area
-                .form-area_label
-                  = ff.label :place, "その他場所"
-                = ff.text_field :place, class: "form-area_input f_field f_middle", placeholder: "主な活動場所などがあれば書きましょう"
+        .form-area
+          .form-area_label
+            = ff.label :city, "市区町村"
+          = ff.text_field :city, class: "form-area_input f_field f_select"
+        .form-area
+          .form-area_label
+            = ff.label :place, "その他場所"
+          = ff.text_field :place, class: "form-area_input f_field f_middle", placeholder: "主な活動場所などがあれば書きましょう"
 
-            .btn-area
-              = f.submit "登録", class: "actions_btn"
-              = link_to "もどる", :back, class: "back_btn"
+      .btn-area
+        = f.submit "登録", class: "actions_btn"
+        = link_to "もどる", :back, class: "back_btn"

@@ -1,9 +1,4 @@
-.wrapper
-  = render "share/side-bar"
-  .main-container
-    .main-wrapper
-      .main-wrapper_border
-      .list-area
-        - @posts.each do |post|
-          = render "post", post: post
-      = paginate @posts
+.list-area
+  - @posts.each do |post|
+    = render "post", post: post
+= paginate @posts

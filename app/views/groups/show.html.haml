@@ -1,89 +1,85 @@
-.wrapper
-  = render "share/side-bar"
-  .main-container
-    .main-wrapper
-      .top-container
-        .group_info
-          %h1.group_info_name
-            = @group.group_name
-          %p.category-tag
-            = @group.category.value
-          - if @group.group_pictures.present?
-            = image_tag @group.group_pictures.first.group_image.url, alt: "グループ画像", class: "group_img"
+.top-container
+  .group_info
+    %h1.group_info_name
+      = @group.group_name
+    %p.category-tag
+      = @group.category.value
+    - if @group.group_pictures.present?
+      = image_tag @group.group_pictures.first.group_image.url, alt: "グループ画像", class: "group_img"
 
-          %table
-            %tr
-              %th
-                活動地域
-              %td
-                = @group.group_address.prefecture.name
-                = @group.group_address.city
-                = @group.group_address.place
-            %tr
-              %th
-                メンバー数
-              %td
-                = @group.users.length
-                人
-          .group_info_border
-          .group_info_content
-            = simple_format(@group.content)
-          %ul.group_info_menu
-            %li.cog-btn
-              = link_to edit_group_path(@group) do
-                = icon('fas', 'cog')
-            %li.member-btn
-              = icon('fas', 'users')
-            %li.member-btn
-              = icon('fas','plus')
-          .member_modal
-            .member_modal_top
-              .close-btn
-                = icon('far','times-circle')
-              %p メンバー 一覧
-            - @group.users.each do |user|
-              .user-data
-                - if user.user_image.present?
-                  = image_tag user.user_image.url, alt: "ユーザー画像", class: "user_img" 
-                - else
-                  = image_tag "picture/user-2517433_640.png", alt: "ユーザー画像", class: "user_img"
-                .user-data_right
-                  .user-data_right_name
-                    = user.nickname          
-          .member_modal
-            .member_modal_top
-              .close-btn
-                = icon('far','times-circle')
-              %p メンバー 追加
-            .member_modal_form
-              .member_modal_form_input
-              .member_modal_form_btn
-            = form_with model: @group, local: true do |f|
-              = f.collection_check_boxes :user_ids, User.all, :id, :nickname do |user|
-                .user-data
-                  - if user.object.user_image.present?
-                    = image_tag user.object.user_image.url, alt: "ユーザー画像", class: "user_img" 
-                  - else
-                    = image_tag "picture/user-2517433_640.png", alt: "ユーザー画像", class: "user_img"
-                  .user-data_right
-                    .user-data_right_name
-                      = user.object.nickname
-                    .user-data_right_check
-                      = user.check_box
-              .member_modal_bottom
-                = f.submit "追加", class: "login-btn"
-          = link_to "削除する", group_path(@group), method: :delete, class: "actions_btn delete-btn", data: { confirm: "本当に削除しますか？" }
-          
-      .chat-container
-        - unless @group.chats.present?
-          .chat-container_info
-            メンバーと会話してみましょう！
-        - @chats.each do |chat|
-          = render "chat", chat: chat
-      = form_with(model: [@group, @chat], class: "chat-form", id: "new_chat", local: true) do |f|
-        = f.text_area :body, class: "chat-form_input"
-        .chat-form_right
-          = f.label :chat_image, class: "img-btn" do
-            = icon("fas", "image", class: "icon")
-            = f.file_field :chat_image, class: "hidden"
-          = f.submit "送信", class: "submit-btn"
+    %table
+      %tr
+        %th
+          活動地域
+        %td
+          = @group.group_address.prefecture.name
+          = @group.group_address.city
+          = @group.group_address.place
+      %tr
+        %th
+          メンバー数
+        %td
+          = @group.users.length
+          人
+    .group_info_border
+    .group_info_content
+      = simple_format(@group.content)
+    %ul.group_info_menu
+      %li.cog-btn
+        = link_to edit_group_path(@group) do
+          = icon('fas', 'cog')
+      %li.member-btn
+        = icon('fas', 'users')
+      %li.member-btn
+        = icon('fas','plus')
+    .member_modal
+      .member_modal_top
+        .close-btn
+          = icon('far','times-circle')
+        %p メンバー 一覧
+      - @group.users.each do |user|
+        .user-data
+          - if user.user_image.present?
+            = image_tag user.user_image.url, alt: "ユーザー画像", class: "user_img" 
+          - else
+            = image_tag "picture/user-2517433_640.png", alt: "ユーザー画像", class: "user_img"
+          .user-data_right
+            .user-data_right_name
+              = user.nickname          
+    .member_modal
+      .member_modal_top
+        .close-btn
+          = icon('far','times-circle')
+        %p メンバー 追加
+      .member_modal_form
+        .member_modal_form_input
+        .member_modal_form_btn
+      = form_with model: @group, local: true do |f|
+        = f.collection_check_boxes :user_ids, User.all, :id, :nickname do |user|
+          .user-data
+            - if user.object.user_image.present?
+              = image_tag user.object.user_image.url, alt: "ユーザー画像", class: "user_img" 
+            - else
+              = image_tag "picture/user-2517433_640.png", alt: "ユーザー画像", class: "user_img"
+            .user-data_right
+              .user-data_right_name
+                = user.object.nickname
+              .user-data_right_check
+                = user.check_box
+        .member_modal_bottom
+          = f.submit "追加", class: "login-btn"
+    = link_to "削除する", group_path(@group), method: :delete, class: "actions_btn delete-btn", data: { confirm: "本当に削除しますか？" }
+    
+.chat-container
+  - unless @group.chats.present?
+    .chat-container_info
+      メンバーと会話してみましょう！
+  - @chats.each do |chat|
+    = render "chat", chat: chat
+= form_with(model: [@group, @chat], class: "chat-form", id: "new_chat", local: true) do |f|
+  = f.text_area :body, class: "chat-form_input"
+  .chat-form_right
+    = f.label :chat_image, class: "img-btn" do
+      = icon("fas", "image", class: "icon")
+      = f.file_field :chat_image, class: "hidden"
+    = f.submit "送信", class: "submit-btn"

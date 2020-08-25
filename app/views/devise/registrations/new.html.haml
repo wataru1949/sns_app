@@ -1,34 +1,33 @@
-.wrapper
-  .session-left
-    .session-menu
-      .session-menu_title
-        新規登録
-      .session-menu_list 
-  .session-right
-    = form_with model: @user, url: user_registration_path, local: true do |f|
-      .field
-        .field_label
-          = f.label :nickname
-        = f.text_field :nickname, autofocus: true, class: "field_form"
-        - if @user.errors.include?(:nickname)
-          %p.error-message= @user.errors.full_messages_for(:nickname).first
-      .field
-        .field_label
-          = f.label :email
-        = f.email_field :email, class: "field_form"
-        - if @user.errors.include?(:email)
-          %p.error-message= @user.errors.full_messages_for(:email).first
-      .field
-        .field_label
-          = f.label :password
-        = f.password_field :password, class: "field_form", placeholder: "英数字6文字以上"
-        - if @user.errors.include?(:password)
-          %p.error-message= @user.errors.full_messages_for(:password).first
-      .field
-        .field_label
-          = f.label :password_confirmation
-        = f.password_field :password_confirmation, class: "field_form"
-        - if @user.errors.include?(:password_confirmation)
-          %p.error-message= @user.errors.full_messages_for(:password_confirmation).first
-      .actions
-        = f.submit "新規登録", class: "actions_btn"
+.session-left
+  .session-menu
+    .session-menu_title
+      新規登録
+    .session-menu_list 
+.session-right
+  = form_with model: @user, url: user_registration_path, local: true do |f|
+    .field
+      .field_label
+        = f.label :nickname
+      = f.text_field :nickname, autofocus: true, class: "field_form"
+      - if @user.errors.include?(:nickname)
+        %p.error-message= @user.errors.full_messages_for(:nickname).first
+    .field
+      .field_label
+        = f.label :email
+      = f.email_field :email, class: "field_form"
+      - if @user.errors.include?(:email)
+        %p.error-message= @user.errors.full_messages_for(:email).first
+    .field
+      .field_label
+        = f.label :password
+      = f.password_field :password, class: "field_form", placeholder: "英数字6文字以上"
+      - if @user.errors.include?(:password)
+        %p.error-message= @user.errors.full_messages_for(:password).first
+    .field
+      .field_label
+        = f.label :password_confirmation
+      = f.password_field :password_confirmation, class: "field_form"
+      - if @user.errors.include?(:password_confirmation)
+        %p.error-message= @user.errors.full_messages_for(:password_confirmation).first
+    .actions
+      = f.submit "新規登録", class: "actions_btn"

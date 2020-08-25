@@ -1,91 +1,87 @@
-.wrapper
-  = render "share/side-bar"
-  .main-container
-    .main-wrapper
-      .top-container
-        = form_with model: @post, class: "form-wrapper", local: true do |f|
-          .form-area
-            .form-area_label
-              = f.label :title, "タイトル"
-              .form-area_label_info
-                必須
-            = f.text_field :title, class: "form-area_input f_field"
-            - if @post.errors.include?(:title)
-              %p.error-message= @post.errors.full_messages_for(:title).first
+.top-container
+  = form_with model: @post, class: "form-wrapper", local: true do |f|
+    .form-area
+      .form-area_label
+        = f.label :title, "タイトル"
+        .form-area_label_info
+          必須
+      = f.text_field :title, class: "form-area_input f_field"
+      - if @post.errors.include?(:title)
+        %p.error-message= @post.errors.full_messages_for(:title).first
 
-          .image-area
-            = f.file_field :post_image, class: "hidden"
-            - if @post.post_image.present?
-              %span.pip
-                = image_tag @post.post_image.url, alt: "投稿画像", class: "post_img" 
-              = f.label :remove, id: "post_rm", class: "rm-btn" do
-                = icon('fa', 'window-close')
-              = f.check_box :remove, class: "hidden"
-            = f.label :post_image, class: "img-btn" do
-              = icon('fa', 'image')
+    .image-area
+      = f.file_field :post_image, class: "hidden"
+      - if @post.post_image.present?
+        %span.pip
+          = image_tag @post.post_image.url, alt: "投稿画像", class: "post_img" 
+        = f.label :remove, id: "post_rm", class: "rm-btn" do
+          = icon('fa', 'window-close')
+        = f.check_box :remove, class: "hidden"
+      = f.label :post_image, class: "img-btn" do
+        = icon('fa', 'image')
 
-          .form-area
-            = f.fields_for :category do |ff|
-              .form-area_label
-                = ff.label :value, "カテゴリー"
-                .form-area_label_info
-                  必須
-              = ff.text_field :value, class: "form-area_input f_field", id:"category-search"
-              - if @post.errors.include?(:"category.value")
-                %p.error-message= @post.errors.full_messages_for(:"category.value").first
-            #category-search-result
+    .form-area
+      = f.fields_for :category do |ff|
+        .form-area_label
+          = ff.label :value, "カテゴリー"
+          .form-area_label_info
+            必須
+        = ff.text_field :value, class: "form-area_input f_field", id:"category-search"
+        - if @post.errors.include?(:"category.value")
+          %p.error-message= @post.errors.full_messages_for(:"category.value").first
+      #category-search-result
 
-          .form-area
-            .form-area_label
-              = f.label :detail, "詳細"
-              .form-area_label_info
-                必須
-            = f.text_area :detail, class: "form-area_input f_area"
-            - if @post.errors.include?(:detail)
-              %p.error-message= @post.errors.full_messages_for(:detail).first
+    .form-area
+      .form-area_label
+        = f.label :detail, "詳細"
+        .form-area_label_info
+          必須
+      = f.text_area :detail, class: "form-area_input f_area"
+      - if @post.errors.include?(:detail)
+        %p.error-message= @post.errors.full_messages_for(:detail).first
 
-          = f.fields_for :post_address do |ff|  
-            .form-area
-              .form-area_label
-                = ff.label :prefecture_id, "都道府県"
-                .form-area_label_info
-                  必須
-              = ff.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt:"--"}, {class: "form-area_input f_select"}
-              - if @post.errors.include?(:"post_address.prefecture_id")
-                %p.error-message= @post.errors.full_messages_for(:"post_address.prefecture_id").first
-            .form-area
-              .form-area_label
-                = ff.label :city, "市区町村"
-              = ff.text_field :city, class: "form-area_input f_field f_select"
-            .form-area
-              .form-area_label
-                = ff.label :place, "その他場所"
-              = ff.text_field :place, class: "form-area_input f_field f_middle", placeholder: "具体的な場所があれば書きましょう"
+    = f.fields_for :post_address do |ff|  
+      .form-area
+        .form-area_label
+          = ff.label :prefecture_id, "都道府県"
+          .form-area_label_info
+            必須
+        = ff.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt:"--"}, {class: "form-area_input f_select"}
+        - if @post.errors.include?(:"post_address.prefecture_id")
+          %p.error-message= @post.errors.full_messages_for(:"post_address.prefecture_id").first
+      .form-area
+        .form-area_label
+          = ff.label :city, "市区町村"
+        = ff.text_field :city, class: "form-area_input f_field f_select"
+      .form-area
+        .form-area_label
+          = ff.label :place, "その他場所"
+        = ff.text_field :place, class: "form-area_input f_field f_middle", placeholder: "具体的な場所があれば書きましょう"
 
-          .form-area
-            .form-area_label
-              = f.label :accept_id, "募集人数"
-            = f.collection_select :accept_id, Accept.all, :id, :name, {include_blank:"--"}, {class: "form-area_input f_select"}
+    .form-area
+      .form-area_label
+        = f.label :accept_id, "募集人数"
+      = f.collection_select :accept_id, Accept.all, :id, :name, {include_blank:"--"}, {class: "form-area_input f_select"}
 
-          .form-area
-            .form-area_label
-              = f.label :event_date, "日にち"
-            = f.date_field :event_date, class: "form-area_input f_select"
-            - if @post.errors.include?(:event_date)
-              %p.error-message= @post.errors.full_messages_for(:event_date).first
+    .form-area
+      .form-area_label
+        = f.label :event_date, "日にち"
+      = f.date_field :event_date, class: "form-area_input f_select"
+      - if @post.errors.include?(:event_date)
+        %p.error-message= @post.errors.full_messages_for(:event_date).first
 
-          .form-area
-            .form-area_time
-              .form-area_time_half
-                .form-area_label
-                  開始予定
-                = f.time_select :start_time, {include_blank: true, ignore_date: true, minute_step: 5}, {class: "form-area_time_half_input"}
-              .form-area_time_half
-                .form-area_label
-                  終了予定
-                = f.time_select :end_time, {include_blank: true, ignore_date: true, minute_step: 5}, {class: "form-area_time_half_input"}
-              
+    .form-area
+      .form-area_time
+        .form-area_time_half
+          .form-area_label
+            開始予定
+          = f.time_select :start_time, {include_blank: true, ignore_date: true, minute_step: 5}, {class: "form-area_time_half_input"}
+        .form-area_time_half
+          .form-area_label
+            終了予定
+          = f.time_select :end_time, {include_blank: true, ignore_date: true, minute_step: 5}, {class: "form-area_time_half_input"}
+        
 
-          .btn-area
-            = f.submit "登録", class: "actions_btn"
-            = link_to "戻る", :back, class: "back_btn"
+    .btn-area
+      = f.submit "登録", class: "actions_btn"
+      = link_to "戻る", :back, class: "back_btn"
