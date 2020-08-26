@@ -26,7 +26,7 @@
           = ff.label :value, "カテゴリー"
           .form-area_label_info
             必須
-        = ff.text_field :value, class: "form-area_input f_field", id:"category-search"
+        = ff.text_field :value, class: "form-area_input f_field", id:"category-search", autocomplete: "off"
         - if @post.errors.include?(:"category.value")
           %p.error-message= @post.errors.full_messages_for(:"category.value").first
       #category-search-result
