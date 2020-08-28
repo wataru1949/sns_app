@@ -1,0 +1,19 @@
+form.search {
+  background-color: $light_gray;
+  padding: 30px;
+  width: 90%;
+  margin: 0 auto;
+  border: ridge 2px gray;
+  .search_input {
+    line-height: 25px;
+    margin: 5px; 
+    label {
+      margin: 0 8px
+    }
+    input, select {
+      height: 23px;
+      max-width: 100%;
+    }
+
+  }
+}
