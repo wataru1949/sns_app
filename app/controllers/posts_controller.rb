@@ -3,9 +3,10 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:edit, :update, :show, :destroy]
 
   def index
-    @posts = Post.post_listing.page(params[:page])
+    @search_form = PostSearchForm.new(search_params)
+    @posts = @search_form.search.page(params[:page])
   end
-
+  
   def new
     @post = Post.new
     @post.post_address = PostAddress.new
@@ -64,6 +65,10 @@ class PostsController < ApplicationController
 
   def category_params
     params.require(:post).permit(category_attributes:[:value])
+  end
+
+  def search_params
+    params[:search]&.permit([:category, :event_date, :prefecture_id, :city])
   end
 
   def set_post
