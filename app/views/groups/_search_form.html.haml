@@ -4,7 +4,8 @@
     = f.text_field :group_name
   .search_input
     = f.label :category, "カテゴリー :"
-    = f.text_field :category
+    = f.text_field :category, id: "category-search", autocomplete: "off"
+    #category-search-result
   .search_input
     = f.label :prefecture_id, "都道府県:"
     = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt:"--"}
