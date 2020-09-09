@@ -5,8 +5,7 @@
     %p.category-tag
       = @post.category.value
     - if @post.post_image.present?
-      .post_img_box
-        = image_tag @post.post_image.url, alt: "投稿画像"
+      = image_tag @post.post_image.url, alt: "投稿画像"
     %table
       %tr
         %th
