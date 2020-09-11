@@ -1,14 +1,23 @@
 = form_with model: @search_form, scope: "search", url: :groups, html: { method: :get, class: "search" }, local: true do |f|
-  .search_input
-    = f.label :group_name, "グループ名 :"
-    = f.text_field :group_name
-  .search_input
-    = f.label :category, "カテゴリー :"
-    = f.text_field :category, id: "category-search", autocomplete: "off"
-    #category-search-result
-  .search_input
-    = f.label :prefecture_id, "都道府県:"
-    = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt:"--"}
-    = f.label :city, "市区町村:"
-    = f.text_field :city
-  = f.submit "検索"
+  %h2.search_header
+    グループを検索する
+  .search-area
+    .search-area_form
+      .search-area_form-label
+        = f.label :prefecture_id, "都道府県"
+      = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {include_blank:"--"}
+    .search-area_form
+      .search-area_form-label
+        = f.label :city, "市区町村"
+      = f.text_field :city
+  .search-area
+    .search-area_form
+      .search-area_form-label
+        = f.label :category, "カテゴリー"
+      = f.text_field :category, id: "category-search", autocomplete: "off"
+      #category-search-result
+    .search-area_form
+      .search-area_form-label
+        = f.label :group_name, "グループ名"
+      = f.text_field :group_name
+  = f.submit "検索", class: "submit-btn btn"
