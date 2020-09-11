@@ -28,7 +28,7 @@ $(function(){
     `;
     if (chat.body && chat.image){
       var html = `
-        <div class="chat">
+        <div class="chat my-chat">
           ${chatUser}
           <div class="chat_body">
             <p class="chat_body_bubble">
@@ -44,7 +44,7 @@ $(function(){
       return html;
     } else if (chat.body){
       var html = `
-        <div class="chat">
+        <div class="chat my-chat">
         ${chatUser}
           <div class="chat_body">
             <p class="chat_body_bubble">
@@ -57,7 +57,7 @@ $(function(){
       return html;
     } else if (chat.image){
       var html = `
-        <div class="chat">
+        <div class="chat my-chat">
           ${chatUser}
           <div class="chat_body">
             <div class="chat_body_img">
@@ -85,7 +85,7 @@ $(function(){
     .done(function(data){
       var html = buildHtml(data);
       $('.chat-container').append(html);
-      $('.main-container').animate({ scrollTop: $('.main-container')[0].scrollHeight});
+      $('.main').animate({ scrollTop: $('.main')[0].scrollHeight});
       $('.chat-form')[0].reset();
       $('.submit-btn').prop('disabled', false);
     })
