@@ -23,7 +23,7 @@ $(function(){
     var chatBottom = `
       <div class="chat_body_bottom">
         ${chat.created_at}
-        <a rel="nofollow" data-method="delete" href="/groups/${chat.group_id}/chats/${chat.id}">削除</a>
+        <a rel="nofollow" data-method="delete" href="/groups/${chat.group_id}/chats/${chat.id}" data-confirm="本当に削除しますか？">削除</a>
       </div>
     `;
     if (chat.body && chat.image){
