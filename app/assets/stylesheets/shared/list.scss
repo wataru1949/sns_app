@@ -3,18 +3,17 @@
   padding-top: 35px;
   width: 90%;
   border-top: ridge 4px goldenrod;
-
   .list {
     background-color: $very_light_gray;
     box-shadow: $shadow;
-    color: black;
-    border: solid 2px $light_gray;
+    border: solid 2px $dark_gray;
+    border-radius: 3px;
     margin: 2px auto 20px;
     display: flex;
     &_left {
       padding: 5px 10px;
       &_image {
-        background-color: gainsboro;
+        background-color: $very_light_gray;
         height: 150px;
         width: 150px;
         line-height: 150px;
@@ -80,4 +79,11 @@
       }
     }
   }
+  .list:hover {
+    transition: all 0.1s;
+    box-shadow: rgba(112, 74, 24, 0.7) 1px 3px 6px;
+  }
+}
+.nothing_msg {
+  text-align: center;
 }

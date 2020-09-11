@@ -18,10 +18,11 @@
       height: 30px;
       width: 100%;
       line-height: 30px;
-      &_btm {
-        .edit-btn {
-          font-size:0.8em;
-        }
+      .edit-btn {
+      }
+      i:hover {
+        color: $light_gray;
+        text-shadow: $white_shadow
       }
     }
     &_check {
