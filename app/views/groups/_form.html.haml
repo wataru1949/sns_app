@@ -78,5 +78,7 @@
           = ff.text_field :place, class: "form-area_input f_field f_middle", placeholder: "主な活動場所などがあれば書きましょう"
 
       .btn-area
-        = f.submit "登録", class: "actions_btn"
-        = link_to "もどる", :back, class: "back_btn"
+        = f.submit "登録", class: "action-btn btn"
+        - if controller.action_name == "edit"
+          = link_to "削除する", group_path(@group), method: :delete, class: "action-btn delete-btn", data: { confirm: "本当に削除しますか？" }
+        = link_to "もどる", :back, class: "back-btn btn"

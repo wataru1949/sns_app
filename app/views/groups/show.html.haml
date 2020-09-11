@@ -45,7 +45,7 @@
             = image_tag "picture/user-2517433_640.png", alt: "ユーザー画像", class: "user_img"
           .user-data_right
             .user-data_right_name
-              = user.nickname          
+              = user.nickname
     .member_modal
       .member_modal_top
         .close-btn
@@ -67,9 +67,7 @@
               .user-data_right_check
                 = user.check_box
         .member_modal_bottom
-          = f.submit "追加", class: "login-btn"
-    = link_to "削除する", group_path(@group), method: :delete, class: "actions_btn delete-btn", data: { confirm: "本当に削除しますか？" }
-    
+          = f.submit "追加", class: "login-btn"    
 .chat-container
   - unless @group.chats.present?
     .chat-container_info
@@ -82,4 +80,4 @@
     = f.label :chat_image, class: "img-btn" do
       = icon("fas", "image", class: "icon")
       = f.file_field :chat_image, class: "hidden"
-    = f.submit "送信", class: "submit-btn"
+    = f.submit "送信", class: "submit-btn btn"
