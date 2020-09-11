@@ -4,7 +4,7 @@
       = f.file_field :user_image, class: "hidden"
       - if @user.user_image.present?
         %span.pip
-          = image_tag @user.user_image.url, alt: "投稿画像", class: "user_img" 
+          = image_tag @user.user_image.url, alt: "投稿画像", class: "user_img user_img_d" 
         = f.label :remove, class: "rm-btn" do
           = icon('fa', 'window-close')
         = f.check_box :remove, class: "hidden"
@@ -48,4 +48,4 @@
           = ff.label :city, "市区町村"
         = ff.text_field :city, class: "field_form"
     .actions
-      = f.submit "編集する", class: "actions_btn"
+      = f.submit "編集する", class: "action-btn btn"
