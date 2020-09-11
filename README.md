@@ -4,7 +4,7 @@
 コンセプトは、『個人でもメンバー募集、イベントへの参加が気軽にできること』、『自身が所属するサークル等でのコミュニケーションが充実すること』を主要な機能としてアイデアを練りました。
 <br><br><br><br>
 <br><br>
-[![Image from Gyazo](https://i.gyazo.com/b3444e5641e4f2ac77e3aa7a41ba07a3.gif)](https://gyazo.com/b3444e5641e4f2ac77e3aa7a41ba07a3
+[![Image from Gyazo](https://i.gyazo.com/b3444e5641e4f2ac77e3aa7a41ba07a3.gif)](https://gyazo.com/b3444e5641e4f2ac77e3aa7a41ba07a3)
 [![Image from Gyazo](https://i.gyazo.com/112aff8d467c73ebc3fcef24ce9e44c3.gif)](https://gyazo.com/112aff8d467c73ebc3fcef24ce9e44c3)
 <br><br><br>
 ## 制作背景
