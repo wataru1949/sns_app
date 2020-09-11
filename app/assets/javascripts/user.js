@@ -15,7 +15,7 @@ $(function(){
     reader.onload = (function(e) {
       var file = e.target;
       $("<span class=\"pip\">" +
-        "<img class=\"user_img\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" + "</span>" +
+        "<img class=\"user_img_d\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" + "</span>" +
         "<br/><label class=\"rm-btn\" for=\"user_remove\">" + "<i class=\"fa fa-window-close\"></i></label>").insertAfter("#user_user_image");
       $(".rm-btn").click(function(){
         $(".user_img_d").remove();
