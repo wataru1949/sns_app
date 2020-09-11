@@ -10,7 +10,11 @@ nav.pagination {
       background-color: $very_light_gray;
       padding: 8px;
       border: solid 1px $light_gray;
-
+    }
+    a:hover {
+      transition: 0.2s;
+      background-color: $light_gray;
+      border: solid 1px $translucent-black;
     }
   }
   span.current {

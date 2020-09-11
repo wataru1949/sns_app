@@ -5,8 +5,7 @@
     %p.category-tag
       = @post.category.value
     - if @post.post_image.present?
-      .post_img_box
-        = image_tag @post.post_image.url, alt: "投稿画像"
+      = image_tag @post.post_image.url, alt: "投稿画像"
     %table
       %tr
         %th
@@ -61,7 +60,7 @@
               = icon("fas", "image")
               = f.file_field :comment_image, class: "hidden"
           %li
-            = f.submit "送信", class: "submit-btn"
+            = f.submit "送信", class: "submit-btn btn"
   - else
     .comment-container_alert  
       ※※※ コメントの投稿にはログインが必要です ※※※

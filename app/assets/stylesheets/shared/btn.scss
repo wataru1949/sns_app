@@ -1,56 +1,54 @@
-.actions_btn {
+.btn:hover {
+  opacity: 0.9;
+} 
+.btn:active {
+  position: relative;
+  top: 1px;
+  box-shadow: none;
+}
+.action-btn {
   background-color: cadetblue;
-  box-shadow :rgb(179, 90, 26) 0 2px 2px;
+  box-shadow :rgb(179, 90, 26) 0 1px 0px;
   color: white;
   height: 30px;
   width: 150px;
   margin: 0 auto 30px;
   font-size: 18px;
   line-height: 30px;
-  letter-spacing: 1px;
+  letter-spacing: 0.1em;
   border: none;
   border-radius: 3px;
   display: block;
   cursor: pointer;
 }
-
-.back_btn {
-  background-color: darkolivegreen;
+.back-btn {
+  background-color: olivedrab;
   color: white;
   padding: 2px 15px;
   border-radius: 3px;
   display: inline-block;
   margin-top: 20px;
+  box-shadow :rgb(179, 90, 26) 0 1px 0px;
 }
-
 .submit-btn {
   background-color: rgb(210, 105, 30);
   font-size: 0.8em;
   color: white;
   border-radius: 3px;
 }
-
 .img-btn {
   color: darkolivegreen;
   font-size: 30px;
   display: block;
 }
-
 .login-btn {
-  font-size: 18px;
-  margin: 0 auto;
-  text-decoration: none;
-  display: block;
-  height: 30px;
-  width: 150px;
   letter-spacing: 1px;
   background-color: chocolate;
   color: white;
-  border: none;
+  padding: 3px 7px;
   border-radius: 3px;
-  line-height: 30px;
+  box-shadow :rgb(95, 158, 160) 0 1px 0px;
 }
-
 .app-btn {
   background-color: cadetblue;
   color: white;
@@ -58,12 +56,10 @@
   margin-right: 15px;
   border-radius: 3px;
 }
-
 .delete-btn {
   background-color: cadetblue;
   text-align: center;
 }
-
 .normal-btn {
   background-color: $chocolate;
   color: white;

@@ -18,10 +18,6 @@ class Group < ApplicationRecord
     order(created_at: :desc).includes(:group_address, :category, :group_pictures, :users)
   }
 
-  def self.search(search)
-    return Group.all unless search
-    Group.where('group_name LIKE(?)', "%#{search}%")
-  end
 end
 
 # == Schema Information

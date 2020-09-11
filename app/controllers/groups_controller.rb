@@ -2,6 +2,15 @@ class GroupsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_group, only:[:edit, :update, :show, :destroy]
 
+  def index
+    @search_form = GroupSearchForm.new(search_params)
+    @groups = @search_form.search.page(params[:page])
+  end
+
+  def search
+    @search_form = GroupSearchForm.new
+  end
+
   def new
     @group = Group.new
     @group.group_pictures.new
@@ -58,6 +67,10 @@ class GroupsController < ApplicationController
 
   def category_params
     params.require(:group).permit(category_attributes:[:value])
+  end
+
+  def search_params
+    params.require(:search).permit(:group_name, :category, :prefecture_id, :city)
   end
 
   def set_group

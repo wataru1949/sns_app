@@ -8,5 +8,8 @@ class CreateAddresses < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+
+    add_index :addresses, [:prefecture_id, :city]
+    add_index :addresses, :city
   end
 end

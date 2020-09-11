@@ -1,4 +1,9 @@
+= render "search_form"
 .list-area
-  - @posts.each do |post|
-    = render "post", post: post
-= paginate @posts
+  - if @posts.present?
+    - @posts.each do |post|
+      = render "post", post: post
+    = paginate @posts
+  - else
+    .nothing_msg
+      該当するグループはありません

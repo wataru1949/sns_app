@@ -43,6 +43,7 @@ end
 # Indexes
 #
 #  index_posts_on_category_id  (category_id)
+#  index_posts_on_event_date   (event_date)
 #  index_posts_on_user_id      (user_id)
 #
 # Foreign Keys

@@ -8,7 +8,6 @@
     div.field_with_errors {
       display: inline;
       padding: 0;
-
       input, textarea, select, .f_select { border: solid $red 1px; }
     }
     .error-message {

@@ -1,28 +1,17 @@
-.session-left {
-  height: calc(100vh - 80px);
-  margin: 40px auto;
-  display: block;
-  .session-menu {
-    background-color: coral;
-    height: 300px;
-    width: 450px;
-    margin-top: 170px; 
-    font-size: 35px;
-    text-align: center;  
-    &_title {
-      display: inline-block;
-      margin-top: 50px;
-      font-weight: bold;
-      letter-spacing: 0.2em;
-    }
-  }
-}
-.session-right {
+.session_container {
   color: white;
   margin-top: 40px;
   padding: 38px 50px;
   background-color: $translucent-black;
-  width: 40%;
+  width: 400px;
+  float: right;
+  border: ridge 3px tan;
+  .form-header {
+    font-size: 30px;
+    letter-spacing: 0.1em;
+    text-align: center;
+    font-weight: bold;
+  }
   form {
     padding-top: 50px;
     .field {
@@ -35,8 +24,6 @@
   margin: 40px auto 0;
   padding: 30px 50px;
   background-color: $translucent-black;
-  width: 700px;
-  overflow: scroll;
   .field {
     &_form {
       width: 300px;
@@ -50,7 +37,7 @@
 .field {
   margin-bottom: 18px;
   text-align: center;
-  .user_img {
+  .user_img_d {
     height: 90px;
     width: 90px;
     margin: 0 auto;
@@ -71,7 +58,6 @@
   }
   &_form {
     height: 25px;
-    width: 230px;
     padding: 0 5px;
   }
   &_profile {

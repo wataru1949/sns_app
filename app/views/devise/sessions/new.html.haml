@@ -1,9 +1,5 @@
-.session-left
-  .session-menu
-    .session-menu_title
-      ログイン
-    .session-menu_list 
-.session-right
+.session_container
+  %h1.form-header ログイン
   = form_with model: @user, url: user_session_path, local: true do |f|
     .field
       .field_label
@@ -20,7 +16,7 @@
     -#     = f.check_box :remember_me
     -#     = f.label :remember_me
     .actions
-      = f.submit "ログイン", class: "actions_btn"
+      = f.submit "ログイン", class: "action-btn btn"
       = render "devise/shared/links"
 
     .test_login

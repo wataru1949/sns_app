@@ -1,7 +1,6 @@
 .side-bar
   .main-logo
     = link_to image_tag("picture/logos/gather_logo(27).png", class:"logo-img"), root_path
-
   .user-data
     .user_img_box
       - if user_signed_in? && current_user.user_image.present?
@@ -13,23 +12,21 @@
         .user-data_right_name
           = current_user.nickname
         .user-data_right_bottom
-          .user-data_right_bottom_btn
           = link_to edit_user_path(current_user.id), class: "edit-btn" do
             = icon("fas", "user-cog")
   .side-bar_main
     - if user_signed_in?
-      .action_links
-        .action_links-post
-          = link_to "新規投稿", new_post_path, class: "new-post-btn"
-        .action_links-group
-          = link_to "グループ作成", new_group_path
-      .group_lists
-        - current_user.groups.each do |group|
-          = link_to group.group_name, group_path(group.id), class: "group_lists_list"
-      .search-area
-        %p グループを検索する
-        = form_with(url: groups_searches_path, local: true, method: :get, class: "search-form") do |f|
-          = f.text_field :keyword, placeholder: "グループ名", class: "search-input"
-          = f.submit "検索", class: "search-btn"
-  
+      %ul.action_links
+        %li.action_links-post
+          = link_to "新規投稿", :new_post, class: "new-post-btn"
+        %li.action_links-group
+          = link_to "グループ作成", :new_group
+        %li.action_links-search
+          = link_to "グループを探す", :search_groups
+      - if current_user.groups.present?
+        .group_lists
+          .group_lists_header
+            所属グループ一覧
+          - current_user.groups.each do |group|
+            = link_to group.group_name, group_path(group.id), class: "group_lists_list"
 

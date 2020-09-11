@@ -22,7 +22,7 @@
   &_content {
     background-color: white;
     padding: 10px 20px;
-    border: solid 2px $light_gray;
+    border: solid 1px $dark_gray;
     min-height: 50px;
     margin-bottom: 15px;
   }
@@ -57,7 +57,7 @@
     width: 300px;
     overflow: scroll;
     &_top {
-      border-bottom: $menu-border;
+      border-bottom: $cyan-border;
       padding: 4px 5px;
       display: flex;
       color: whitesmoke;
@@ -75,7 +75,7 @@
       }
     }
     &_form {
-      border-bottom: $menu-border;
+      border-bottom: $cyan-border;
       height: 50px;
       display: flex;
       &_input {
@@ -84,82 +84,5 @@
     &_bottom{
       margin: 15px 0;
     }
-  }
-}
-.chat-container {
-  background-color: $very_light_gray;
-  max-width: 850px;
-  margin: 0 auto 120px;
-  padding: 50px 30px;
-  border: solid 2px $light_gray;
-  box-shadow: $shadow;
-  letter-spacing: 0.06em;
-  &_info {
-    font-size: 1.2em;
-    text-align: center;
-  }
-  .chat {
-    margin-bottom: 75px;
-    display: flex;
-    &_user {
-      width: 90px;
-    }
-    &_body {
-      max-width: 550px;
-      padding-top: 5px;
-      &_bubble {
-        background-color: white;
-        min-height: 50px;
-        line-height: 1.5em;
-        padding: 8px 20px;
-        border-radius: 8px;
-        border: solid 1px $light_gray;
-        box-shadow: rgba(112, 74, 24, 0.7) 2px 1px 2px;
-      }
-      &_bottom {
-        font-size: 0.9em;
-        padding: 5px 10px;
-      }
-    }
-  }
-  .my-chat {
-    display: flex;
-    flex-direction: row-reverse;
-    .chat_user {
-      .user_img {
-        float: right;
-      }
-      &_name {
-        clear: both;
-      }
-    }
-    .chat_body {
-      &_bubble {
-        background-color: #fff8dc;
-      }
-    }
-  }
-}
-.chat-form {
-  background-color: white;
-  height: 65px;
-  width: calc(100% - 300px);
-  padding: 10px 0 10px 20px;
-  letter-spacing: 0.06em;
-  border: solid 2px $light_gray;
-  display: flex;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  &_input {
-    width: 80%;
-    padding: 5px;
-  }
-  &_right {
-    width: 20%;
-    padding: 0 30px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
   }
 }
