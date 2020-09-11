@@ -1,9 +1,5 @@
-.session-left
-  .session-menu
-    .session-menu_title
-      新規登録
-    .session-menu_list 
-.session-right
+.session_container
+  %h1.form-header 新規登録
   = form_with model: @user, url: user_registration_path, local: true do |f|
     .field
       .field_label
@@ -30,4 +26,5 @@
       - if @user.errors.include?(:password_confirmation)
         %p.error-message= @user.errors.full_messages_for(:password_confirmation).first
     .actions
-      = f.submit "新規登録", class: "actions_btn"
+      = f.submit "新規登録", class: "action-btn btn"
+      = render "devise/shared/links"
