@@ -9,6 +9,12 @@
     %table
       %tr
         %th
+          投稿者
+        %td
+          = link_to user_path(@post.user_id), class:"user_link" do
+            = @post.user.nickname
+      %tr
+        %th
           場所
         %td
           = @post.post_address.prefecture.name
@@ -41,12 +47,9 @@
     .post_info_actions
       - if user_signed_in? && @post.user_id == current_user.id
         %li
-          = link_to "編集する", edit_post_path(@post), class: "normal-btn"
-        %li
-          = link_to "削除する", post_path(@post), method: :delete, class: "normal-btn",
-          data: { confirm: "本当に削除しますか？" }
-    .post_info_border
-    .post_info_detail
+          = link_to "編集する", edit_post_path(@post), class: "mini_link-btn btn"
+    .table_border
+    .content_box
       = simple_format(@post.detail)
       
 .comment-container  
