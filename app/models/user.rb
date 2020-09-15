@@ -19,7 +19,7 @@ class User < ApplicationRecord
   mount_uploader :user_image, ImageUploader
 
   validates :nickname, :email, presence: true
-  validates :nickname, length: { maximum: 10 }
+  validates :nickname, uniqueness: true, length: { maximum: 10 }
   validates :profile, length: { maximum: 200 }
   validates :email,"valid_email_2/email": true,
     uniqueness: { case_sensitive: false }
