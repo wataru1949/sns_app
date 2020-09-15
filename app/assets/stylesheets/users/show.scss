@@ -1,0 +1,10 @@
+.user_info_container {
+  background-color: $translucent-black;
+  // color: white;
+  width: 500px;
+  padding: 50px;
+  margin: 0 auto;
+  &_header {
+    margin-bottom: 20px;
+  }
+}
