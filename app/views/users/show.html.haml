@@ -1,0 +1,33 @@
+.user_info_container
+  .user_info_container_header
+    - if @user.user_image.present?
+      = image_tag @user.user_image.url, alt: "投稿画像", class: "user_img user_img_d" 
+  .user_info_container_main
+    %table
+      %tr
+        %th
+          ニックネーム
+        %td
+          = @user.nickname
+      %tr
+        %th
+          性別
+        %td
+          - if @user.gender.present?
+            = @user.gender_i18n
+      %tr
+        %th
+          年齢
+        %td
+          - if @user.age.present?
+            = @user.age_i18n
+      %tr
+        %th
+          アドレス
+        %td
+          - if @user.user_address.present?
+            = @user.user_address.prefecture.name
+            = @user.user_address.city
+    .table_border
+    .content_box
+      = simple_format(@user.profile)
