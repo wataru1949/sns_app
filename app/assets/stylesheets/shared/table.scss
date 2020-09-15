@@ -16,3 +16,15 @@ table {
     }
   }
 }
+.content_box {
+  background-color: white;
+  padding: 10px 20px;
+  border: solid 1px $dark_gray;
+  min-height: 50px;
+  margin-bottom: 15px;    
+}
+.table_border {
+  height: 30px;
+  border-top: ridge 1px rgba(102, 83, 0, 0.5);
+  margin: 30px 20px 0;
+}
