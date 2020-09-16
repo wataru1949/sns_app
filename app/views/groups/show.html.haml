@@ -32,6 +32,9 @@
           = icon('fas', 'users')
         %li.member-btn
           = icon('fas','plus')
+        %li.g_users-btn
+          = link_to group_members_path(@group) do
+            = icon('fas','plus')
       .member_modal
         .member_modal_top
           .close-btn
