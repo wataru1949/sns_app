@@ -1,7 +1,16 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   
+  def search
+    @users = User.search(params[:keyword], current_user.id)
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+
   def show
+    @user = User.find(params[:id])
   end
 
   def edit
