@@ -1,11 +1,10 @@
-form.search {
+.search {
   background-color: lightsteelblue;
   padding: 13px 30px 10px;
   width: 90%;
   margin: 0 auto;
   border: ridge 2px gray;
   .search_header {
-    // display: inline-block;
     color: $dark_gray;
     font-weight: bold;
     margin-bottom: 13px;
