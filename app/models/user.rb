@@ -23,6 +23,11 @@ class User < ApplicationRecord
   validates :profile, length: { maximum: 200 }
   validates :email,"valid_email_2/email": true,
     uniqueness: { case_sensitive: false }
+
+  def self.search(input, id)
+    return nil if input == ""
+    User.where(['nickname LIKE ?', "%#{input}%"] ).where.not(id: id).limit(10)
+  end
 end
 
 # == Schema Information
