@@ -65,6 +65,8 @@ ActiveRecord::Schema.define(version: 2020_08_13_061508) do
   create_table "group_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "group_id"
     t.bigint "user_id"
+    t.boolean "approved", default: false, null: false
+    t.string "type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_group_users_on_group_id"
@@ -112,6 +114,7 @@ ActiveRecord::Schema.define(version: 2020_08_13_061508) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["nickname"], name: "index_users_on_nickname", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
