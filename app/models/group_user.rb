@@ -9,6 +9,8 @@ end
 # Table name: group_users
 #
 #  id         :bigint           not null, primary key
+#  approved   :boolean          default(FALSE), not null
+#  type       :string(255)      not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  group_id   :bigint
