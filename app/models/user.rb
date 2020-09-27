@@ -8,11 +8,16 @@ class User < ApplicationRecord
   
   enum gender: { gender_private: 0, male: 1, female: 2, others: 3 }
   enum age: { age_private: 0, teens: 1, twenties: 2, thirties: 3, forties: 4, fifties: 5, over_sixties: 6 }
+  #グループメンバーとしてのリレーション
+  has_many :group_members, dependent: :destroy
+  has_many :groups, through: :group_members
+  #管理者としてのリレーション
+  has_many :group_admins, dependent: :restrict_with_exception
+  has_many :my_groups, through: :group_admins, source: :group
+
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :chats, dependent: :destroy
-  has_many :group_users, dependent: :destroy
-  has_many :groups, through: :group_users
   has_one :user_address, as: :addressable, dependent: :destroy
   accepts_nested_attributes_for :user_address
   
@@ -51,5 +56,6 @@ end
 # Indexes
 #
 #  index_users_on_email                 (email) UNIQUE
+#  index_users_on_nickname              (nickname) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
