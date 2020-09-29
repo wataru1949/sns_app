@@ -20,7 +20,7 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
-    @group.users << current_user
+    @group.admin = current_user
     @group.category = Category.find_or_initialize_by(category_params[:category_attributes])
     if @group.save
       flash.notice = "グループを作成しました。"
