@@ -1,8 +1,14 @@
 class Group < ApplicationRecord
 
   belongs_to :category
-  has_many :group_users, dependent: :destroy
-  has_many :users, through: :group_users
+
+  #メンバーとしてのリレーション
+  has_many :group_members, dependent: :destroy
+  has_many :members, through: :group_members, source: :user
+  #管理者としてのリレーション
+  has_one :group_admin, dependent: :destroy 
+  has_one :admin, through: :group_admin, source: :user
+  
   has_many :group_pictures, dependent: :destroy
   has_many :chats, dependent: :destroy
   has_one :group_address, as: :addressable, dependent: :destroy
@@ -15,7 +21,7 @@ class Group < ApplicationRecord
   validates :content, length: { maximum: 500 }
 
   scope :group_listing, -> {
-    order(created_at: :desc).includes(:group_address, :category, :group_pictures, :users)
+    order(created_at: :desc).includes(:group_address, :category, :group_pictures)
   }
 
 end
