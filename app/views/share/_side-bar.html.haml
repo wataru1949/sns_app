@@ -23,6 +23,12 @@
           = link_to "グループ作成", :new_group
         %li.action_links-search
           = link_to "グループを探す", :search_groups
+      - if current_user.my_groups.present?
+        .group_lists
+          .group_lists_header
+            管理グループ一覧
+          - current_user.my_groups.each do |group|
+            = link_to group.group_name, group_path(group.id), class: "group_lists_list"
       - if current_user.groups.present?
         .group_lists
           .group_lists_header
