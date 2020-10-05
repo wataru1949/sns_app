@@ -18,20 +18,19 @@
         %th
           メンバー数
         %td
-          = @group.users.length
+          -# 条件確認-----------------------------------------
+          = @group.memberships.length + 1
           人
     .table_border
     .content_box
       = simple_format(@group.content)
-    - if @group.users.include? current_user
+    - if @group.admin == current_user
       %ul.group_info_menu
         %li.cog-btn
           = link_to edit_group_path(@group) do
             = icon('fas', 'cog')
         %li.member-btn
           = icon('fas', 'users')
-        %li.member-btn
-          = icon('fas','plus')
         %li.g_users-btn
           = link_to group_members_path(@group) do
             = icon('fas','plus')
@@ -40,7 +39,8 @@
           .close-btn
             = icon('far','times-circle')
           %p メンバー 一覧
-        - @group.users.each do |user|
+        -# 条件確認
+        - @group.members.each do |user|
           .user-data
             - if user.user_image.present?
               = image_tag user.user_image.url, alt: "ユーザー画像", class: "user_img" 
@@ -49,29 +49,8 @@
             .user-data_right
               .user-data_right_name
                 = user.nickname
-      .member_modal
-        .member_modal_top
-          .close-btn
-            = icon('far','times-circle')
-          %p メンバー 追加
-        .member_modal_form
-          .member_modal_form_input
-          .member_modal_form_btn
-        = form_with model: @group, local: true do |f|
-          = f.collection_check_boxes :user_ids, User.all, :id, :nickname do |user|
-            .user-data
-              - if user.object.user_image.present?
-                = image_tag user.object.user_image.url, alt: "ユーザー画像", class: "user_img" 
-              - else
-                = image_tag "picture/user-2517433_640.png", alt: "ユーザー画像", class: "user_img"
-              .user-data_right
-                .user-data_right_name
-                  = user.object.nickname
-                .user-data_right_check
-                  = user.check_box
-          .member_modal_bottom
-            = f.submit "追加", class: "link-btn"
-    - else
+    - elsif @group.admin != current_user && (@group.members.exclude? current_user)
       = link_to "参加申請", "/", class: "mini_link-btn btn", data: { confirm: "#{@group.group_name}へ参加申請を送りますか？" }
-- if @group.users.include? current_user
+      -# 条件追加------------------------------------------
+- if (@group.members.include? current_user) || @group.admin == current_user
   = render "chat", chats: @chat
