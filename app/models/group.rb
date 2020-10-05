@@ -21,9 +21,16 @@ class Group < ApplicationRecord
   validates :content, length: { maximum: 500 }
 
   scope :group_listing, -> {
-    order(created_at: :desc).includes(:group_address, :category, :group_pictures)
+    left_joins(:group_members)
+    .select("groups.*, COUNT(group_members.id).where(group_members.approved: true) AS number_of_memberships")
+    .group("gorup.id")
+    order(created_at: :desc)
+    .includes(:group_address, :category, :group_pictures)
   }
 
+  def memberships
+    self.group_members = self.group_members.where(approved: true)
+end
 end
 
 # == Schema Information
