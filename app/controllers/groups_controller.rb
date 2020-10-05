@@ -20,7 +20,7 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
-    @group.users << current_user
+    @group.admin = current_user
     @group.category = Category.find_or_initialize_by(category_params[:category_attributes])
     if @group.save
       flash.notice = "グループを作成しました。"
@@ -34,6 +34,7 @@ class GroupsController < ApplicationController
   end
   
   def show
+    @group.group_members = @group.memberships
     @chat = Chat.new
     @chats = @group.chats.order(created_at: :asc).includes(:user)
   end

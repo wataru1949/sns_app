@@ -88,6 +88,7 @@ $(function(){
       $('.main').animate({ scrollTop: $('.main')[0].scrollHeight});
       $('.chat-form')[0].reset();
       $('.submit-btn').prop('disabled', false);
+      $('.chat-container_info').remove();
     })
     .fail(function(){
       alert('メッセージを入力してください');

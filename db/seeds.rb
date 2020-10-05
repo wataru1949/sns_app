@@ -1,5 +1,5 @@
 table_names = %w(
-  users categories posts groups group_users chats
+  users categories posts groups chats
 )
 
 table_names.each do |table_name|

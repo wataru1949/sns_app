@@ -1,0 +1,25 @@
+.user_search_form {
+  line-height: 23px;
+  margin-bottom: 5px;
+  &-input {
+    height: 23px;
+    padding: 5px;
+    margin-right: 8px;
+  }
+}
+#user-search-result {
+  width: 85%;
+  margin: 13px auto;
+  padding-bottom: 10px;
+  border-bottom: ridge 4px goldenrod;
+}
+#added-user_container {
+  .added_user {
+  background-color: $translucent-black;
+  color: white;
+  width: 85%;
+  margin: 0 auto;
+  padding: 20px;
+
+  }
+}

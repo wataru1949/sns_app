@@ -1,3 +1,6 @@
+class GroupAdmin < GroupUser
+end
+
 # == Schema Information
 #
 # Table name: group_users
@@ -20,13 +23,3 @@
 #  fk_rails_...  (group_id => groups.id)
 #  fk_rails_...  (user_id => users.id)
 #
-
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value

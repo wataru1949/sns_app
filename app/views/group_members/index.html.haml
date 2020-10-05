@@ -1,0 +1,14 @@
+= form_with model: @group, local: true do |f|
+  .search
+    %h1.user_search_form_header
+      = @group.group_name
+    %h2.search_header
+      ユーザーを検索する
+    .user_search_form
+      %input.user_search_form-input{placeholder: "ニックネームで検索", type: "text"}
+      = button_tag type: "button", class: "user_search_form-btn submit-btn btn" do
+        検索
+  #user-search-result
+  #added-user_container
+  = f.submit "登録する", class: "action-btn btn"
+

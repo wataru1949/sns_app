@@ -9,7 +9,7 @@ bodies = %w(
   )
   
 groups.each do |g|
-  g.users.each do |u|
+  g.members.each do |u|
     a = (1..9).to_a.sample
     t = a.days.ago
     g.chats.create!(
@@ -19,4 +19,12 @@ groups.each do |g|
       created_at: t.advance(hours: a, minutes: a)
       )
   end
+  a = (1..9).to_a.sample
+  t = a.days.ago
+  g.chats.create!(
+    body: bodies.sample,
+    group_id: g.id,
+    user_id: g.admin.id,
+    created_at: t.advance(hours: a, minutes: a)
+    )
 end

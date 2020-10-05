@@ -21,7 +21,8 @@
 }
 .form-container {
   color: white;
-  margin: 40px auto 0;
+  max-width: 700px;
+  margin: 0 auto ;
   padding: 30px 50px;
   background-color: $translucent-black;
   .field {
