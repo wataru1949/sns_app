@@ -30,8 +30,10 @@ group_names = %w(クラブ 倶楽部 愛好会 同好会 部 フレンズ)
     city: "新宿区",
     place: (place1.sample + place2.sample)
   )
-  g.group_users.create!(
-    user_id: 1
+  g.create_group_admin!(
+    user_id: 1,
+    type: "GroupAdmin",
+    approved: 1
   )
   2.times do |m|
     g.group_pictures.create!(
@@ -39,8 +41,10 @@ group_names = %w(クラブ 倶楽部 愛好会 同好会 部 フレンズ)
     )
   end
   users.sample(9).each do |u|
-    g.group_users.create!(
-      user_id: "#{u.id}"
+    g.group_members.create!(
+      user_id: "#{u.id}",
+      type: "GroupMember",
+      approved: 1
     )
   end
 end
@@ -52,7 +56,12 @@ end
   g = Group.create!(
     group_name: (ads[1] + c.value + gn),
     content: (message1.sample + c.value + message2.sample),
-    category_id: "#{c.id}"
+    category_id: "#{c.id}",
+  )
+  g.create_group_admin!(
+    user_id: users.sample.id,
+    type: "GroupAdmin",
+    approved: 1
   )
   g.create_group_address!(
     prefecture_id: ads[0],
