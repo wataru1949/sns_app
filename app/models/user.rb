@@ -33,6 +33,12 @@ class User < ApplicationRecord
     return nil if input == ""
     User.where(['nickname LIKE ?', "%#{input}%"] ).where.not(id: id).limit(10)
   end
+
+  def joined_group(user)
+    if memberships = user.group_members.where(approved: true)
+      return memberships
+    end
+  end
 end
 
 # == Schema Information
