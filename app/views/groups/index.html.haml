@@ -23,7 +23,7 @@
               .list_right_bottom-info
                 = icon("fas", "user-friends")
                 -# 条件追加------------------------------------------------
-                = group.memberships.length + 1
+                = group.members.length + 1
     = paginate @groups
   - else
     .nothing_msg
