@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   end
   resources :groups do
     get :search, on: :collection
-    get "members" => "group_members#index", as: :members
+    # get "members" => "group_members#index", as: :members
+    resources :members, only: [:index, :create, :destroy], controller:"group_members"
     resources :chats, only: [:create, :destroy]
   end
   resources :categories, only: [:index]
