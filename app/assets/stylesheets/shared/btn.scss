@@ -7,9 +7,6 @@
   box-shadow: none;
 }
 .action-btn {
-  background-color: chocolate;
-  box-shadow :rgb(95, 158, 160) 0 1px 0px;
-  color: white;
   height: 30px;
   width: 150px;
   margin: 0 auto 30px;
@@ -17,20 +14,25 @@
   line-height: 30px;
   letter-spacing: 0.1em;
   border: none;
-  border-radius: 3px;
   display: block;
   cursor: pointer;
+}
+.action-btn, .link-btn, .mini_link-btn, .mini_action-btn {
+  color: white;
+  border-radius: 3px;
+}
+.action-btn, .mini_action-btn {
+  background-color: chocolate;
+  box-shadow :rgb(95, 158, 160) 0 1px 0px;
 }
 .link-btn, .mini_link-btn {
   background-color: cadetblue;
   box-shadow :rgb(179, 90, 26) 0 1px 0px;
-  color: white;
-  border-radius: 3px;
 }
 .link-btn {
   padding: 3px 7px;
 }
-.mini_link-btn {
+.mini_link-btn, .mini_action-btn {
   padding: 5px;
   font-size: 0.9em;
 }
@@ -44,10 +46,6 @@
   color: darkolivegreen;
   font-size: 30px;
   display: block;
-}
-.delete-btn {
-  background-color: cadetblue;
-  text-align: center;
 }
 .user_link {
   padding: 2px 3px;
