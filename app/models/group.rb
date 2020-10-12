@@ -28,9 +28,11 @@ class Group < ApplicationRecord
     .includes(:group_address, :category, :group_pictures)
   }
 
-  def memberships
-    self.group_members = self.group_members.where(approved: true)
-end
+  def user_in_member(user)
+    if member = self.group_members.find_by(user_id: user.id)
+      member.approved?
+    end
+  end
 end
 
 # == Schema Information
