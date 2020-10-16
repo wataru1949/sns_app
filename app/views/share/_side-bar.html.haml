@@ -29,10 +29,10 @@
             管理グループ一覧
           - current_user.my_groups.each do |group|
             = link_to group.group_name, group_path(group.id), class: "group_lists_list"
-      - if current_user.joined_group(current_user).present?
+      - if current_user.joined_groups(current_user).present?
         .group_lists
           .group_lists_header
             所属グループ一覧
-          - current_user.joined_group(current_user).each do |group|
+          - current_user.joined_groups(current_user).each do |group|
             = link_to group.group.group_name, group_path(group.group.id), class: "group_lists_list"
 
