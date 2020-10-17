@@ -31,11 +31,11 @@ class User < ApplicationRecord
 
   def self.search(input, id)
     return nil if input == ""
-    User.where(['nickname LIKE ?', "%#{input}%"] ).where.not(id: id).limit(10)
+    User.where( ['nickname LIKE ?', "%#{input}%"] ).where.not(id: id).limit(10)
   end
 
-  def joined_group(user)
-    if memberships = user.group_members.where(approved: true)
+  def joined_groups(user)
+    if memberships = user.group_members.where(status: "participated")
       return memberships
     end
   end
