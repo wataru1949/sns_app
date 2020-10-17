@@ -33,7 +33,7 @@ group_names = %w(クラブ 倶楽部 愛好会 同好会 部 フレンズ)
   g.create_group_admin!(
     user_id: 1,
     type: "GroupAdmin",
-    approved: 1
+    status: "participated"
   )
   2.times do |m|
     g.group_pictures.create!(
@@ -44,7 +44,7 @@ group_names = %w(クラブ 倶楽部 愛好会 同好会 部 フレンズ)
     g.group_members.create!(
       user_id: "#{u.id}",
       type: "GroupMember",
-      approved: 1
+      status: "participated"
     )
   end
 end
@@ -61,7 +61,7 @@ end
   g.create_group_admin!(
     user_id: users.sample.id,
     type: "GroupAdmin",
-    approved: 1
+    status: "participated"
   )
   g.create_group_address!(
     prefecture_id: ads[0],
