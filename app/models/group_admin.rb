@@ -6,7 +6,8 @@ end
 # Table name: group_users
 #
 #  id         :bigint           not null, primary key
-#  approved   :boolean          default(FALSE), not null
+#  rejected   :boolean          default(FALSE), not null
+#  status     :string(255)      not null
 #  type       :string(255)      not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -15,8 +16,10 @@ end
 #
 # Indexes
 #
-#  index_group_users_on_group_id  (group_id)
-#  index_group_users_on_user_id   (user_id)
+#  index_group_users_on_group_id              (group_id)
+#  index_group_users_on_group_id_and_user_id  (group_id,user_id) UNIQUE
+#  index_group_users_on_status                (status)
+#  index_group_users_on_user_id               (user_id)
 #
 # Foreign Keys
 #
