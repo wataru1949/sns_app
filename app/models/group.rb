@@ -22,16 +22,26 @@ class Group < ApplicationRecord
 
   scope :group_listing, -> {
     left_joins(:group_members)
-    .select("groups.*, COUNT(group_members.id).where(group_members.approved: true) AS number_of_memberships")
-    .group("gorup.id")
     order(created_at: :desc)
     .includes(:group_address, :category, :group_pictures)
   }
 
-  def user_in_member(user)
+  def user_in_member?(user)
     if member = self.group_members.find_by(user_id: user.id)
-      member.approved?
+      member.status == "participated"
     end
+  end
+
+  def participated_members
+    self.group_members.where(status: "participated")
+  end
+
+  def applying_members
+    self.group_members.where(status: "applying", rejected: false)
+  end
+
+  def inviting_members
+    self.group_members.where(status: "inviting")
   end
 end
 
