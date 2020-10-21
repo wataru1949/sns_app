@@ -9,7 +9,7 @@ $(function() {
           <div class="list_area_sell_right">
             <div class="list_area_sell_right_name">${user.nickname}</div>
             <div class="list_area_sell_right_btn">
-              <a class="link-btn btn"  data-user_id ${user.id} data-confirm="${user.nickname}さんを招待しますか？" rel="nofollow" data-method="post" href="/groups/${groupId}/members/${user.id}">招待</a>
+              <a class="link-btn btn" data-confirm="${user.nickname}さんを招待しますか？" rel="nofollow" data-method="post" href="/groups/${groupId}/members/${user.id}">招待</a>
             </div>
           </div>
         </div>
@@ -24,7 +24,7 @@ $(function() {
           <div class="list_area_sell_right">
             <div class="list_area_sell_right_name">${user.nickname}</div>
             <div class="list_area_sell_right_btn">
-              <a class="link-btn btn" data-confirm="${user.nickname}さんを招待しますか？" rel="nofollow" data-method="post" href="/groups/${groupId}/members">招待</a>
+              <a class="link-btn btn" data-confirm="${user.nickname}さんを招待しますか？" rel="nofollow" data-method="post" href="/groups/${groupId}/members/${user.id}">招待</a>
             </div>
           </div>
         </div>
