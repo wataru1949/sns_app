@@ -20,6 +20,46 @@
   width: 85%;
   margin: 0 auto;
   padding: 20px;
-
+  }
+}
+.list-container {
+  margin-bottom: 25px;
+  border: solid 1px $light_gray;
+}
+.list_type {
+  background-color: $very_light_gray;
+  font-size: 0.8em;
+  color: gray;
+  padding: 4px 0 4px 10px;
+}
+.list_area {
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 50px;
+  border: solid 1px $light_gray;
+  &_sell {
+    display: flex;
+    min-width: 33%;
+    width: 160px;
+    height: 80px;
+    padding-top: 9px;
+    &_left {
+      margin-right: 8px;
+    }
+    &_right {
+      width: 100%;
+      font-size: 0.9em;
+      &_btn {
+        font-size: 0.8em;
+        display: inline-flex;
+        flex-direction: column;
+        .btn {
+          padding: 0 7px;
+          text-align: center;
+          margin-bottom: 3px;
+        }
+      }
+    }
   }
 }
