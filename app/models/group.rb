@@ -26,12 +26,6 @@ class Group < ApplicationRecord
     .includes(:group_address, :category, :group_pictures)
   }
 
-  def user_in_member?(user)
-    if member = self.group_members.find_by(user_id: user.id)
-      member.status == "participated"
-    end
-  end
-
   def participated_members
     self.group_members.where(status: "participated")
   end
@@ -42,6 +36,23 @@ class Group < ApplicationRecord
 
   def inviting_members
     self.group_members.where(status: "inviting")
+  end
+
+  def member_status(user)
+    if member = self.group_members.find_by(user_id: user.id)
+      case member.status
+      when "participated"
+        :participated
+      when "inviting"
+        :inviting
+      when "applying"
+        :applying
+      else
+        false
+      end
+    else
+      :no_membership
+    end
   end
 end
 
