@@ -38,6 +38,7 @@
   flex-wrap: wrap;
   min-height: 50px;
   border: solid 1px $light_gray;
+  padding: 0 5px;
   &_sell {
     display: flex;
     min-width: 33%;
@@ -50,6 +51,9 @@
     &_right {
       width: 100%;
       font-size: 0.9em;
+      &_name {
+        margin-bottom: 3px;
+      }
       &_btn {
         font-size: 0.8em;
         display: inline-flex;
