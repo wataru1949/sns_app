@@ -17,9 +17,13 @@
         %th
           場所
         %td
-          = @post.post_address.prefecture.name
-          = @post.post_address.city
-          = @post.post_address.place
+          - if @post.post_address.present?
+            - if @post.post_address.prefecture.present?
+              = @post.post_address.prefecture.name
+            - if @post.post_address.city.present?
+              = @post.post_address.city
+            - if @post.post_address.place.present?
+              = @post.post_address.place
       %tr
         %th
           日にち
