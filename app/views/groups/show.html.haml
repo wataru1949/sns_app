@@ -11,9 +11,13 @@
         %th
           活動地域
         %td
-          = @group.group_address.prefecture.name
-          = @group.group_address.city
-          = @group.group_address.place
+          - if @group.group_address.present?
+            - if @group.group_address.prefecture.present?
+              = @group.group_address.prefecture.name
+            - if @group.group_address.city.present?
+              = @group.group_address.city
+            - if @group.group_address.place.present?
+              = @group.group_address.place
       %tr
         %th
           メンバー数
@@ -25,35 +29,24 @@
     .content_box
       = simple_format(@group.content)
     - if @group.admin == current_user
-      %ul.group_info_menu
-        %li.cog-btn
+
+      %ul.group_menu
+        %li.group_menu-edit
           = link_to edit_group_path(@group) do
-            = icon('fas', 'cog')
-        %li.member-btn
-          = icon('fas', 'users')
-        %li.g_users-btn
+            グループ情報編集
+        %li.group_menu-member
           = link_to group_members_path(@group) do
-            = icon('fas','plus')
-      .member_list.member_modal
-        .member_list_top
-          .close-btn
-            = icon('far','times-circle')
-          %p メンバー 一覧
-        -# 条件確認
-        - @group.members.each do |user|
-          .user-data
-            - if user.user_image.present?
-              = image_tag user.user_image.url, alt: "ユーザー画像", class: "user_img" 
-            - else
-              = image_tag "picture/user-2517433_640.png", alt: "ユーザー画像", class: "user_img"
-            .user-data_right
-              .user-data_right_name
-                = user.nickname
-    - elsif @group.admin != current_user && (@group.members.exclude? current_user)
+            メンバー管理
+    - elsif @group.admin != current_user && @group.member_status(current_user) == :no_membership
       = link_to "参加申請", group_members_path(@group), class: "mini_action-btn btn", method: :post, data: { confirm: "#{@group.group_name}へ参加申請を送りますか？" }
-    - elsif @group.admin != current_user && @group.user_in_member?(current_user) == false
+    - elsif @group.admin != current_user && @group.member_status(current_user) == :rejected
+      = link_to "参加申請", group_members_path(@group), method: :patch, class: "mini_action-btn btn",  data: { confirm: "#{@group.group_name}へ参加申請を送りますか？" }
+    - elsif @group.admin != current_user && @group.member_status(current_user) == :participated
+      = link_to "グループから退会する", group_member_cancel_path(@group), class: "mini_link-btn btn", method: :delete, data: { confirm: "本当に退会しますか？" }
+    - elsif @group.admin != current_user && @group.member_status(current_user) == :applying
       = link_to "申請を取り消す", group_member_cancel_path(@group), class: "mini_link-btn btn", method: :delete, data: { confirm: "申請を取り消しますか？" }
-    - elsif @group.admin != current_user && @group.user_in_member?(current_user) == true
-      = link_to "グループから退会する", group_member_path(@group), class: "mini_link-btn btn", method: :delete, data: { confirm: "本当に退会しますか？" }
-- if @group.user_in_member?(current_user)|| @group.admin == current_user
+    - elsif @group.admin != current_user && @group.member_status(current_user) == :inviting
+      = link_to "グループに参加", group_members_path(@group), method: :patch, class: "link-btn btn", data: { confirm: "グループに参加しますか？" }
+      = link_to "招待を拒否", reject_group_members_path(@group), method: :patch, class: "link-btn btn", data: { confirm: "招待を拒否しますか？" }
+- if @group.admin == current_user || @group.member_status(current_user) == :participated
   = render "chat", chats: @chat
