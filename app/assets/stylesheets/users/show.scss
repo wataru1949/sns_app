@@ -8,3 +8,24 @@
     margin-bottom: 20px;
   }
 }
+.group_cell{
+  height: 38px;
+  width: 100%;
+  padding: 8px 8px;
+  font-size: 0.9em;
+  display: flex;
+  &_left {
+    width: 60%;
+    // align-items: center;
+    a {
+      border-bottom: solid 1px $light_gray;
+      padding-bottom: 2px;
+    }
+  }
+  .link-btn {
+    padding: 0 3px;
+    font-size: 0.8em;
+    line-height: 22px;
+
+  }
+}
