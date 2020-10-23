@@ -32,7 +32,6 @@ $(function() {
       $("#user-search-result").append(html);
     };
   };
-
   function addNoUser() {
     let html = `
       <div class="searched-user">
@@ -41,22 +40,6 @@ $(function() {
     `;
     $("#user-search-result").append(html);
   }
-
-
-
-  // function addInvitedUser(name, id) {
-  //   let html = `
-  //   <div class="searched-user added_user" id="${id}">
-  //     <p class="searched-user_name">${name}</p>
-  //     <div class="user-remove_btn" data-user-id="${id}" data-user-name="${name}">削除</div>
-  //   </div>`;
-  //   $("#invited_area").append(html);
-  // }
-  // function addMember(userId) {
-  //   let html = `<input value="${userId}" name="group[user_ids][]" type="hidden" id="group_user_ids_${userId}" />`;
-  //   $(`#${userId}`).append(html);
-  // }
-
   $(".user_search_form-btn").on("click", function() {
     let input = $(".user_search_form-input").val();
     let groupId = $(this).attr("data-group-id");
@@ -82,19 +65,4 @@ $(function() {
       alert("通信エラーです。ユーザーが表示できません。");
     });
   });
-
-  // $(document).on("click", ".user-add_btn", function() {
-  //   const userName = $(this).attr("data-user-nickname");
-  //   const userId = $(this).attr("data-user-id");
-  //   $(this)
-  //     .parent()
-  //     .remove();
-  //   addInvitedUser(userName, userId);
-  //   addMember(userId);
-  // });
-  // $(document).on("click", ".user-remove_btn", function() {
-  //   $(this)
-  //     .parent()
-  //     .remove();
-  // });
 });
