@@ -40,15 +40,19 @@ class Group < ApplicationRecord
 
   def member_status(user)
     if member = self.group_members.find_by(user_id: user.id)
-      case member.status
-      when "participated"
-        :participated
-      when "inviting"
-        :inviting
-      when "applying"
-        :applying
+      if member.status == "inviting" && member.rejected == true
+        :rejected
       else
-        false
+        case member.status
+        when "participated"
+          :participated
+        when "inviting"
+          :inviting
+        when "applying"
+          :applying
+        else
+          false
+        end
       end
     else
       :no_membership
