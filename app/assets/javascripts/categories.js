@@ -11,7 +11,6 @@ $(function() {
       $("#category-search").val(val);
     });
   }
-
   $("#category-search").on("keyup", function() {
     let input = $("#category-search").val();
     $.ajax({

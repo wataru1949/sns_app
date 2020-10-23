@@ -14,18 +14,15 @@ $(function() {
                   </div>`;
     return html;
   }
-
   const buildImg = (index, url)=> {
     const html = `<div data-index="${index}" class="file_column">
                     <img data-index="${index}" src="${url}" , class="group_img">
                   </div>`;
     return html;
   }
-
   let fileIndex = [1,2,3,4,5,6,7,8,9,10];
   lastIndex = $(".js-file_group:last").data("index");
   fileIndex.splice(0, lastIndex);
-
   $(".hidden-destroy").hide();
   $("#image-box").on("change", ".js-file", function(e) {
     const targetIndex = $(this).parent().data("index");
@@ -47,7 +44,6 @@ $(function() {
       } 
     }
   });
-
   $("#image-box").on("click", ".js-remove", function() {
     if ($("img.group_img").length < 3 && $(this).parent().data("index") != $(".js-file_group:last").data("index")) {
       const targetIndex = $(this).parent().data("index");
