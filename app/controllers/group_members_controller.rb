@@ -12,6 +12,9 @@ class GroupMembersController < ApplicationController
           flash.notice = "すでに参加しています。"
         elsif member.status == "inviting"
           flash.notice = "すでに招待済みです。"
+        elsif member.status == "applying" && member.rejected == true
+          member.update(status: "participated", rejected: false)
+          flash.notice = "申請を許可しました。"
         elsif member.status == "applying"
           flash.notice = "すでに申請が来ています。"
         end
@@ -28,15 +31,29 @@ class GroupMembersController < ApplicationController
   end
 
   def update
-    member = @group.group_members.find(params[:id])
-    member.update(status: "participated")
-    redirect_to group_members_path(@group)
+    if params[:id]
+      member = @group.group_members.find(params[:id])
+      member.update(status: "participated")
+      flash.notice = "申請を許可しました。"
+      redirect_to group_members_path(@group)
+    else 
+      member = @group.group_members.find_by(user_id: current_user)
+      member.update(status: "participated", rejected: false)
+      flash.notice = "グループに参加しました。"
+      redirect_to group_path(@group)
+    end
   end
   
   def reject
-    member = @group.group_members.find(params[:id])
-    member.update(rejected: true)
-    redirect_to group_members_path(@group)
+    if params[:id]
+      member = @group.group_members.find(params[:id])
+      member.update(rejected: true)
+      redirect_to group_members_path(@group)
+    else
+      member = @group.group_members.find_by(user_id: current_user)
+      member.update(rejected: true)
+      redirect_to group_path(@group)
+    end
   end
 
   def destroy
@@ -62,9 +79,8 @@ class GroupMembersController < ApplicationController
       redirect_to group_path(@group)
     end
   end
-
+  
   private
-
   def set_group
     @group = Group.find(params[:group_id])
   end
