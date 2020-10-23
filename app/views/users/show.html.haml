@@ -26,8 +26,31 @@
           地域
         %td
           - if @user.user_address.present?
-            = @user.user_address.prefecture.name
-            = @user.user_address.city
+            - if @user.user_address.prefecture.present?
+              = @user.user_address.prefecture.name
+            - if @user.user_address.city.present?
+              = @user.user_address.city
     .table_border
     .content_box
       = simple_format(@user.profile)
+    - if @user == current_user
+      - if current_user.applying_groups.present?
+        .list-container
+          .list_type
+            申請中のグループ
+          .list_area
+            - current_user.applying_groups.each do |g|
+              .group_cell
+                .group_cell_left
+                  = link_to group_path(g.group_id) do
+                    = g.group.group_name      
+      - if current_user.inviting_groups.present?
+        .list-container
+          .list_type
+            招待が来ているグループ
+          .list_area
+            - current_user.inviting_groups.each do |g|
+              .group_cell
+                .group_cell_left
+                  = link_to group_path(g.group_id) do
+                    = g.group.group_name
