@@ -23,7 +23,8 @@
               = image_tag "picture/user-2517433_640.png", alt: "ユーザー画像", class: "user_img"
           .list_area_sell_right
             .list_area_sell_right_name
-              = m.user.nickname
+              = link_to user_path(m.user.id), class:"user_link" do
+                = m.user.nickname
             .list_area_sell_right_btn
               = link_to "参加を許可", group_member_path(@group, m.id), method: :patch, class: "link-btn btn", data: { confirm: "申請を許可しますか？" }
               = link_to "拒否", reject_group_member_path(@group, m.id), method: :patch, class: "link-btn btn", data: { confirm: "申請を拒否しますか？" }
@@ -40,7 +41,8 @@
               = image_tag "picture/user-2517433_640.png", alt: "ユーザー画像", class: "user_img"
           .list_area_sell_right
             .list_area_sell_right_name
-              = m.user.nickname
+              = link_to user_path(m.user.id), class:"user_link" do
+                = m.user.nickname
             .list_area_sell_right_btn
               = link_to "招待を取り消す", group_member_path(@group, m.id), method: :delete, class: "link-btn btn", data: { confirm: "招待を取り消しますか？" }
   .list-container
@@ -56,7 +58,8 @@
               = image_tag "picture/user-2517433_640.png", alt: "ユーザー画像", class: "user_img"
           .list_area_sell_right
             .list_area_sell_right_name
-              = m.user.nickname
+              = link_to user_path(m.user.id), class:"user_link" do
+                = m.user.nickname
             .list_area_sell_right_btn
               = link_to "退会させる", group_member_path(@group, m.id), method: :delete, class: "link-btn btn", data: { confirm: "グループから退会させますか？" }
 
