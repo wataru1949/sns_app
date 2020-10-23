@@ -34,10 +34,16 @@ class User < ApplicationRecord
     User.where( ['nickname LIKE ?', "%#{input}%"] ).where.not(id: id).limit(10)
   end
 
-  def joined_groups(user)
-    if memberships = user.group_members.where(status: "participated")
-      return memberships
-    end
+  def participated_groups
+    self.group_members.where(status: "participated")
+  end
+
+  def applying_groups
+    self.group_members.where(status: "applying")
+  end
+
+  def inviting_groups
+    self.group_members.where(status: "inviting", rejected: false)
   end
 end
 
