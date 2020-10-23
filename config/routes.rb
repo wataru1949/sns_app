@@ -12,7 +12,9 @@ Rails.application.routes.draw do
     get :search, on: :collection
     resources :members, only: [:index, :create, :update, :destroy], controller:"group_members" do
       patch :reject, on: :member
+      patch :reject, on: :collection
       post :create, on: :member
+      patch :update, on: :collection
     end
     resource :member, only: :destroy, controller:"group_members", as: :member_cancel
     resources :chats, only: [:create, :destroy]
