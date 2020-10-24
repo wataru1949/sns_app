@@ -1,8 +1,11 @@
 class GroupMembersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_group, only:[:index, :create, :update, :reject, :destroy]
+  before_action :set_group
+
   def index
-    @group = Group.find(params[:group_id])    
+    if @group.group_admin.user_id != current_user.id
+      redirect_to group_path(@group)
+    end
   end
 
   def create
