@@ -34,7 +34,6 @@ class GroupsController < ApplicationController
   end
   
   def show
-    # @group.group_members = @group.group_members.where(approved: true)
     @chat = Chat.new
     @chats = @group.chats.order(created_at: :asc).includes(:user)
   end
