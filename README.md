@@ -60,6 +60,9 @@
 ### メンバー管理ページ
 [![Image from Gyazo](https://i.gyazo.com/0010add3b162dbd4da556dc2919cf03d.gif)](https://gyazo.com/0010add3b162dbd4da556dc2919cf03d)
 <br><br><br>
+### ネットワーク•サーバ構成
+[![Image from Gyazo](https://i.gyazo.com/f9bf3fd30985c46b9e768530979a7ac3.png)](https://gyazo.com/f9bf3fd30985c46b9e768530979a7ac3)
+<br><br><br>
 ## 本番環境
 - アドレス:https://gather.mt-watar.com/
 - BASIC認証
@@ -83,10 +86,11 @@
 <br><br><br>
 ## 使用技術
 - Amazon EC2
+- Amazon RDS
 - Amazon S3
 - Amazon Route53
 - Amazon Elastic Load Balancing
-- AWS Certificate Manager
+- Amazon Certificate Manager
 - Nginx
 - Unicorn
 - Capistrano
