@@ -42,9 +42,9 @@
     - elsif @group.admin != current_user && @group.member_status(current_user) == :rejected
       = link_to "参加申請", group_members_path(@group), method: :patch, class: "mini_action-btn btn",  data: { confirm: "#{@group.group_name}へ参加申請を送りますか？" }
     - elsif @group.admin != current_user && @group.member_status(current_user) == :participated
-      = link_to "グループから退会する", group_member_cancel_path(@group), class: "mini_link-btn btn", method: :delete, data: { confirm: "本当に退会しますか？" }
+      = link_to "グループから退会する", group_members_path(@group), class: "mini_link-btn btn", method: :delete, data: { confirm: "本当に退会しますか？" }
     - elsif @group.admin != current_user && @group.member_status(current_user) == :applying
-      = link_to "申請を取り消す", group_member_cancel_path(@group), class: "mini_link-btn btn", method: :delete, data: { confirm: "申請を取り消しますか？" }
+      = link_to "申請を取り消す", group_members_path(@group), class: "mini_link-btn btn", method: :delete, data: { confirm: "申請を取り消しますか？" }
     - elsif @group.admin != current_user && @group.member_status(current_user) == :inviting
       = link_to "グループに参加", group_members_path(@group), method: :patch, class: "link-btn btn", data: { confirm: "グループに参加しますか？" }
       = link_to "招待を拒否", reject_group_members_path(@group), method: :patch, class: "link-btn btn", data: { confirm: "招待を拒否しますか？" }
