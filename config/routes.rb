@@ -16,7 +16,7 @@ Rails.application.routes.draw do
       post :create, on: :member
       patch :update, on: :collection
     end
-    resource :member, only: :destroy, controller:"group_members", as: :member_cancel
+    resource :members, only: [:destroy], controller:"group_members"
     resources :chats, only: [:create, :destroy]
   end
   resources :categories, only: [:index]
