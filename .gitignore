@@ -27,3 +27,7 @@
 /config/master.key
 
 public/uploads/*
+
+/environment/db.env
+
+/db/grant_user.sql
