@@ -28,6 +28,6 @@
 
 public/uploads/*
 
-/environment/db.env
+/environments/db.env
 
 /db/grant_user.sql
