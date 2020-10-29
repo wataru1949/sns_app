@@ -76,7 +76,7 @@
 <br><br><br>
 
 ### メンバー管理ページ
-[![Image from Gyazo](https://i.gyazo.com/0010add3b162dbd4da556dc2919cf03d.gif)](https://gyazo.com/0010add3b162dbd4da556dc2919cf03d
+[![Image from Gyazo](https://i.gyazo.com/0010add3b162dbd4da556dc2919cf03d.gif)
 <br><br><br>
 
 ## 本番環境
