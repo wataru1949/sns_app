@@ -7,10 +7,14 @@
 <br><br><br>
 
 ## 制作背景
-私自身は趣味で地元のソフトボールチームに所属しています。市内の他のチームとも交流があるのですが、どこのチームでもメンバーが集まらない日があったり、逆に予定がない日は他のチームの応援に行ったりしています。そのようなコミュニティの人手不足に対するニーズと、運動経験があっても地域との繋がりが薄く、活動する機会がないという人を結び付けたいと思い、このアプリを制作することにしました。野球に限定してしまうと週末の活動が中心になってしまうので、平日の仕事終わりなどに少人数でも気軽に交流できるようにするための投稿機能を考えました。
+私自身は趣味で地元のソフトボールチームに所属しています。市内の他のチームとも交流があるのですが、どこのチームでもメンバーが集まらない日があったり、逆に予定がない日は他のチームの応援に行ったりしています。そのようなコミュニティの人手不足に対するニーズと、運動経験があっても地域との繋がりが薄く、活動する機会がないという人を結び付けたいと思い、このアプリを制作することにしました。<br>
+野球に限定してしまうと週末の活動が中心になってしまうので、平日の仕事終わりなどに少人数でも気軽に交流できるようにするための投稿機能を考えました。
 <br><br><br>
 ## DB設計
 ![](https://i.gyazo.com/c5c84245bae72b03b3f4974fd130fd65.png)
+<br><br><br>
+## ネットワーク•サーバ構成
+![image](https://user-images.githubusercontent.com/61773347/97516256-13c05680-19d6-11eb-800b-ddb8beb6abe4.png)
 <br><br><br>
 ## 機能
 ### ユーザー機能
@@ -72,11 +76,9 @@
 <br><br><br>
 
 ### メンバー管理ページ
-[![Image from Gyazo](https://i.gyazo.com/0010add3b162dbd4da556dc2919cf03d.gif)](https://gyazo.com/0010add3b162dbd4da556dc2919cf03d)
+[![Image from Gyazo](https://i.gyazo.com/0010add3b162dbd4da556dc2919cf03d.gif)
 <br><br><br>
-## ネットワーク•サーバ構成
-[![Image from Gyazo](https://i.gyazo.com/f9bf3fd30985c46b9e768530979a7ac3.png)](https://gyazo.com/f9bf3fd30985c46b9e768530979a7ac3)
-<br><br><br>
+
 ## 本番環境
 - **アドレス**:https://gather.mt-watar.com/
 - **BASIC認証**
@@ -100,6 +102,8 @@
   -  Route53
   - Elastic Load Balancing
   - Certificate Manager
+- Docker
+- Docker Compose
 - Nginx
 - Unicorn
 - Capistrano
