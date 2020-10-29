@@ -168,10 +168,6 @@ describe PostsController do
     # end
   end
 
-
-
-
-
   describe "#create" do
     let(:params) { { user_id: user.id, post: attributes_for(:post) } }
     context "ログインしている場合" do
