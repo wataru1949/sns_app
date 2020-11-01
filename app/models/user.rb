@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  include EmailHolder
   attr_accessor :remove
 
   # Include default devise modules. Others available are:
@@ -26,8 +27,6 @@ class User < ApplicationRecord
   validates :nickname, :email, presence: true
   validates :nickname, uniqueness: true, length: { maximum: 10 }
   validates :profile, length: { maximum: 200 }
-  validates :email,"valid_email_2/email": true,
-    uniqueness: { case_sensitive: false }
 
   def self.search(input, id)
     return nil if input == ""
