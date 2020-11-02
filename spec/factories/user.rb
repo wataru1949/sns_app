@@ -9,8 +9,8 @@ FactoryBot.define do
     profile               {Faker::Lorem.sentence}
     gender                {Faker::Number.within(range: 0..3)}
     age                   {Faker::Number.within(range: 0..6)}
-    prefecture_id         {Faker::Number.within(range: 1..48)}
-    user_image            {File.open("#{Rails.root}/public/images/test_image.jpg")} 
+    user_image            {File.open("#{Rails.root}/public/images/test_image.jpg")}
+    association :user_address, strategy: :build
   end
 
 end
