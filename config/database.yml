@@ -59,3 +59,6 @@ production:
   database: <%= Rails.application.credentials.rds[:database] %>
   username: <%= Rails.application.credentials.rds[:username] %>
   password: <%= Rails.application.credentials.rds[:password] %>
+  encoding: utf8mb4
+  charset: utf8mb4
+  collation: utf8mb4_general_ci
