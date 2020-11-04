@@ -14,7 +14,7 @@
 ![](https://i.gyazo.com/c5c84245bae72b03b3f4974fd130fd65.png)
 <br><br><br>
 ## ネットワーク•サーバ構成
-![image](https://user-images.githubusercontent.com/61773347/97516256-13c05680-19d6-11eb-800b-ddb8beb6abe4.png)
+![image](https://user-images.githubusercontent.com/61773347/98107811-63bf8180-1ede-11eb-80c7-e797b1e78b9c.png)
 <br><br><br>
 ## 機能
 ### ユーザー機能
