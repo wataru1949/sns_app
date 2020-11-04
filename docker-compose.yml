@@ -5,23 +5,23 @@ services:
     build: .
     env_file:
       - ./environments/db.env
-    command: bundle exec puma -C config/puma.rb
+    command: bundle exec puma -C config/puma.rb -e production
     volumes:
       - .:/sns_app
       - public-data:/sns_app/public
       - tmp-data:/sns_app/tmp
       - log-data:/sns_app/log
-    depends_on:
-      - db
+    # depends_on:
+    #   - db
 
-  db:
-    image: mysql:5.7
-    env_file:
-      - ./environments/db.env
-    volumes:
-      - db-data:/var/lib/mysql
-    ports:
-      - "4306:3306"
+  # db:
+  #   image: mysql:5.7
+  #   env_file:
+  #     - ./environments/db.env
+  #   volumes:
+  #     - db-data:/var/lib/mysql
+  #   ports:
+  #     - "4306:3306"
 
   web:
     build:
@@ -38,5 +38,5 @@ volumes:
   public-data:
   tmp-data:
   log-data:
-  db-data:
+  # db-data:
 
