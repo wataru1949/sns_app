@@ -11,7 +11,7 @@ WORKDIR /sns_app
 ADD Gemfile /sns_app/Gemfile
 ADD Gemfile.lock /sns_app/Gemfile.lock
 
-RUN gem install bundler
+RUN gem install bundler -v 2.1.4
 RUN bundle install
 
 ADD . /sns_app
