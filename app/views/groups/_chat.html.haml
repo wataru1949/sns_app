@@ -16,8 +16,8 @@
           - if chat.body.present?
             = simple_format(chat.body, class: "chat_body_bubble") 
           - if chat.chat_image.present?
-            .chat_body_img
-              = image_tag chat.chat_image.url, alt: "コメント画像", class: "chat_body_img"
+            -# .chat_body_img
+            = image_tag chat.chat_image.url, alt: "コメント画像", class: "chat_body_img"
           .chat_body_bottom
             = chat.created_at.strftime("%Y/%m/%d %H:%M")
             - if user_signed_in? && chat.user_id == current_user.id
@@ -36,8 +36,8 @@
           - if chat.body.present?
             = simple_format(chat.body, class: "chat_body_bubble") 
           - if chat.chat_image.present?
-            .chat_body_img
-              = image_tag chat.chat_image.url, alt: "コメント画像", class: "chat_body_img"
+            -# .chat_body_img
+            = image_tag chat.chat_image.url, alt: "コメント画像", class: "chat_body_img"
           .chat_body_bottom
             = chat.created_at.strftime("%Y/%m/%d %H:%M")
 = form_with(model: [@group, @chat], class: "chat-form", id: "new_chat", local: true) do |f|
