@@ -32,6 +32,6 @@ public/uploads/*
 
 /db/grant_user.sql
 
-/docker-compose.yml
+# /docker-compose.yml
 
-/containers/nginx/nginx.conf
+# /containers/nginx/nginx.conf
