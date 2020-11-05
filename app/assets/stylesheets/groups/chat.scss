@@ -27,6 +27,9 @@
         border-radius: 8px;
         border: solid 1px $light_gray;
         box-shadow: rgba(112, 74, 24, 0.7) 2px 1px 2px;
+      &_img {
+        width: 100%;
+      }
       }
       &_bottom {
         font-size: 0.9em;
@@ -49,6 +52,9 @@
     .chat_body {
       &_bubble {
         background-color: #fff8dc;
+      }
+      &_img {
+        width: 100%;
       }
     }
   }
