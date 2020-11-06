@@ -1,6 +1,6 @@
 .session_container
   %h1.form-header ログイン
-  = form_with model: @user, url: user_session_path, local: true do |f|
+  = form_with model: @user, url: user_session_path, id: "login-form", local: true do |f|
     .field
       .field_label
         = f.label :email
