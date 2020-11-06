@@ -41,7 +41,7 @@ $(function() {
     $("#user-search-result").append(html);
   }
   $(".user_search_form-btn").on("click", function() {
-    let input = $(".user_search_form-input").val();
+    let input = $("#user_search_form-input").val();
     let groupId = $(this).attr("data-group-id");
     $.ajax({
       type: 'GET',
