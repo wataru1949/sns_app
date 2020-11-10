@@ -74,7 +74,7 @@ class GroupMembersController < ApplicationController
       current_member = @group.group_members.find_by(user_id: current_user.id)
       if current_member.status == "participated"
         current_member.destroy
-        flash.notice = "グループから退会しました"
+        flash.notice = "グループから退会しました。"
       else
         current_member.destroy
         flash.notice = "申請を取り消しました。"
