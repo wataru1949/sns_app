@@ -12,5 +12,4 @@ FactoryBot.define do
     user_image            {File.open("#{Rails.root}/public/images/test_image.jpg")}
     association :user_address, strategy: :build
   end
-
 end
